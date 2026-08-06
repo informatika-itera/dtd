@@ -24,12 +24,12 @@ Panduan lengkap untuk memverifikasi dan memperbaiki slide HTML agar konsisten di
 --font-display-xl:  clamp(56px, 7.5vw, 120px);  /* Title slide h1 */
 --font-display-lg:  clamp(44px, 5.8vw,  92px);   /* Closing h1 */
 --font-display-sm:  clamp(32px, 4.2vw,  68px);   /* Section h2 */
---font-title:       clamp(26px, 3.2vw,  52px);   /* Card h3 */
---font-body:        clamp(20px, 2.2vw,  36px);   /* Body text */
---font-body-sm:     clamp(18px, 1.8vw,  28px);   /* Quiz text */
+--font-title:       clamp(26px, 3.2vw,  52px);   /* Card h3, two-col h3 */
+--font-body:        clamp(20px, 2.2vw,  36px);   /* Body text, rangkuman item, two-col li */
+--font-body-sm:     clamp(18px, 1.8vw,  28px);   /* Diagram-box p, list-number badge */
 --font-caption:     clamp(16px, 1.5vw,  24px);   /* Meta, tags */
 --font-caption-sm:  clamp(14px, 1.3vw,  20px);   /* Footer */
---font-micro:       clamp(11px, 1vw,    16px);   /* Badges */
+--font-micro:       clamp(11px, 1vw,    16px);   /* Badges kecil */
 
 /* Spacing */
 --sp-xs:   clamp(6px,  0.5vw,  10px);
@@ -40,11 +40,12 @@ Panduan lengkap untuk memverifikasi dan memperbaiki slide HTML agar konsisten di
 --sp-page: clamp(40px, 6vw,    96px);
 ```
 
-### ⚠️ Variabel yang TIDAK BOLEH dipakai (tidak didefininikan)
+### ⚠️ Variabel yang TIDAK BOLEH dipakai (tidak didefinisikan)
 - `--font-heading` → gunakan `--font-display-sm`
 - `--font-display` (tanpa suffix) → gunakan `--font-display-lg`
 - `--font-small` → gunakan `--font-body-sm`
 - `--surface` (tanpa suffix) → gunakan `--canvas` atau `--surface-soft`
+- `--font-body-lg` → **TIDAK ADA** di `:root`. Gunakan `--font-title` untuk heading atau `--font-body` untuk teks
 
 ---
 
@@ -78,7 +79,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 ```
 
 **Checklist:**
-- [ ] Class: `slide slide-title active` (TANPA duplikat seperti `slide active slide-title active slide-title active`)
+- [ ] Class: `slide slide-title active` (TANPA duplikat)
 - [ ] Ada `title-header` dengan 2 logo
 - [ ] Ada `<h1>` dengan judul
 - [ ] Ada `<p class="subtitle">` dengan deskripsi
@@ -119,7 +120,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 ---
 
 ### 2.3 Content Slide — Two Column (`slide-content`)
-**Slide konten utama** — Layout 2 kolom (kiri: teks, kanan: visual)
+**Slide konten utama** — Layout 2 kolom (kiri: teks, kanan: gambar ilustrasi)
 
 ```html
 <div class="slide slide-content" data-slide="N">
@@ -129,10 +130,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
         <!-- opsional: highlight-box, tags, quote-block, dll -->
     </div>
     <div class="content-right">
-        <div class="visual-block">
-            <div class="visual-icon-large">🖼️</div>
-            <div class="visual-label">Label visual</div>
-        </div>
+        <img src="assets/images/nama-gambar.jpg" alt="Deskripsi gambar" loading="lazy">
     </div>
     <div class="slide-footer">
         <span>Pertemuan N — Dasar Teknologi Digital</span>
@@ -144,13 +142,39 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 **Checklist:**
 - [ ] Class: `slide slide-content`
 - [ ] Ada `<div class="content-left">` dengan konten
-- [ ] **WAJIB** ada `<div class="content-right">` dengan visual — tanpa ini layout patah (kolom kanan kosong)
+- [ ] **WAJIB** ada `<div class="content-right">` dengan `<img>` langsung (TANPA wrapper `visual-block`)
 - [ ] `content-left` punya `<h2>` dan minimal 1 paragraf/blok
-- [ ] `content-right` punya `visual-block` atau `diagram-container`
+- [ ] Gambar menggunakan `loading="lazy"` dan `alt` text
 - [ ] Ada `<div class="slide-footer">`
 - [ ] Ada closing `</div>`
 
-**⚠️ Pelajaran dari audit:** Slide yang hanya punya `content-left` tanpa `content-right` menyebabkan kolom kanan kosong dan layout tidak rapi. Selalu isi `content-right`.
+**CSS `content-right` (wajib):**
+```css
+.content-right {
+    flex: 1;
+    background: var(--surface-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    min-width: 0;
+}
+.content-right img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+```
+
+**⚠️ Responsive:** `content-right` disembunyikan pada viewport kecil (`max-aspect-ratio: 4/3`):
+```css
+@media (max-aspect-ratio: 4/3) {
+    .content-right { display: none; }
+    .content-left { flex: 1; }
+}
+```
+Karena `content-right` hanya ilustrasi/dekoratif, konten `content-left` harus selalu terlihat sepenuhnya.
 
 ---
 
@@ -160,7 +184,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 ```html
 <div class="slide slide-full" data-slide="N">
     <h2>Judul Section</h2>
-    <div class="cards-grid">  <!-- atau diagram-container, timeline, two-col, dll -->
+    <div class="diagram-container">  <!-- cards-grid, diagram-container, two-col, dll -->
         <!-- konten -->
     </div>
     <div class="slide-footer">
@@ -174,6 +198,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 - [ ] Class: `slide slide-full`
 - [ ] Ada `<h2>` dengan judul
 - [ ] Konten menggunakan komponen yang valid (cards-grid, diagram-container, timeline, two-col)
+- [ ] **Timeline WAJIB** dibungkus `<div class="diagram-container">` agar terpusat vertikal dan horizontal
 - [ ] Ada `<div class="slide-footer">`
 - [ ] Ada closing `</div>`
 
@@ -191,7 +216,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
             <div class="q-options">
                 <div class="q-opt">A. Pilihan</div>
                 <div class="q-opt">B. Pilihan</div>
-                <div class="q-opt correct">C. Jawaban ✓</div>  <!-- hanya di slide jawaban -->
+                <div class="q-opt correct">C. Jawaban ✓</div>
                 <div class="q-opt">D. Pilihan</div>
             </div>
         </div>
@@ -244,7 +269,35 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 - [ ] Ada `<div class="slide-footer">`
 - [ ] Ada closing `</div>`
 
-**⚠️ Catatan:** CSS `.slide-rangkuman` harus punya `overflow: visible` agar footer absolut tidak ter-clip.
+**CSS `slide-rangkuman` (wajib):**
+```css
+.slide-rangkuman {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;    /* BUKAN center — h2 di atas */
+    padding: var(--sp-page);
+    min-height: 100vh;
+}
+.slide-rangkuman h2 {
+    margin-bottom: var(--sp-lg);
+    width: 100%;
+}
+.rangkuman-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.2vw, 18px);
+    flex: 1;                        /* mengisi sisa ruang di bawah h2 */
+}
+.rangkuman-item {
+    font-size: var(--font-body);    /* 20-36px */
+}
+.rangkuman-item .rnum {
+    width: clamp(28px, 2.81vw, 44px);   /* SAMA dengan list-number */
+    height: clamp(28px, 2.81vw, 44px);
+    font-size: var(--font-body-sm);      /* SAMA dengan list-number */
+    font-weight: 600;
+}
+```
 
 ---
 
@@ -271,22 +324,20 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 - [ ] Ada `<div class="slide-footer">`
 - [ ] Ada closing `</div>`
 
-**⚠️ Catatan:** CSS `.slide-closing` harus punya `overflow: visible` agar footer absolut tidak ter-clip.
-
 ---
 
 ## 3. Font Size Hierarchy
 
-| Element | CSS Variable | Contoh |
+| Element | CSS Variable | Ukuran |
 |---|---|---|
-| Title slide h1 | `var(--font-display-xl)` | ~56-120px |
-| Closing h1 | `var(--font-display-lg)` | ~44-92px |
-| Section h2 | `var(--font-display-sm)` | ~32-68px |
-| Card h3 | `var(--font-title)` | ~26-52px |
-| Body text | `var(--font-body)` | ~20-36px |
-| Quiz text | `var(--font-body-sm)` | ~18-28px |
-| Meta/caption | `var(--font-caption)` | ~16-24px |
-| Footer | `var(--font-caption-sm)` | ~14-20px |
+| Title slide h1 | `var(--font-display-xl)` | 56-120px |
+| Closing h1 | `var(--font-display-lg)` | 44-92px |
+| Section h2 | `var(--font-display-sm)` | 32-68px |
+| Card h3, two-col h3 | `var(--font-title)` | 26-52px |
+| Body text, rangkuman item, two-col li | `var(--font-body)` | 20-36px |
+| Diagram-box p, list-number badge | `var(--font-body-sm)` | 18-28px |
+| Meta/caption | `var(--font-caption)` | 16-24px |
+| Footer | `var(--font-caption-sm)` | 14-20px |
 
 **Prinsip:** Ukuran font harus proporsional — heading lebih besar dari body, body lebih besar dari caption. Jangan gunakan ukuran yang sama untuk elemen yang berbeda level.
 
@@ -301,6 +352,7 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 - **Background:** `var(--canvas)` (#ffffff)
 - **Background soft:** `var(--surface-soft)` (#f7f7f7)
 - **Aksen:** `var(--primary)` (#ff385c)
+- **Hijau (rangkuman rnum):** `#dcfce7` bg, `#16a34a` text
 - **Hijau (quiz correct):** `#0d9f6e` atau `#16a34a`
 
 ### 4.2 Spacing
@@ -324,22 +376,17 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 }
 .quote-block p {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: var(--font-body);        /* selevel body text, BUKAN font-title */
+    font-size: var(--font-body);
     font-style: italic;
     font-weight: 400;
-    line-height: 1.4;                   /* lebih rapat dari body (1.5) */
+    line-height: 1.4;
     color: var(--ink);
-}
-.quote-block cite {
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
-    font-size: var(--font-caption-sm);
-    font-style: normal;
 }
 ```
 
-**Prinsip:** Quote block harus terlihat berbeda dari body text — italic + serif untuk kesan elegan, line-height lebih rapat (1.4), font size selevel body (bukan lebih besar).
+### 4.5 Slide Layout Rules
 
-### 4.5 Slide Layout Centering
+**`slide-full` (h2 di atas, konten di tengah):**
 ```css
 .slide-full {
     flex-direction: column;
@@ -360,9 +407,61 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 
 **Prinsip:** 
 - **h2 selalu di atas** dengan margin konsisten dari `--sp-page`
-- **Konten visual dipusatkan** di sisa ruang setelah h2 (timeline, diagram, cards, two-col, stats)
+- **Konten visual dipusatkan** di sisa ruang setelah h2 (diagram-container, cards, two-col, stats)
+- **Timeline** WAJIB dibungkus `<div class="diagram-container">` agar ikut terpusat
 - **List items (agenda) TIDAK dipusatkan** — tetap dekat di bawah h2
-- Footer tetap di bawah dengan `position: absolute; bottom`
+
+**`slide-rangkuman` (h2 di atas, list mengisi sisa):**
+```css
+.slide-rangkuman {
+    flex-direction: column;
+    justify-content: flex-start;    /* BUKAN center */
+    min-height: 100vh;
+}
+.rangkuman-list {
+    flex: 1;                        /* mengisi sisa ruang */
+}
+```
+
+**`two-col` (list styling):**
+```css
+.two-col ul li {
+    font-size: var(--font-body);    /* 20-36px */
+    padding-left: var(--sp-lg);
+}
+.two-col ul li::before {
+    width: 0.8em;                   /* relatif terhadap font */
+    height: 0.8em;
+}
+```
+
+### 4.6 Responsive Behavior
+```css
+@media (max-aspect-ratio: 4/3) {
+    .slide-content { flex-direction: column; }
+    .content-right { display: none; }       /* sembunyikan ilustrasi */
+    .content-left { flex: 1; }              /* konten full width */
+    .two-col { grid-template-columns: 1fr; } /* stack kolom */
+}
+```
+
+**Prinsip:** Pada viewport kecil, konten teks harus selalu terlihat sepenuhnya. Elemen dekoratif (gambar ilustrasi di `content-right`) disembunyikan.
+
+### 4.7 Number Badges
+
+Badge angka (`.list-number` dan `.rnum`) harus konsisten:
+```css
+.list-number,
+.rangkuman-item .rnum {
+    width: clamp(28px, 2.81vw, 44px);
+    height: clamp(28px, 2.81vw, 44px);
+    min-width: clamp(28px, 2.81vw, 44px);
+    border-radius: 50%;
+    font-size: var(--font-body-sm);
+    font-weight: 600;
+}
+/* Warna berbeda: list-number merah (primary), rnum hijau (#dcfce7/#16a34a) */
+```
 
 ---
 
@@ -370,15 +469,15 @@ Setiap file HTML harus memiliki slide-slide berikut dalam urutan ini:
 
 | Slide Type | `overflow` | Notes |
 |---|---|---|
-| `.slide` (base) | **`visible`** | **WAJIB** — agar footer absolut tidak ter-clip di semua slide |
-| `.slide-title` | (inherit: visible) | Tidak perlu override |
-| `.slide-full` | (inherit: visible) | Tidak perlu override |
-| `.slide-content` | (inherit: visible) | Tidak perlu override |
-| `.slide-quiz` | (inherit: visible) | Quiz grid punya `overflow: hidden` internal |
-| `.slide-rangkuman` | (inherit: visible) | Tidak perlu override |
-| `.slide-closing` | (inherit: visible) | Tidak perlu override |
+| `.slide` (base) | **`visible`** | WAJIB — agar footer absolut tidak ter-clip |
+| `.slide-title` | (inherit) | Tidak perlu override |
+| `.slide-full` | (inherit) | Tidak perlu override |
+| `.slide-content` | (inherit) | Tidak perlu override |
+| `.slide-quiz` | (inherit) | Quiz grid punya `overflow: hidden` internal |
+| `.slide-rangkuman` | (inherit) | Tidak perlu override |
+| `.slide-closing` | (inherit) | Tidak perlu override |
 
-**⚠️ Solusi:** Base `.slide` menggunakan `overflow: visible` sehingga semua footer absolut terlihat. Tidak perlu override per-slide type.
+**Solusi:** Base `.slide` menggunakan `overflow: visible` sehingga semua footer absolut terlihat.
 
 ---
 
@@ -388,12 +487,11 @@ Setiap file HTML **wajib** memiliki fungsi-fungsi berikut:
 
 ```javascript
 let currentSlide = 1;
-const totalSlides = N;  // sesuai jumlah slide
+const totalSlides = N;
 
 function changeSlide(direction) { ... }
 function goToSlide(slideNumber) { ... }
 
-// WAJIB ADA — tombol print memanggil fungsi ini
 function printSlides() {
     const slides = document.querySelectorAll('.slide');
     slides.forEach(s => { s.style.display = 'flex'; });
@@ -404,14 +502,9 @@ function printSlides() {
     }, 500);
 }
 
-// Keyboard navigation
 document.addEventListener('keydown', function(e) { ... });
-
-// Touch navigation
 document.addEventListener('touchstart', ...);
 document.addEventListener('touchend', ...);
-
-// Initialize
 goToSlide(1);
 ```
 
@@ -427,8 +520,6 @@ goToSlide(1);
 
 ## 7. Verification Checklist Per File
 
-Untuk setiap file `pertemuan-N.html`, verifikasi:
-
 ### 7.1 Struktur Dasar
 - [ ] `<!DOCTYPE html>` dan `<html lang="id">`
 - [ ] `<meta charset="UTF-8">` dan viewport
@@ -441,8 +532,7 @@ Untuk setiap file `pertemuan-N.html`, verifikasi:
 - [ ] JavaScript navigasi (keyboard, touch, click, print)
 
 ### 7.2 Slide-per-Slide
-Untuk setiap slide, verifikasi:
-- [ ] Class sesuai tipenya (slide-title, slide-full, slide-content, dll)
+- [ ] Class sesuai tipenya
 - [ ] `data-slide="N"` berurutan dari 1
 - [ ] Ada `<h1>` atau `<h2>` sesuai tipe
 - [ ] Konten lengkap (tidak ada tag yang terpotong)
@@ -451,15 +541,15 @@ Untuk setiap slide, verifikasi:
 - [ ] Tidak ada class duplikat
 
 ### 7.3 CSS Variables
-- [ ] Tidak ada referensi ke variabel yang tidak didefinisikan
-- [ ] Font size menggunakan variabel, bukan hardcoded (kecuali clamp)
+- [ ] Tidak ada referensi ke variabel yang tidak didefinisikan (`--font-heading`, `--font-display`, `--font-small`, `--surface`, `--font-body-lg`)
+- [ ] Font size menggunakan variabel, bukan hardcoded
 - [ ] Warna menggunakan variabel, bukan hardcoded (kecuali yang memang spesifik)
 
 ### 7.4 Konten
-- [ ] Gambar (`<img>`) punya `alt` text
-- [ ] Emoji konsisten (tidak ada yang hilang atau salah)
+- [ ] Gambar (`<img>`) punya `alt` text dan `loading="lazy"`
+- [ ] Tidak ada emoji sebagai pengganti gambar di `content-right`
 - [ ] Tidak ada placeholder atau TODO
-- [ ] Link dan referensi valid
+- [ ] Timeline dibungkus `diagram-container`
 
 ---
 
@@ -467,48 +557,46 @@ Untuk setiap slide, verifikasi:
 
 ### Issue 1: Slide missing closing `</div>`
 **Symptom:** Slide berikutnya "masuk" ke slide sebelumnya
-**Fix:** Tambahkan `</div>` setelah konten terakhir slide, sebelum komentar slide berikutnya
+**Fix:** Tambahkan `</div>` setelah konten terakhir slide
 
 ### Issue 2: Missing `slide-footer`
 **Symptom:** Tidak ada nomor slide di bagian bawah
-**Fix:** Tambahkan `<div class="slide-footer"><span>Pertemuan N — Dasar Teknologi Digital</span><span>X / TOTAL</span></div>`
+**Fix:** Tambahkan `<div class="slide-footer">` dengan format yang benar
 
-### Issue 3: `slide-content` without `content-right`
-**Symptom:** Layout patah, kolom kanan kosong
-**Fix:** Tambahkan `<div class="content-right">` dengan visual block
+### Issue 3: `content-right` menimpa `content-left` di viewport kecil
+**Symptom:** Ilustrasi menimpa teks saat layar mengecil
+**Fix:** Sembunyikan `content-right` pada `max-aspect-ratio: 4/3` dengan `display: none`
 
-### Issue 4: Duplicate classes
-**Symptom:** `class="slide active slide-title active slide-title active"`
-**Fix:** Bersihkan menjadi `class="slide slide-title active"`
-
-### Issue 5: Undefined CSS variables
+### Issue 4: Undefined CSS variables
 **Symptom:** Font size atau warna tidak sesuai (fallback ke browser default)
-**Fix:** Ganti dengan variabel yang ada (lihat Section 1)
+**Fix:** Ganti dengan variabel yang ada (lihat Section 1). Perhatikan `--font-body-lg` **tidak ada**.
 
-### Issue 6: Footer ter-clip di semua slide
-**Symptom:** Nomor slide tidak muncul di beberapa halaman
-**Fix:** 
-1. Base `.slide` harus `overflow: visible` (bukan `hidden`)
+### Issue 5: Footer ter-clip
+**Symptom:** Nomor slide tidak muncul
+**Fix:**
+1. Base `.slide` harus `overflow: visible`
 2. Print media query `.slide` juga harus `overflow: visible`
-3. Footer harus punya `z-index: 10` agar tidak tertimpa konten
+3. Footer harus punya `z-index: 10`
+
+### Issue 6: Timeline tidak terpusat
+**Symptom:** Timeline menempel di bawah h2, tidak di tengah slide
+**Fix:** Bungkus `<div class="timeline">` dengan `<div class="diagram-container">`
 
 ### Issue 7: `printSlides()` tidak didefinisikan
-**Symptom:** Tombol print (🖨️) tidak berfungsi, error di console
-**Fix:** Tambahkan fungsi `printSlides()` di JavaScript (lihat Section 6)
+**Symptom:** Tombol print tidak berfungsi
+**Fix:** Tambahkan fungsi `printSlides()` (lihat Section 6)
 
-### Issue 8: Rangkuman menggunakan "Poin-Poin Penting"
-**Symptom:** Judul di slide rangkuman berbeda-beda
-**Fix:** Gunakan format `Rangkuman Pertemuan N` (konsisten di semua file)
+### Issue 8: Rangkuman layout salah
+**Symptom:** Konten rangkuman terpusat vertikal (tidak rapi)
+**Fix:** Gunakan `justify-content: flex-start` dan `min-height: 100vh`, bukan `justify-content: center`
 
-### Issue 9: Rangkuman punya overline
-**Symptom:** Ada `<div class="overline">Rangkuman</div>` sebelum h2
-**Fix:** Hapus overline, langsung mulai dari `<h2>`
+### Issue 9: Number badges tidak konsisten
+**Symptom:** `rnum` lebih kecil dari `list-number`
+**Fix:** Pastikan width/height/font-size sama (lihat Section 4.7)
 
 ---
 
 ## 9. Quick Verification Script
-
-Jalankan script ini untuk cek cepat:
 
 ```bash
 # Cek semua file punya slide-footer di setiap slide
@@ -524,7 +612,7 @@ done
 
 # Cek variabel CSS yang tidak didefinisikan
 for f in pertemuan-*.html; do
-    issues=$(grep -oP 'var\(--(font-heading|font-display|font-small|surface)\)' "$f" | wc -l)
+    issues=$(grep -oP 'var\(--(font-heading|font-display|font-small|font-body-lg|surface)\)' "$f" | wc -l)
     if [ "$issues" -gt 0 ]; then
         echo "❌ $f: $issues undefined variable references"
     fi
@@ -555,37 +643,19 @@ for f in pertemuan-*.html; do
     fi
 done
 
-# Cek footer z-index
+# Cek timeline dibungkus diagram-container
 for f in pertemuan-*.html; do
-    if grep -q '\.slide-footer' "$f"; then
-        zindex=$(grep -A 10 '\.slide-footer {' "$f" | grep 'z-index')
-        if [ -z "$zindex" ]; then
-            echo "⚠️ $f: .slide-footer tidak punya z-index"
+    if grep -q 'class="timeline"' "$f"; then
+        if ! grep -B1 'class="timeline"' "$f" | grep -q 'diagram-container'; then
+            echo "⚠️ $f: timeline tidak dibungkus diagram-container"
         fi
     fi
 done
 
-# Cek print media query overflow
+# Cek content-right menggunakan img langsung (bukan visual-block)
 for f in pertemuan-*.html; do
-    if grep -q '@media print' "$f"; then
-        print_overflow=$(grep -A 10 '@media print' "$f" | grep 'overflow: hidden')
-        if [ -n "$print_overflow" ]; then
-            echo "❌ $f: print media query masih overflow: hidden"
-        fi
-    fi
-done
-
-# Cek overline di rangkuman
-for f in pertemuan-*.html; do
-    if grep -q 'overline.*Rangkuman' "$f"; then
-        echo "⚠️ $f: rangkuman masih punya overline"
-    fi
-done
-
-# Cek h2 rangkuman
-for f in pertemuan-*.html; do
-    if grep -q 'Poin-Poin Penting' "$f"; then
-        echo "⚠️ $f: rangkuman masih pakai 'Poin-Poin Penting'"
+    if grep -q 'visual-block' "$f" | grep -v 'css\|CSS'; then
+        echo "⚠️ $f: masih ada visual-block wrapper"
     fi
 done
 ```
@@ -605,10 +675,16 @@ done
 | 2026-08-06 | pertemuan-1 | Footer ter-clip di rangkuman/closing | Tambah `overflow: visible` |
 | 2026-08-06 | pertemuan-1 | `printSlides()` tidak didefinisikan | Tambah fungsi |
 | 2026-08-06 | pertemuan-1 | Rangkuman punya overline | Hapus overline |
-| 2026-08-06 | pertemuan-1 | Quote-block: font terlalu besar, line-height renggang | Serif (Georgia), italic, font-body, line-height 1.4 |
-| 2026-08-06 | pertemuan-1 | Timeline tidak terpusat | `.slide-full > .timeline` pakai `margin: auto 0` (h2 tetap di atas) |
-| 2026-08-06 | pertemuan-1 | Footer ter-clip di semua slide | Base `.slide` ubah `overflow: hidden` → `visible`, print query fix, footer `z-index: 10` |
+| 2026-08-06 | pertemuan-1 | Quote-block: font terlalu besar | Serif (Georgia), italic, font-body, line-height 1.4 |
+| 2026-08-06 | pertemuan-1 | Timeline tidak terpusat | Bungkus dengan `diagram-container` |
+| 2026-08-06 | pertemuan-1 | Footer ter-clip di semua slide | Base `.slide` `overflow: visible`, footer `z-index: 10` |
+| 2026-08-06 | pertemuan-1 | Visual-block emoji | Ganti dengan `<img>` langsung di `content-right` |
+| 2026-08-06 | pertemuan-1 | `content-right` menimpa `content-left` | Sembunyikan pada `max-aspect-ratio: 4/3` |
+| 2026-08-06 | pertemuan-1 | Rangkuman center vertikal | `justify-content: flex-start`, `min-height: 100vh` |
+| 2026-08-06 | pertemuan-1 | `--font-body-lg` tidak ada | Ganti dengan `--font-title` / `--font-body` |
+| 2026-08-06 | pertemuan-1 | Two-col li font kecil | `--font-body-sm` → `--font-body`, padding `--sp-lg`, bullet `0.8em` |
+| 2026-08-06 | pertemuan-1 | Rnum lebih kecil dari list-number | Samakan ukuran (28-44px, `--font-body-sm`) |
 
 ---
 
-*Guide ini dibuat berdasarkan audit pertemuan-1.html dan berlaku untuk semua 14 file slide HTML.*
+*Guide ini dibuat berdasarkan audit dan diskusi pertemuan-1.html dan berlaku untuk semua 14 file slide HTML.*
