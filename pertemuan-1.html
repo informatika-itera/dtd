@@ -856,7 +856,7 @@
             gap: clamp(2px, 0.3vw, 6px);
         }
         .quiz-q .q-opt {
-            font-size: var(--font-micro);
+            font-size: var(--font-caption);
             color: var(--body);
             padding: clamp(2px, 0.25vw, 4px) 0;
         }
@@ -948,7 +948,10 @@
                 flex-direction: column;
             }
             .content-right {
-                flex: 0.7;
+                display: none;
+            }
+            .content-left {
+                flex: 1;
             }
             .cards-grid-4 {
                 grid-template-columns: repeat(2, 1fr);
