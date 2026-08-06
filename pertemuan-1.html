@@ -708,7 +708,7 @@
         }
 
         .two-col .col h3 {
-            font-size: var(--font-body);
+            font-size: var(--font-title);
             font-weight: 600;
             color: var(--ink);
             margin-bottom: var(--sp-md);
@@ -722,10 +722,10 @@
         }
 
         .two-col ul li {
-            font-size: var(--font-body-sm);
+            font-size: var(--font-body);
             color: var(--body);
             line-height: 1.5;
-            padding-left: var(--sp-md);
+            padding-left: var(--sp-lg);
             position: relative;
         }
 
@@ -733,9 +733,9 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 0.6em;
-            width: 6px;
-            height: 6px;
+            top: 0.45em;
+            width: 0.8em;
+            height: 0.8em;
             border-radius: 50%;
             background: var(--primary);
         }
@@ -869,24 +869,27 @@
         .slide-rangkuman {
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             padding: var(--sp-page);
             text-align: center;
             gap: var(--sp-sm);
             background: linear-gradient(135deg, var(--canvas) 0%, #f0fdf4 100%);
+            min-height: 100vh;
         }
         .slide-rangkuman h2 {
             font-size: var(--font-display-sm);
             color: var(--ink);
-            margin-bottom: var(--sp-sm);
+            margin-bottom: var(--sp-lg);
+            width: 100%;
         }
         .rangkuman-list {
             display: flex;
             flex-direction: column;
-            gap: clamp(6px, 0.8vw, 12px);
+            gap: clamp(10px, 1.2vw, 18px);
             text-align: left;
             max-width: 48em;
             width: 100%;
+            flex: 1;
         }
         .rangkuman-item {
             display: flex;
@@ -898,16 +901,17 @@
         }
         .rangkuman-item .rnum {
             flex-shrink: 0;
-            width: clamp(24px, 2.5vw, 32px);
-            height: clamp(24px, 2.5vw, 32px);
+            width: clamp(28px, 2.81vw, 44px);
+            height: clamp(28px, 2.81vw, 44px);
+            min-width: clamp(28px, 2.81vw, 44px);
             display: flex;
             align-items: center;
             justify-content: center;
             background: #dcfce7;
             color: #16a34a;
             border-radius: 50%;
-            font-size: var(--font-micro);
-            font-weight: 700;
+            font-size: var(--font-body-sm);
+            font-weight: 600;
         }
 
         /* PENUTUP */
@@ -1099,26 +1103,28 @@
         <!-- ==================== SLIDE 5: Sejarah ==================== -->
         <div class="slide slide-full" data-slide="5">
             <h2>Sejarah &amp; Evolusi Teknologi Digital</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot">💡</div>
-                    <h4>1940-an</h4>
-                    <p>Komputer pertama<br>(ENIAC, Colossus)</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">🖥️</div>
-                    <h4>1970–80an</h4>
-                    <p>PC &amp; Internet<br>(Apple, IBM, ARPANET)</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot">📱</div>
-                    <h4>2000-an</h4>
-                    <p>Web 2.0 &amp; Media Sosial<br>(Facebook, YouTube)</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot active">🤖</div>
-                    <h4>2020-an</h4>
-                    <p>AI, IoT, Cloud<br>(ChatGPT, Smart City)</p>
+            <div class="diagram-container">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot">💡</div>
+                        <h4>1940-an</h4>
+                        <p>Komputer pertama<br>(ENIAC, Colossus)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot">🖥️</div>
+                        <h4>1970–80an</h4>
+                        <p>PC &amp; Internet<br>(Apple, IBM, ARPANET)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot">📱</div>
+                        <h4>2000-an</h4>
+                        <p>Web 2.0 &amp; Media Sosial<br>(Facebook, YouTube)</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot active">🤖</div>
+                        <h4>2020-an</h4>
+                        <p>AI, IoT, Cloud<br>(ChatGPT, Smart City)</p>
+                    </div>
                 </div>
             </div>
             <div class="slide-footer"><span>Pertemuan 1 — Dasar Teknologi Digital</span><span>5 / 15</span></div>
