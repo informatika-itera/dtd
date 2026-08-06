@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 12 - Dasar Teknologi Digital</title>
+    <style>
+        /* ============================================
+           DESIGN SYSTEM: Airbnb-inspired Light Theme
+           Fully viewport-responsive via clamp()
+           Reference: 1280 × 720 (16:9)
+           ============================================ */
+
+        :root {
+            /* --- Colors --- */
+            --canvas: #ffffff;
+            --surface-soft: #f7f7f7;
+            --surface-strong: #f2f2f2;
+            --hairline: #dddddd;
+            --hairline-soft: #ebebeb;
+            --border-strong: #c1c1c1;
+            --ink: #222222;
+            --body: #3f3f3f;
+            --muted: #6a6a6a;
+            --muted-soft: #929292;
+            --primary: #ff385c;
+            --primary-active: #e00b41;
+            --primary-disabled: #ffd1da;
+            --on-primary: #ffffff;
+            --shadow: rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.04) 0 0.167vw 0.5vw 0, rgba(0,0,0,0.1) 0 0.33vw 0.67vw 0;
+
+            /* --- Responsive scale unit --- */
+            --font-display-xl:  clamp(56px, 7.5vw, 120px);
+            --font-display-lg:  clamp(44px, 5.8vw,  92px);
+            --font-display-md:  clamp(38px, 5vw,    80px);
+            --font-display-sm:  clamp(32px, 4.2vw,  68px);
+            --font-title:       clamp(26px, 3.2vw,  52px);
+            --font-body:        clamp(20px, 2.2vw,  36px);
+            --font-body-sm:     clamp(18px, 1.8vw,  28px);
+            --font-caption:     clamp(16px, 1.5vw,  24px);
+            --font-caption-sm:  clamp(14px, 1.3vw,  20px);
+            --font-micro:       clamp(11px, 1vw,    16px);
+
+            /* --- Spacing --- */
+            --sp-xs:   clamp(6px,  0.5vw,  10px);
+            --sp-sm:   clamp(8px,  0.8vw,  14px);
+            --sp-md:   clamp(14px, 1.2vw,  20px);
+            --sp-base: clamp(18px, 1.6vw,  26px);
+            --sp-lg:   clamp(26px, 2.4vw,  40px);
+            --sp-xl:   clamp(36px, 3.2vw,  52px);
+            --sp-2xl:  clamp(48px, 4.8vw,  76px);
+            --sp-page: clamp(40px, 6vw,    96px);
+
+            /* --- Component sizes --- */
+            --icon-sm:   clamp(26px, 2.4vw,  40px);
+            --icon-md:   clamp(48px, 4.5vw,  72px);
+            --icon-lg:   clamp(96px, 10vw,  160px);
+            --icon-xl:   clamp(64px, 8vw,   128px);
+            --radius-sm: clamp(8px,  0.8vw,  14px);
+            --radius-md: clamp(14px, 1.3vw,  22px);
+            --radius-lg: clamp(18px, 2vw,    32px);
+            --radius-pill: 9999px;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--surface-soft);
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SLIDE CONTAINER
+           ============================================ */
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            background: var(--canvas);
+            overflow: hidden;
+            position: absolute;
+            inset: 0;
+            display: none;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: clamp(2px, 0.23vw, 4px);
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: 200;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+
+        .nav-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--sp-md);
+            z-index: 200;
+            padding: var(--sp-sm) 0 var(--sp-md);
+            background: linear-gradient(to top, rgba(255,255,255,0.96) 60%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .nav-hover-zone {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8vh;
+            z-index: 199;
+        }
+
+        .nav-hover-zone:hover + .nav-controls,
+        .nav-controls:hover {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            width: clamp(32px, 2.5vw, 44px);
+            height: clamp(32px, 2.5vw, 44px);
+            border-radius: 50%;
+            border: 1px solid var(--hairline);
+            background: var(--canvas);
+            color: var(--ink);
+            font-size: var(--font-caption);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            pointer-events: auto;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--ink);
+            box-shadow: var(--shadow);
+        }
+
+        .slide-counter {
+            font-size: var(--font-caption-sm);
+            font-weight: 500;
+            color: var(--muted);
+            min-width: clamp(40px, 4vw, 70px);
+            text-align: center;
+            user-select: none;
+        }
+
+        /* ============================================
+           TITLE SLIDE
+           ============================================ */
+
+        .slide-title {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--sp-page);
+            padding-top: clamp(12px, 1.5vw, 24px);
+            background: linear-gradient(135deg, var(--canvas) 0%, var(--surface-soft) 100%);
+            overflow: visible;
+            gap: 0;
+        }
+
+        /* Header bar: logos + pertemuan badge */
+        .slide-title .title-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 72em;
+            padding-bottom: clamp(12px, 1.5vw, 24px);
+            margin-bottom: clamp(24px, 3vw, 48px);
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .slide-title .title-header .header-logos {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 1.5vw, 24px);
+        }
+
+        .slide-title .title-header .header-logos img {
+            height: clamp(64px, 8vw, 120px);
+            width: auto;
+            object-fit: contain;
+            opacity: 0.85;
+        }
+
+        .slide-title .title-header .pertemuan-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--sp-xs);
+            font-size: var(--font-caption);
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-disabled);
+            border: 1px solid rgba(255, 56, 92, 0.15);
+            border-radius: 999px;
+            padding: clamp(4px, 0.5vw, 8px) clamp(12px, 1.5vw, 20px);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .slide-title .overline {
+            font-size: var(--font-caption);
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: var(--sp-md);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .slide-title h1 {
+            font-size: var(--font-display-xl);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.15;
+            margin-bottom: var(--sp-md);
+            letter-spacing: -0.02em;
+        }
+
+        .slide-title .subtitle {
+            font-size: var(--font-body);
+            font-weight: 400;
+            color: var(--body);
+            max-width: 50em;
+            margin-bottom: clamp(20px, 2.5vw, 40px);
+        }
+
+        .slide-title .meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--sp-lg);
+            font-size: var(--font-caption);
+            color: var(--muted);
+        }
+
+        .slide-title .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-xs);
+        }
+
+        /* ============================================
+           UNIFIED HEADING
+           ============================================ */
+
+        .slide h2 {
+            font-size: var(--font-display-sm);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+            margin-bottom: var(--sp-lg);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           FULL-WIDTH CONTENT
+           ============================================ */
+
+        .slide-full {
+            flex-direction: column;
+            padding: var(--sp-page) var(--sp-page) var(--sp-2xl);
+        }
+
+        /* ============================================
+           TWO-COLUMN CONTENT
+           ============================================ */
+
+        .slide-content {
+            flex-direction: row;
+        }
+
+        .content-left {
+            flex: 1;
+            padding: var(--sp-page);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-width: 0;
+            overflow-y: auto;
+        }
+
+        .content-right {
+            flex: 1;
+            background: var(--surface-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-2xl);
+            min-width: 0;
+        }
+
+        .content-left p,
+        .slide-full p.body-text {
+            font-size: var(--font-body);
+            color: var(--body);
+            line-height: 1.6;
+            margin-bottom: var(--sp-md);
+        }
+
+        .content-left strong {
+            color: var(--ink);
+        }
+
+        /* ============================================
+           CARDS GRID
+           ============================================ */
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--sp-lg);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .cards-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--sp-lg);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(12px, 1.5vw, 24px);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline-soft);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-xl);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-0.17vw);
+        }
+
+        .card-icon {
+            width: var(--icon-md);
+            height: var(--icon-md);
+            min-height: var(--icon-md);
+            background: var(--surface-soft);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(20px, 2.19vw, 32px);
+            margin-bottom: var(--sp-base);
+        }
+
+        .card-icon.primary {
+            background: var(--primary-disabled);
+        }
+
+        .card h3 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-sm);
+            line-height: 1.3;
+        }
+
+        .card p {
+            font-size: var(--font-body-sm);
+            color: var(--body);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           LIST ITEMS
+           ============================================ */
+
+        .list-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-base);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-md);
+        }
+
+        .list-number {
+            width: clamp(28px, 2.81vw, 44px);
+            height: clamp(28px, 2.81vw, 44px);
+            min-width: clamp(28px, 2.81vw, 44px);
+            background: var(--primary);
+            color: var(--on-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+        }
+
+        .list-item h4 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+
+        .list-item p {
+            font-size: var(--font-caption) !important;
+            color: var(--body);
+            margin-bottom: 0 !important;
+        }
+
+        /* ============================================
+           PILL TAGS
+           ============================================ */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--sp-xs);
+            margin-top: var(--sp-md);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: var(--sp-xs) var(--sp-md);
+            background: var(--surface-soft);
+            border-radius: var(--radius-pill);
+            font-size: var(--font-caption-sm);
+            font-weight: 500;
+            color: var(--body);
+        }
+
+        /* ============================================
+           VISUAL PANEL
+           ============================================ */
+
+        .visual-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--sp-lg);
+        }
+
+        .visual-icon-large {
+            width: var(--icon-lg);
+            height: var(--icon-lg);
+            background: var(--canvas);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--icon-xl);
+            box-shadow: var(--shadow);
+        }
+
+        .visual-label {
+            font-size: var(--font-body-sm);
+            font-weight: 500;
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           TIMELINE
+           ============================================ */
+
+        .timeline {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            padding: 0 var(--sp-2xl);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: clamp(18px, 1.88vw, 30px);
+            left: calc(var(--sp-2xl) + clamp(18px, 1.88vw, 30px));
+            right: calc(var(--sp-2xl) + clamp(18px, 1.88vw, 30px));
+            height: 2px;
+            background: var(--hairline);
+        }
+
+        .timeline-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: clamp(32px, 3.75vw, 60px);
+            height: clamp(32px, 3.75vw, 60px);
+            border-radius: 50%;
+            background: var(--canvas);
+            border: clamp(2px, 0.2vw, 4px) solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(14px, 1.5vw, 24px);
+            margin-bottom: var(--sp-md);
+        }
+
+        .timeline-dot.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .timeline-item h4 {
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+
+        .timeline-item p {
+            font-size: var(--font-caption-sm) !important;
+            color: var(--muted);
+            line-height: 1.4;
+            margin-bottom: 0 !important;
+        }
+
+        /* ============================================
+           STAT BOXES
+           ============================================ */
+
+        .stats-row {
+            display: flex;
+            gap: var(--sp-lg);
+        }
+
+        .stat-box {
+            flex: 1;
+            background: var(--surface-soft);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-xl);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(28px, 3.75vw, 56px);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: var(--sp-xs);
+        }
+
+        .stat-label {
+            font-size: var(--font-caption-sm);
+            font-weight: 500;
+            color: var(--muted);
+            line-height: 1.3;
+        }
+
+        /* ============================================
+           DIAGRAM FLOW
+           ============================================ */
+
+        .diagram-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(8px, 1.25vw, 20px);
+            flex: 1;
+        }
+
+        .diagram-box {
+            background: var(--canvas);
+            border: 2px solid var(--hairline);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-lg) var(--sp-xl);
+            text-align: center;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .diagram-box.primary {
+            border-color: var(--primary);
+            background: rgba(255, 56, 92, 0.04);
+        }
+
+        .diagram-box h4 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+
+        .diagram-box p {
+            font-size: var(--font-caption-sm) !important;
+            color: var(--muted);
+            line-height: 1.4;
+            margin-bottom: 0 !important;
+        }
+
+        .diagram-arrow {
+            font-size: clamp(16px, 1.5vw, 24px);
+            color: var(--muted-soft);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           TWO-COL LIST (for comparison slides)
+           ============================================ */
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--sp-lg);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .two-col .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .two-col .col h3 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-md);
+        }
+
+        .two-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-sm);
+        }
+
+        .two-col ul li {
+            font-size: var(--font-body-sm);
+            color: var(--body);
+            line-height: 1.5;
+            padding-left: var(--sp-md);
+            position: relative;
+        }
+
+        .two-col ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        /* ============================================
+           QUOTE BLOCK
+           ============================================ */
+
+        .quote-block {
+            background: var(--surface-soft);
+            border-left: clamp(3px, 0.31vw, 5px) solid var(--primary);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            padding: var(--sp-xl) var(--sp-2xl);
+            margin: var(--sp-lg) 0;
+        }
+
+        .quote-block p {
+            font-size: var(--font-title) !important;
+            font-weight: 500;
+            color: var(--ink);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .quote-block cite {
+            display: block;
+            margin-top: var(--sp-md);
+            font-size: var(--font-caption-sm);
+            font-style: normal;
+            color: var(--muted);
+        }
+
+        /* ============================================
+           BULLET LIST (standalone in full slides)
+           ============================================ */
+
+        .slide-full ul.bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-sm);
+        }
+
+        .slide-full ul.bullet-list li {
+            font-size: var(--font-body);
+            color: var(--body);
+            line-height: 1.5;
+            padding-left: var(--sp-lg);
+            position: relative;
+        }
+
+        .slide-full ul.bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        /* ============================================
+           SLIDE FOOTER
+           ============================================ */
+
+        .slide-footer {
+            position: absolute;
+            bottom: var(--sp-base);
+            left: var(--sp-page);
+            right: var(--sp-page);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-micro);
+            color: var(--muted-soft);
+        }
+
+        /* POST-TEST QUIZ */
+        .slide-quiz {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-page);
+            gap: clamp(12px, 1.5vw, 24px);
+            overflow: hidden;
+        }
+        .slide-quiz h2 {
+            font-size: var(--font-display-sm);
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(10px, 1.2vw, 18px);
+            width: 100%;
+            max-width: 60em;
+        }
+        .quiz-q {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-md);
+            padding: clamp(10px, 1.2vw, 18px);
+        }
+        .quiz-q .q-text {
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+        .quiz-q .q-options {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(2px, 0.3vw, 6px);
+        }
+        .quiz-q .q-opt {
+            font-size: var(--font-micro);
+            color: var(--body);
+            padding: clamp(2px, 0.25vw, 4px) 0;
+        }
+        .quiz-q .q-opt.correct {
+            color: #0d9f6e;
+            font-weight: 600;
+        }
+
+        /* RANGKUMAN */
+        .slide-rangkuman {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-page);
+            text-align: center;
+            gap: var(--sp-sm);
+            background: linear-gradient(135deg, var(--canvas) 0%, #f0fdf4 100%);
+        }
+        .slide-rangkuman h2 {
+            font-size: var(--font-display-sm);
+            color: var(--ink);
+            margin-bottom: var(--sp-sm);
+        }
+        .rangkuman-list {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(6px, 0.8vw, 12px);
+            text-align: left;
+            max-width: 48em;
+            width: 100%;
+        }
+        .rangkuman-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-sm);
+            font-size: var(--font-body);
+            color: var(--body);
+            line-height: 1.5;
+        }
+        .rangkuman-item .rnum {
+            flex-shrink: 0;
+            width: clamp(24px, 2.5vw, 32px);
+            height: clamp(24px, 2.5vw, 32px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 50%;
+            font-size: var(--font-micro);
+            font-weight: 700;
+        }
+
+        /* PENUTUP */
+        .slide-closing {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-page);
+            text-align: center;
+            gap: var(--sp-md);
+            background: linear-gradient(135deg, var(--canvas) 0%, var(--surface-soft) 100%);
+        }
+        .slide-closing h1 {
+            font-size: var(--font-display-lg);
+            color: var(--ink);
+        }
+        .slide-closing .closing-subtitle {
+            font-size: var(--font-body);
+            color: var(--body);
+            max-width: 40em;
+        }
+        .slide-closing .closing-meta {
+            font-size: var(--font-caption);
+            color: var(--muted);
+            margin-top: var(--sp-md);
+        }
+
+        /* ============================================
+           HIGHLIGHT BOX (used in content-left)
+           ============================================ */
+        .highlight-box {
+            background: var(--surface-soft);
+            border-left: clamp(3px, 0.31vw, 5px) solid var(--primary);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: var(--sp-md) var(--sp-lg);
+            margin-bottom: var(--sp-md);
+        }
+        .highlight-title {
+            font-size: var(--font-caption-sm);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--sp-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .highlight-content {
+            font-size: var(--font-body-sm);
+            color: var(--body);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           DATA TABLE
+           ============================================ */
+        .data-table {
+            overflow-x: auto;
+            margin-bottom: var(--sp-md);
+        }
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--font-caption-sm);
+        }
+        .data-table th, .data-table td {
+            padding: var(--sp-xs) var(--sp-sm);
+            text-align: left;
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+        .data-table th {
+            font-weight: 600;
+            color: var(--ink);
+            background: var(--surface-soft);
+        }
+        .data-table td {
+            color: var(--body);
+        }
+        .data-table .mono {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        }
+
+        /* ============================================
+           FORMULA BOX
+           ============================================ */
+        .formula-box {
+            background: #fef9f0;
+            border: 1px solid #f5deb3;
+            border-radius: var(--radius-md);
+            padding: var(--sp-md) var(--sp-lg);
+            margin-bottom: var(--sp-md);
+        }
+        .formula-box code {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: var(--font-body-sm);
+            color: var(--ink);
+        }
+        .formula-box .formula-label {
+            font-size: var(--font-micro);
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: var(--sp-xs);
+        }
+
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+
+        @media (max-aspect-ratio: 4/3) {
+            .slide-content {
+                flex-direction: column;
+            }
+            .content-right {
+                flex: 0.7;
+            }
+            .cards-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-aspect-ratio: 3/4) {
+            .cards-grid,
+            .cards-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .cards-grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .timeline {
+                flex-direction: column;
+                gap: var(--sp-md);
+            }
+            .timeline::before {
+                display: none;
+            }
+            .timeline-item {
+                flex-direction: row;
+                text-align: left;
+                gap: var(--sp-md);
+            }
+            .diagram-container {
+                flex-wrap: wrap;
+            }
+        }
+        /* PRINT / PDF EXPORT */
+        @page { size: 1280px 720px; margin: 0; }
+        @media print {
+            html, body { overflow: visible !important; background: #fff !important; }
+            .presentation { width: 1280px; height: 720px; position: static; }
+            .slide {
+                position: relative !important; display: none !important;
+                width: 1280px; height: 720px; flex-shrink: 0;
+                page-break-after: always; page-break-inside: avoid;
+                overflow: hidden;
+            }
+            .slide[style*="display: flex"], .slide.active { display: flex !important; }
+            .progress-bar, .nav-controls, .nav-hover-zone { display: none !important; }
+            .slide-footer { position: absolute; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+        }
+        .nav-btn.print-btn-nav { font-size: clamp(12px, 1vw, 16px); }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
+                </div>
+            </div>
+            <h1>Pengolah Angka Bagian 2</h1>
+            <p class="subtitle">Menguasai fungsi logika (IF), pencarian data (VLOOKUP, HLOOKUP), dan analisis bersyarat (COUNTIF, SUMIF) dalam spreadsheet</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 12</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Fungsi IF &amp; Nested IF</h4><p>Pengambilan keputusan otomatis berdasarkan kondisi</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>COUNTIF &amp; SUMIF</h4><p>Menghitung dan menjumlah data berdasarkan kriteria</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>VLOOKUP &amp; HLOOKUP</h4><p>Mencari data dari tabel referensi secara vertikal dan horizontal</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>INDEX &amp; MATCH</h4><p>Pencarian data fleksibel sebagai alternatif VLOOKUP</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>Studi Kasus Penjualan</h4><p>Menerapkan semua fungsi pada data penjualan nyata</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Fungsi IF ==================== -->
+        <div class="slide slide-content" data-slide="3">
+            <div class="content-left">
+                <h2>Fungsi IF</h2>
+                <p>Fungsi <strong>IF</strong> menguji suatu kondisi dan mengembalikan nilai berdasarkan hasil uji tersebut — <strong>TRUE</strong> atau <strong>FALSE</strong>.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks</div>
+                    <code>=IF(kondisi; nilai_jika_TRUE; nilai_jika_FALSE)</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Contoh</div>
+                    <div class="highlight-content">Jika nilai ≥ 70 maka "Lulus", jika tidak "Tidak Lulus":<br><code>=IF(A1&gt;=70; "Lulus"; "Tidak Lulus")</code></div>
+                </div>
+                <p>Parameter <strong>kondisi</strong> bisa menggunakan operator perbandingan: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code> (tidak sama dengan).</p>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="diagram-container">
+                        <div class="diagram-box primary">
+                            <h4>Kondisi?</h4>
+                            <p>A1 ≥ 70?</p>
+                        </div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box">
+                            <h4>TRUE</h4>
+                            <p>"Lulus" ✓</p>
+                        </div>
+                    </div>
+                    <div class="diagram-container" style="margin-top: var(--sp-sm);">
+                        <div style="width: clamp(80px, 10vw, 140px);"></div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box">
+                            <h4>FALSE</h4>
+                            <p>"Tidak Lulus" ✗</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: Nested IF ==================== -->
+        <div class="slide slide-content" data-slide="4">
+            <div class="content-left">
+                <h2>Nested IF (IF Bersarang)</h2>
+                <p>Menyusun <strong>beberapa IF</strong> di dalam satu formula untuk menguasi <strong>banyak kondisi sekaligus</strong> — seperti membuat grading otomatis.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks Nested IF</div>
+                    <code>=IF(kondisi1; nilai1; IF(kondisi2; nilai2; IF(kondisi3; nilai3; nilai_default)))</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Contoh: Grading Nilai</div>
+                    <div class="highlight-content">
+                        <code>=IF(A1&gt;=85;"A";IF(A1&gt;=70;"B";IF(A1&gt;=55;"C";"D")))</code><br><br>
+                        A1=90 → <strong>A</strong> &nbsp;|&nbsp; A1=75 → <strong>B</strong> &nbsp;|&nbsp; A1=60 → <strong>C</strong> &nbsp;|&nbsp; A1=40 → <strong>D</strong>
+                    </div>
+                </div>
+                <p>Tip: Bisa juga menggunakan <strong>IFS()</strong> di Google Sheets / Excel 365 sebagai alternatif yang lebih rapi.</p>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="diagram-container" style="flex-direction: column; gap: var(--sp-sm);">
+                        <div class="diagram-box primary">
+                            <h4>≥ 85?</h4>
+                            <p>Ya → A</p>
+                        </div>
+                        <div class="diagram-arrow">↓ Tidak</div>
+                        <div class="diagram-box primary">
+                            <h4>≥ 70?</h4>
+                            <p>Ya → B</p>
+                        </div>
+                        <div class="diagram-arrow">↓ Tidak</div>
+                        <div class="diagram-box primary">
+                            <h4>≥ 55?</h4>
+                            <p>Ya → C</p>
+                        </div>
+                        <div class="diagram-arrow">↓ Tidak</div>
+                        <div class="diagram-box">
+                            <h4>Sisa</h4>
+                            <p>D</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: COUNTIF & SUMIF ==================== -->
+        <div class="slide slide-full" data-slide="5">
+            <h2>COUNTIF &amp; SUMIF</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">🔢</div></div>
+                    <div class="card-body">
+                        <h3>COUNTIF</h3>
+                        <p><strong>Menghitung</strong> jumlah sel yang memenuhi kriteria tertentu.</p>
+                        <div class="formula-box" style="margin-top: var(--sp-sm);">
+                            <div class="formula-label">Sintaks</div>
+                            <code>=COUNTIF(range; kriteria)</code>
+                        </div>
+                        <p><strong>Contoh:</strong> Hitung jumlah siswa yang lulus (nilai ≥ 70):</p>
+                        <p><code>=COUNTIF(B2:B50; "&gt;=70")</code></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">➕</div></div>
+                    <div class="card-body">
+                        <h3>SUMIF</h3>
+                        <p><strong>Menjumlah</strong> nilai-nilai yang memenuhi kriteria tertentu.</p>
+                        <div class="formula-box" style="margin-top: var(--sp-sm);">
+                            <div class="formula-label">Sintaks</div>
+                            <code>=SUMIF(range_kriteria; kriteria; range_jumlah)</code>
+                        </div>
+                        <p><strong>Contoh:</strong> Jumlah penjualan produk "Laptop":</p>
+                        <p><code>=SUMIF(A2:A100; "Laptop"; C2:C100)</code></p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: VLOOKUP ==================== -->
+        <div class="slide slide-content" data-slide="6">
+            <div class="content-left">
+                <h2>VLOOKUP</h2>
+                <p><strong>Vertical Lookup</strong> — mencari nilai di kolom pertama tabel, lalu mengambil nilai dari kolom lain pada baris yang sama.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks</div>
+                    <code>=VLOOKUP(kolom_cari; tabel; kolom_index; [pencocokan])</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Parameter</div>
+                    <div class="highlight-content">
+                        <strong>kolom_cari</strong> — nilai yang ingin dicari<br>
+                        <strong>tabel</strong> — range tabel referensi<br>
+                        <strong>kolom_index</strong> — nomor kolom yang ingin diambil (mulai dari 1)<br>
+                        <strong>pencocokan</strong> — FALSE (exact match) atau TRUE (approximate)
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="highlight-box" style="width: 100%;">
+                        <div class="highlight-title">Contoh</div>
+                        <div class="highlight-content">
+                            Cari harga produk berdasarkan kode:
+                            <div class="data-table" style="margin-top: var(--sp-sm);">
+                                <table>
+                                    <thead><tr><th>Kode</th><th>Produk</th><th>Harga</th></tr></thead>
+                                    <tbody>
+                                        <tr><td class="mono">P001</td><td>Laptop</td><td class="mono">8.500.000</td></tr>
+                                        <tr><td class="mono">P002</td><td>Mouse</td><td class="mono">150.000</td></tr>
+                                        <tr><td class="mono">P003</td><td>Keyboard</td><td class="mono">350.000</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <code>=VLOOKUP("P002"; A2:C4; 3; FALSE)</code><br>
+                            Hasil: <strong>150.000</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: HLOOKUP ==================== -->
+        <div class="slide slide-content" data-slide="7">
+            <div class="content-left">
+                <h2>HLOOKUP</h2>
+                <p><strong>Horizontal Lookup</strong> — mencari nilai di baris pertama tabel, lalu mengambil nilai dari baris lain pada kolom yang sama.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks</div>
+                    <code>=HLOOKUP(baris_cari; tabel; baris_index; [pencocokan])</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Kapan Pakai?</div>
+                    <div class="highlight-content">
+                        Gunakan <strong>HLOOKUP</strong> ketika data tersusun secara <strong>horizontal</strong> — header (label) berada di <strong>baris pertama</strong>, bukan kolom pertama.<br><br>
+                        Jika data vertikal → pakai <strong>VLOOKUP</strong>.<br>
+                        Jika data horizontal → pakai <strong>HLOOKUP</strong>.
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="highlight-box" style="width: 100%;">
+                        <div class="highlight-title">Contoh</div>
+                        <div class="highlight-content">
+                            Cari nilai UTS mata kuliah "Matematika":
+                            <div class="data-table" style="margin-top: var(--sp-sm);">
+                                <table>
+                                    <thead><tr><th></th><th>Matematika</th><th>Fisika</th><th>Kimia</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>UTS</strong></td><td class="mono">85</td><td class="mono">78</td><td class="mono">90</td></tr>
+                                        <tr><td><strong>UAS</strong></td><td class="mono">92</td><td class="mono">80</td><td class="mono">88</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <code>=HLOOKUP("Matematika"; A1:D3; 1; FALSE)</code><br>
+                            Hasil: <strong>85</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: INDEX & MATCH ==================== -->
+        <div class="slide slide-content" data-slide="8">
+            <div class="content-left">
+                <h2>INDEX &amp; MATCH</h2>
+                <p>Kombinasi <strong>INDEX</strong> dan <strong>MATCH</strong> adalah alternatif fleksibel untuk VLOOKUP — bisa mencari ke kiri, tidak terbatas kolom pertama.</p>
+                <div class="formula-box">
+                    <div class="formula-label">MATCH — mencari posisi</div>
+                    <code>=MATCH(nilai_cari; range; 0)</code>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-label">INDEX — mengambil nilai</div>
+                    <code>=INDEX(range; baris; kolom)</code>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-label">Kombinasi INDEX + MATCH</div>
+                    <code>=INDEX(kolom_diambil; MATCH(nilai_cari; kolom_cari; 0))</code>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="highlight-box" style="width: 100%;">
+                        <div class="highlight-title">Contoh: Cari Nama dari ID</div>
+                        <div class="highlight-content">
+                            <div class="data-table" style="margin-top: var(--sp-sm);">
+                                <table>
+                                    <thead><tr><th>Nama</th><th>ID</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Budi</td><td class="mono">101</td></tr>
+                                        <tr><td>Ani</td><td class="mono">102</td></tr>
+                                        <tr><td>Citra</td><td class="mono">103</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <code>=INDEX(A2:A4; MATCH(102; B2:B4; 0))</code><br>
+                            Hasil: <strong>Ani</strong><br><br>
+                            <span style="color: var(--primary); font-weight: 600;">Kelebihan:</span> Kolom yang dicari (ID) ada di <strong>kanan</strong> kolom hasil (Nama) — VLOOKUP tidak bisa!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Studi Kasus — Data Penjualan ==================== -->
+        <div class="slide slide-full" data-slide="9">
+            <h2>Studi Kasus: Data Penjualan</h2>
+            <div class="data-table">
+                <table>
+                    <thead><tr><th>No</th><th>Tanggal</th><th>Produk</th><th>Kategori</th><th>Jumlah</th><th>Harga Satuan</th><th>Total</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>01/07/2026</td><td>Laptop ASUS</td><td>Komputer</td><td class="mono">2</td><td class="mono">8.500.000</td><td class="mono">17.000.000</td></tr>
+                        <tr><td>2</td><td>01/07/2026</td><td>Mouse Logitech</td><td>Aksesoris</td><td class="mono">10</td><td class="mono">150.000</td><td class="mono">1.500.000</td></tr>
+                        <tr><td>3</td><td>02/07/2026</td><td>Keyboard Rexus</td><td>Aksesoris</td><td class="mono">5</td><td class="mono">350.000</td><td class="mono">1.750.000</td></tr>
+                        <tr><td>4</td><td>02/07/2026</td><td>Monitor LG 24"</td><td>Komputer</td><td class="mono">3</td><td class="mono">2.400.000</td><td class="mono">7.200.000</td></tr>
+                        <tr><td>5</td><td>03/07/2026</td><td>Laptop ASUS</td><td>Komputer</td><td class="mono">1</td><td class="mono">8.500.000</td><td class="mono">8.500.000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stats-row" style="margin-top: var(--sp-md);">
+                <div class="stat-box">
+                    <div class="stat-number">21</div>
+                    <div class="stat-label">Total Qty Terjual</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Rp 35,95 Jt</div>
+                    <div class="stat-label">Total Pendapatan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Kategori Produk</div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Praktik — Menerapkan Rumus ==================== -->
+        <div class="slide slide-full" data-slide="10">
+            <h2>Praktik: Menerapkan Rumus pada Data Penjualan</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>🎯 IF — Status Penjualan Besar</h3>
+                        <p>Tandai transaksi ≥ Rp 5 juta sebagai "Besar":</p>
+                        <div class="formula-box">
+                            <code>=IF(G2&gt;=5000000;"Besar";"Biasa")</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>📊 COUNTIF — Jumlah per Kategori</h3>
+                        <p>Hitung berapa kali muncul kategori "Komputer":</p>
+                        <div class="formula-box">
+                            <code>=COUNTIF(D2:D100;"Komputer")</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>➕ SUMIF — Total per Produk</h3>
+                        <p>Jumlahkan pendapatan dari "Laptop ASUS":</p>
+                        <div class="formula-box">
+                            <code>=SUMIF(C2:C100;"Laptop ASUS";G2:G100)</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>🔍 VLOOKUP — Cari Harga Produk</h3>
+                        <p>Ambil harga satuan dari tabel master:</p>
+                        <div class="formula-box">
+                            <code>=VLOOKUP("Mouse Logitech";Master!A:C;3;FALSE)</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="11">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Fungsi IF di spreadsheet digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Menjumlah angka</div><div class="q-opt">B. Mengambil keputusan berdasarkan kondisi</div><div class="q-opt">C. Mencari data di tabel</div><div class="q-opt">D. Mengurutkan data</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Rumus =COUNTIF(A1:A10;"Merah") akan?</div><div class="q-options"><div class="q-opt">A. Menjumlah semua data</div><div class="q-opt">B. Menghitung sel berisi "Merah"</div><div class="q-opt">C. Mencari kata "Merah"</div><div class="q-opt">D. Mengganti sel dengan "Merah"</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. VLOOKUP mencari data secara?</div><div class="q-options"><div class="q-opt">A. Horizontal (baris)</div><div class="q-opt">B. Vertikal (kolom)</div><div class="q-opt">C. Diagonal</div><div class="q-opt">D. Acak</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Kelebihan INDEX+MATCH dibanding VLOOKUP?</div><div class="q-options"><div class="q-opt">A. Lebih cepat</div><div class="q-opt">B. Bisa mencari ke kiri</div><div class="q-opt">C. Tidak butuh argumen</div><div class="q-opt">D. Hanya untuk angka</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. =SUMIF(B1:B10;"Komputer";C1:C10) menjumlahkan?</div><div class="q-options"><div class="q-opt">A. Kolom B yang berisi "Komputer"</div><div class="q-opt">B. Kolom C jika kolom B = "Komputer"</div><div class="q-opt">C. Semua kolom C</div><div class="q-opt">D. Kolom B dan C sekaligus</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="12">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Fungsi IF di spreadsheet digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Menjumlah angka</div><div class="q-opt correct">B. Mengambil keputusan berdasarkan kondisi ✓</div><div class="q-opt">C. Mencari data di tabel</div><div class="q-opt">D. Mengurutkan data</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Rumus =COUNTIF(A1:A10;"Merah") akan?</div><div class="q-options"><div class="q-opt">A. Menjumlah semua data</div><div class="q-opt correct">B. Menghitung sel berisi "Merah" ✓</div><div class="q-opt">C. Mencari kata "Merah"</div><div class="q-opt">D. Mengganti sel dengan "Merah"</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. VLOOKUP mencari data secara?</div><div class="q-options"><div class="q-opt">A. Horizontal (baris)</div><div class="q-opt correct">B. Vertikal (kolom) ✓</div><div class="q-opt">C. Diagonal</div><div class="q-opt">D. Acak</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Kelebihan INDEX+MATCH dibanding VLOOKUP?</div><div class="q-options"><div class="q-opt">A. Lebih cepat</div><div class="q-opt correct">B. Bisa mencari ke kiri ✓</div><div class="q-opt">C. Tidak butuh argumen</div><div class="q-opt">D. Hanya untuk angka</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. =SUMIF(B1:B10;"Komputer";C1:C10) menjumlahkan?</div><div class="q-options"><div class="q-opt">A. Kolom B yang berisi "Komputer"</div><div class="q-opt correct">B. Kolom C jika kolom B = "Komputer" ✓</div><div class="q-opt">C. Semua kolom C</div><div class="q-opt">D. Kolom B dan C sekaligus</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="13">
+            <div class="overline">Rangkuman</div>
+            <h2>Poin-Poin Penting Pertemuan 12</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span><strong>IF</strong> menguji kondisi TRUE/FALSE untuk mengembalikan nilai tertentu. <strong>Nested IF</strong> memungkinkan pengujian banyak kondisi sekaligus.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span><strong>COUNTIF</strong> menghitung jumlah sel sesuai kriteria, sedangkan <strong>SUMIF</strong> menjumlahkan nilai berdasarkan kriteria tertentu.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span><strong>VLOOKUP</strong> mencari data secara vertikal (kolom pertama), sementara <strong>HLOOKUP</strong> mencari secara horizontal (baris pertama).</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span>Kombinasi <strong>INDEX + MATCH</strong> lebih fleksibel daripada VLOOKUP karena bisa mencari ke arah mana pun, termasuk ke kiri.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span>Semua fungsi ini diterapkan secara nyata pada <strong>data penjualan</strong> untuk menghitung, mencari, dan menganalisis data secara otomatis.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Penutup ==================== -->
+        <div class="slide slide-closing" data-slide="14">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">Dengan menguasai fungsi logika dan pencarian data, Anda kini bisa membuat spreadsheet yang cerdas dan otomatis — dari pengambilan keputusan hingga analisis penjualan.</p>
+            <p class="closing-meta">Pertemuan 13: Pengolah Angka Bagian 3 — Pivot Table, Grafik &amp; Analisis Data Lanjutan</p>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 14;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        goToSlide(1);
+    </script>
+</body>
+</html>

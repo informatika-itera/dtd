@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 14 - Dasar Teknologi Digital</title>
+    <style>
+        /* ============================================
+           DESIGN SYSTEM: Airbnb-inspired Light Theme
+           Fully viewport-responsive via clamp()
+           Reference: 1280 × 720 (16:9)
+           ============================================ */
+
+        :root {
+            /* --- Colors --- */
+            --canvas: #ffffff;
+            --surface-soft: #f7f7f7;
+            --surface-strong: #f2f2f2;
+            --hairline: #dddddd;
+            --hairline-soft: #ebebeb;
+            --border-strong: #c1c1c1;
+            --ink: #222222;
+            --body: #3f3f3f;
+            --muted: #6a6a6a;
+            --muted-soft: #929292;
+            --primary: #ff385c;
+            --primary-active: #e00b41;
+            --primary-disabled: #ffd1da;
+            --on-primary: #ffffff;
+            --shadow: rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.04) 0 0.167vw 0.5vw 0, rgba(0,0,0,0.1) 0 0.33vw 0.67vw 0;
+
+            /* --- Responsive scale unit --- */
+            --font-display-xl:  clamp(56px, 7.5vw, 120px);
+            --font-display-lg:  clamp(44px, 5.8vw,  92px);
+            --font-display-md:  clamp(38px, 5vw,    80px);
+            --font-display-sm:  clamp(32px, 4.2vw,  68px);
+            --font-title:       clamp(26px, 3.2vw,  52px);
+            --font-body:        clamp(20px, 2.2vw,  36px);
+            --font-body-sm:     clamp(18px, 1.8vw,  28px);
+            --font-caption:     clamp(16px, 1.5vw,  24px);
+            --font-caption-sm:  clamp(14px, 1.3vw,  20px);
+            --font-micro:       clamp(11px, 1vw,    16px);
+
+            /* --- Spacing --- */
+            --sp-xs:   clamp(6px,  0.5vw,  10px);
+            --sp-sm:   clamp(8px,  0.8vw,  14px);
+            --sp-md:   clamp(14px, 1.2vw,  20px);
+            --sp-base: clamp(18px, 1.6vw,  26px);
+            --sp-lg:   clamp(26px, 2.4vw,  40px);
+            --sp-xl:   clamp(36px, 3.2vw,  52px);
+            --sp-2xl:  clamp(48px, 4.8vw,  76px);
+            --sp-page: clamp(40px, 6vw,    96px);
+
+            /* --- Component sizes --- */
+            --icon-sm:   clamp(26px, 2.4vw,  40px);
+            --icon-md:   clamp(48px, 4.5vw,  72px);
+            --icon-lg:   clamp(96px, 10vw,  160px);
+            --icon-xl:   clamp(64px, 8vw,   128px);
+            --radius-sm: clamp(8px,  0.8vw,  14px);
+            --radius-md: clamp(14px, 1.3vw,  22px);
+            --radius-lg: clamp(18px, 2vw,    32px);
+            --radius-pill: 9999px;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+            background: var(--surface-soft);
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           SLIDE CONTAINER
+           ============================================ */
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            background: var(--canvas);
+            overflow: hidden;
+            position: absolute;
+            inset: 0;
+            display: none;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        /* ============================================
+           PROGRESS BAR
+           ============================================ */
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: clamp(2px, 0.23vw, 4px);
+            background: var(--primary);
+            transition: width 0.3s ease;
+            z-index: 200;
+        }
+
+        /* ============================================
+           NAVIGATION
+           ============================================ */
+
+        .nav-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--sp-md);
+            z-index: 200;
+            padding: var(--sp-sm) 0 var(--sp-md);
+            background: linear-gradient(to top, rgba(255,255,255,0.96) 60%, rgba(255,255,255,0) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .nav-hover-zone {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8vh;
+            z-index: 199;
+        }
+
+        .nav-hover-zone:hover + .nav-controls,
+        .nav-controls:hover {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .nav-btn {
+            width: clamp(32px, 2.5vw, 44px);
+            height: clamp(32px, 2.5vw, 44px);
+            border-radius: 50%;
+            border: 1px solid var(--hairline);
+            background: var(--canvas);
+            color: var(--ink);
+            font-size: var(--font-caption);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            pointer-events: auto;
+        }
+
+        .nav-btn:hover {
+            border-color: var(--ink);
+            box-shadow: var(--shadow);
+        }
+
+        .slide-counter {
+            font-size: var(--font-caption-sm);
+            font-weight: 500;
+            color: var(--muted);
+            min-width: clamp(40px, 4vw, 70px);
+            text-align: center;
+            user-select: none;
+        }
+
+        /* ============================================
+           TITLE SLIDE
+           ============================================ */
+
+        .slide-title {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--sp-page);
+            padding-top: clamp(12px, 1.5vw, 24px);
+            background: linear-gradient(135deg, var(--canvas) 0%, var(--surface-soft) 100%);
+            overflow: visible;
+            gap: 0;
+        }
+
+        /* Header bar: logos + pertemuan badge */
+        .slide-title .title-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 72em;
+            padding-bottom: clamp(12px, 1.5vw, 24px);
+            margin-bottom: clamp(24px, 3vw, 48px);
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .slide-title .title-header .header-logos {
+            display: flex;
+            align-items: center;
+            gap: clamp(12px, 1.5vw, 24px);
+        }
+
+        .slide-title .title-header .header-logos img {
+            height: clamp(64px, 8vw, 120px);
+            width: auto;
+            object-fit: contain;
+            opacity: 0.85;
+        }
+
+        .slide-title .title-header .pertemuan-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--sp-xs);
+            font-size: var(--font-caption);
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-disabled);
+            border: 1px solid rgba(255, 56, 92, 0.15);
+            border-radius: 999px;
+            padding: clamp(4px, 0.5vw, 8px) clamp(12px, 1.5vw, 20px);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .slide-title .overline {
+            font-size: var(--font-caption);
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: var(--sp-md);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .slide-title h1 {
+            font-size: var(--font-display-xl);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.15;
+            margin-bottom: var(--sp-md);
+            letter-spacing: -0.02em;
+        }
+
+        .slide-title .subtitle {
+            font-size: var(--font-body);
+            font-weight: 400;
+            color: var(--body);
+            max-width: 50em;
+            margin-bottom: clamp(20px, 2.5vw, 40px);
+        }
+
+        .slide-title .meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--sp-lg);
+            font-size: var(--font-caption);
+            color: var(--muted);
+        }
+
+        .slide-title .meta-item {
+            display: flex;
+            align-items: center;
+            gap: var(--sp-xs);
+        }
+
+        /* ============================================
+           UNIFIED HEADING
+           ============================================ */
+
+        .slide h2 {
+            font-size: var(--font-display-sm);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.25;
+            margin-bottom: var(--sp-lg);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           FULL-WIDTH CONTENT
+           ============================================ */
+
+        .slide-full {
+            flex-direction: column;
+            padding: var(--sp-page) var(--sp-page) var(--sp-2xl);
+        }
+
+        /* ============================================
+           TWO-COLUMN CONTENT
+           ============================================ */
+
+        .slide-content {
+            flex-direction: row;
+        }
+
+        .content-left {
+            flex: 1;
+            padding: var(--sp-page);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-width: 0;
+            overflow-y: auto;
+        }
+
+        .content-right {
+            flex: 1;
+            background: var(--surface-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-2xl);
+            min-width: 0;
+        }
+
+        .content-left p,
+        .slide-full p.body-text {
+            font-size: var(--font-body);
+            color: var(--body);
+            line-height: 1.6;
+            margin-bottom: var(--sp-md);
+        }
+
+        .content-left strong {
+            color: var(--ink);
+        }
+
+        /* ============================================
+           CARDS GRID
+           ============================================ */
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--sp-lg);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .cards-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--sp-lg);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(12px, 1.5vw, 24px);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .card {
+            background: var(--canvas);
+            border: 1px solid var(--hairline-soft);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-xl);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-0.17vw);
+        }
+
+        .card-icon {
+            width: var(--icon-md);
+            height: var(--icon-md);
+            min-height: var(--icon-md);
+            background: var(--surface-soft);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(20px, 2.19vw, 32px);
+            margin-bottom: var(--sp-base);
+        }
+
+        .card-icon.primary {
+            background: var(--primary-disabled);
+        }
+
+        .card h3 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-sm);
+            line-height: 1.3;
+        }
+
+        .card p {
+            font-size: var(--font-body-sm);
+            color: var(--body);
+            line-height: 1.5;
+        }
+
+        /* ============================================
+           LIST ITEMS
+           ============================================ */
+
+        .list-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-base);
+        }
+
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-md);
+        }
+
+        .list-number {
+            width: clamp(28px, 2.81vw, 44px);
+            height: clamp(28px, 2.81vw, 44px);
+            min-width: clamp(28px, 2.81vw, 44px);
+            background: var(--primary);
+            color: var(--on-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+        }
+
+        .list-item h4 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+
+        .list-item p {
+            font-size: var(--font-caption) !important;
+            color: var(--body);
+            margin-bottom: 0 !important;
+        }
+
+        /* ============================================
+           PILL TAGS
+           ============================================ */
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--sp-xs);
+            margin-top: var(--sp-md);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: var(--sp-xs) var(--sp-md);
+            background: var(--surface-soft);
+            border-radius: var(--radius-pill);
+            font-size: var(--font-caption-sm);
+            font-weight: 500;
+            color: var(--body);
+        }
+
+        /* ============================================
+           VISUAL PANEL
+           ============================================ */
+
+        .visual-block {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--sp-lg);
+        }
+
+        .visual-icon-large {
+            width: var(--icon-lg);
+            height: var(--icon-lg);
+            background: var(--canvas);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--icon-xl);
+            box-shadow: var(--shadow);
+        }
+
+        .visual-label {
+            font-size: var(--font-body-sm);
+            font-weight: 500;
+            color: var(--muted);
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        /* ============================================
+           TIMELINE
+           ============================================ */
+
+        .timeline {
+            display: flex;
+            align-items: flex-start;
+            width: 100%;
+            position: relative;
+            padding: 0 var(--sp-2xl);
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: clamp(18px, 1.88vw, 30px);
+            left: calc(var(--sp-2xl) + clamp(18px, 1.88vw, 30px));
+            right: calc(var(--sp-2xl) + clamp(18px, 1.88vw, 30px));
+            height: 2px;
+            background: var(--hairline);
+        }
+
+        .timeline-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: clamp(32px, 3.75vw, 60px);
+            height: clamp(32px, 3.75vw, 60px);
+            border-radius: 50%;
+            background: var(--canvas);
+            border: clamp(2px, 0.2vw, 4px) solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(14px, 1.5vw, 24px);
+            margin-bottom: var(--sp-md);
+        }
+
+        .timeline-dot.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .timeline-item h4 {
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+
+        .timeline-item p {
+            font-size: var(--font-caption-sm) !important;
+            color: var(--muted);
+            line-height: 1.4;
+            margin-bottom: 0 !important;
+        }
+
+        /* ============================================
+           STAT BOXES
+           ============================================ */
+
+        .stats-row {
+            display: flex;
+            gap: var(--sp-lg);
+        }
+
+        .stat-box {
+            flex: 1;
+            background: var(--surface-soft);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-xl);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: clamp(28px, 3.75vw, 56px);
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: var(--sp-xs);
+        }
+
+        .stat-label {
+            font-size: var(--font-caption-sm);
+            font-weight: 500;
+            color: var(--muted);
+            line-height: 1.3;
+        }
+
+        /* ============================================
+           DIAGRAM FLOW
+           ============================================ */
+
+        .diagram-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(8px, 1.25vw, 20px);
+            flex: 1;
+        }
+
+        .diagram-box {
+            background: var(--canvas);
+            border: 2px solid var(--hairline);
+            border-radius: var(--radius-lg);
+            padding: var(--sp-lg) var(--sp-xl);
+            text-align: center;
+            min-width: 0;
+            flex: 1;
+        }
+
+        .diagram-box.primary {
+            border-color: var(--primary);
+            background: rgba(255, 56, 92, 0.04);
+        }
+
+        .diagram-box h4 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+
+        .diagram-box p {
+            font-size: var(--font-caption-sm) !important;
+            color: var(--muted);
+            line-height: 1.4;
+            margin-bottom: 0 !important;
+        }
+
+        .diagram-arrow {
+            font-size: clamp(16px, 1.5vw, 24px);
+            color: var(--muted-soft);
+            flex-shrink: 0;
+        }
+
+        /* ============================================
+           TWO-COL LIST (for comparison slides)
+           ============================================ */
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--sp-lg);
+            flex: 1;
+            min-height: 0;
+        }
+
+        .two-col .col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .two-col .col h3 {
+            font-size: var(--font-body);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-md);
+        }
+
+        .two-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-sm);
+        }
+
+        .two-col ul li {
+            font-size: var(--font-body-sm);
+            color: var(--body);
+            line-height: 1.5;
+            padding-left: var(--sp-md);
+            position: relative;
+        }
+
+        .two-col ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        /* ============================================
+           QUOTE BLOCK
+           ============================================ */
+
+        .quote-block {
+            background: var(--surface-soft);
+            border-left: clamp(3px, 0.31vw, 5px) solid var(--primary);
+            border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+            padding: var(--sp-xl) var(--sp-2xl);
+            margin: var(--sp-lg) 0;
+        }
+
+        .quote-block p {
+            font-size: var(--font-title) !important;
+            font-weight: 500;
+            color: var(--ink);
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .quote-block cite {
+            display: block;
+            margin-top: var(--sp-md);
+            font-size: var(--font-caption-sm);
+            font-style: normal;
+            color: var(--muted);
+        }
+
+        /* ============================================
+           BULLET LIST (standalone in full slides)
+           ============================================ */
+
+        .slide-full ul.bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--sp-sm);
+        }
+
+        .slide-full ul.bullet-list li {
+            font-size: var(--font-body);
+            color: var(--body);
+            line-height: 1.5;
+            padding-left: var(--sp-lg);
+            position: relative;
+        }
+
+        .slide-full ul.bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.65em;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        /* ============================================
+           SLIDE FOOTER
+           ============================================ */
+
+        .slide-footer {
+            position: absolute;
+            bottom: var(--sp-base);
+            left: var(--sp-page);
+            right: var(--sp-page);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: var(--font-micro);
+            color: var(--muted-soft);
+        }
+
+        /* POST-TEST QUIZ */
+        .slide-quiz {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-page);
+            gap: clamp(12px, 1.5vw, 24px);
+            overflow: hidden;
+        }
+        .slide-quiz h2 {
+            font-size: var(--font-display-sm);
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+        .quiz-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(10px, 1.2vw, 18px);
+            width: 100%;
+            max-width: 60em;
+        }
+        .quiz-q {
+            background: var(--canvas);
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-md);
+            padding: clamp(10px, 1.2vw, 18px);
+        }
+        .quiz-q .q-text {
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+        .quiz-q .q-options {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(2px, 0.3vw, 6px);
+        }
+        .quiz-q .q-opt {
+            font-size: var(--font-micro);
+            color: var(--body);
+            padding: clamp(2px, 0.25vw, 4px) 0;
+        }
+        .quiz-q .q-opt.correct {
+            color: #0d9f6e;
+            font-weight: 600;
+        }
+
+        /* RANGKUMAN */
+        .slide-rangkuman {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-page);
+            text-align: center;
+            gap: var(--sp-sm);
+            background: linear-gradient(135deg, var(--canvas) 0%, #f0fdf4 100%);
+        }
+        .slide-rangkuman h2 {
+            font-size: var(--font-display-sm);
+            color: var(--ink);
+            margin-bottom: var(--sp-sm);
+        }
+        .rangkuman-list {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(6px, 0.8vw, 12px);
+            text-align: left;
+            max-width: 48em;
+            width: 100%;
+        }
+        .rangkuman-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--sp-sm);
+            font-size: var(--font-body);
+            color: var(--body);
+            line-height: 1.5;
+        }
+        .rangkuman-item .rnum {
+            flex-shrink: 0;
+            width: clamp(24px, 2.5vw, 32px);
+            height: clamp(24px, 2.5vw, 32px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dcfce7;
+            color: #16a34a;
+            border-radius: 50%;
+            font-size: var(--font-micro);
+            font-weight: 700;
+        }
+
+        /* PENUTUP */
+        .slide-closing {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--sp-page);
+            text-align: center;
+            gap: var(--sp-md);
+            background: linear-gradient(135deg, var(--canvas) 0%, var(--surface-soft) 100%);
+        }
+        .slide-closing h1 {
+            font-size: var(--font-display-lg);
+            color: var(--ink);
+        }
+        .slide-closing .closing-subtitle {
+            font-size: var(--font-body);
+            color: var(--body);
+            max-width: 40em;
+        }
+        .slide-closing .closing-meta {
+            font-size: var(--font-caption);
+            color: var(--muted);
+            margin-top: var(--sp-md);
+        }
+
+        /* ============================================
+           RESPONSIVE BREAKPOINTS
+           ============================================ */
+
+        @media (max-aspect-ratio: 4/3) {
+            .slide-content {
+                flex-direction: column;
+            }
+            .content-right {
+                flex: 0.7;
+            }
+            .cards-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-aspect-ratio: 3/4) {
+            .cards-grid,
+            .cards-grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .cards-grid-4 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .timeline {
+                flex-direction: column;
+                gap: var(--sp-md);
+            }
+            .timeline::before {
+                display: none;
+            }
+            .timeline-item {
+                flex-direction: row;
+                text-align: left;
+                gap: var(--sp-md);
+            }
+            .diagram-container {
+                flex-wrap: wrap;
+            }
+        }
+        /* PRINT / PDF EXPORT */
+        @page { size: 1280px 720px; margin: 0; }
+        @media print {
+            html, body { overflow: visible !important; background: #fff !important; }
+            .presentation { width: 1280px; height: 720px; position: static; }
+            .slide {
+                position: relative !important; display: none !important;
+                width: 1280px; height: 720px; flex-shrink: 0;
+                page-break-after: always; page-break-inside: avoid;
+                overflow: hidden;
+            }
+            .slide[style*="display: flex"], .slide.active { display: flex !important; }
+            .progress-bar, .nav-controls, .nav-hover-zone { display: none !important; }
+            .slide-footer { position: absolute; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+        }
+        .nav-btn.print-btn-nav { font-size: clamp(12px, 1vw, 16px); }
+
+        /* highlight box used in content slides */
+        .highlight-box {
+            background: var(--surface-soft);
+            border-left: clamp(3px, 0.31vw, 5px) solid var(--primary);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            padding: var(--sp-md) var(--sp-lg);
+            margin-bottom: var(--sp-md);
+        }
+        .highlight-box .highlight-title {
+            font-size: var(--font-body-sm);
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: var(--sp-xs);
+        }
+        .highlight-box .highlight-content {
+            font-size: var(--font-caption);
+            color: var(--body);
+            line-height: 1.5;
+        }
+
+        /* data table */
+        .data-table {
+            width: 100%;
+            overflow-x: auto;
+        }
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th {
+            font-size: var(--font-caption-sm);
+            font-weight: 600;
+            color: var(--ink);
+            text-align: left;
+            padding: var(--sp-sm) var(--sp-md);
+            border-bottom: 2px solid var(--hairline);
+            background: var(--surface-soft);
+        }
+        .data-table td {
+            font-size: var(--font-caption);
+            color: var(--body);
+            padding: var(--sp-sm) var(--sp-md);
+            border-bottom: 1px solid var(--hairline-soft);
+        }
+        .data-table .mono {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+        }
+
+        /* diagram-item */
+        .diagram-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--sp-xs);
+        }
+        .diagram-item .diagram-icon {
+            font-size: clamp(20px, 2vw, 32px);
+        }
+
+        /* card-header / card-body / card-num */
+        .card-header { margin-bottom: var(--sp-sm); }
+        .card-body { flex: 1; }
+        .card-num {
+            width: var(--icon-md);
+            height: var(--icon-md);
+            min-height: var(--icon-md);
+            background: var(--primary-disabled);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-body-sm);
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: var(--sp-base);
+        }
+
+        /* two-col sub-cols */
+        .col .stat-number { font-size: clamp(24px, 3vw, 44px); }
+        .col .stat-label { font-size: var(--font-caption-sm); color: var(--muted); }
+        .col { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
+                </div>
+            </div>
+            <h1>Aplikasi Kecerdasan Buatan</h1>
+            <p class="subtitle">Mengenal teknik prompt engineering, AI untuk produktivitas, riset, gambar, penulisan, coding, serta etika dan limitasinya</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 14</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Prompt Engineering</h4><p>Teknik menyusun prompt yang efektif untuk AI</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>Google Gemini untuk Produktivitas</h4><p>Memanfaatkan Gemini dalam belajar dan bekerja</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>Scispace untuk Riset</h4><p>Membaca dan memahami paper ilmiah dengan AI</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>AI Image Generation</h4><p>DALL-E, Midjourney, dan pembuatan gambar berbasis prompt</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>AI untuk Menulis &amp; Coding</h4><p>ChatGPT, GitHub Copilot, dan AI dalam pengembangan perangkat lunak</p></div></div>
+                <div class="list-item"><div class="list-number">6</div><div><h4>Etika &amp; Limitasi AI</h4><p>Bias, hallucination, hak cipta, dan penggunaan bertanggung jawab</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Prompt Engineering ==================== -->
+        <div class="slide slide-full" data-slide="3">
+            <h2>Prompt Engineering: Seni Berbicara dengan AI</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">🎯</div></div>
+                    <div class="card-body">
+                        <h3>Specific (Spesifik)</h3>
+                        <p>Jangan tanya "Buatkan essay". Tanya: "Buatkan essay 500 kata tentang dampak AI di pendidikan tinggi Indonesia."</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">📋</div></div>
+                    <div class="card-body">
+                        <h3>Context (Konteks)</h3>
+                        <p>Berikan latar belakang: "Saya mahasiswa semester 4 teknik informatika yang sedang belajar machine learning."</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">📐</div></div>
+                    <div class="card-body">
+                        <h3>Format (Format)</h3>
+                        <p>Tentukan output: "Jelaskan dalam bentuk tabel perbandingan" atau "Gunakan bullet points singkat."</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">🔄</div></div>
+                    <div class="card-body">
+                        <h3>Iterasi (Perbaikan)</h3>
+                        <p>Jawaban pertama jarang sempurna. Beri feedback: "Lebih pendek", "Tambahkan contoh", "Gunakan bahasa sederhana."</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">🎭</div></div>
+                    <div class="card-body">
+                        <h3>Role (Peran)</h3>
+                        <p>Minta AI berperan: "Jelaskan sebagai dosen yang sedang mengajar mahasiswa baru."</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">⛓️</div></div>
+                    <div class="card-body">
+                        <h3>Chain of Thought</h3>
+                        <p>Minta penalaran bertahap: "Jelaskan langkah demi langkah bagaimana cara kerja neural network."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: Google Gemini ==================== -->
+        <div class="slide slide-content" data-slide="4">
+            <div class="content-left">
+                <h2>Google Gemini untuk Produktivitas</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">Apa itu Google Gemini?</div>
+                    <div class="highlight-content">AI chatbot multimodal dari Google yang terintegrasi langsung dengan ekosistem Google (Gmail, Docs, Drive, Sheets).</div>
+                </div>
+                <div class="list-items">
+                    <div class="list-item"><div class="list-number">1</div><div><h4>Ringkasan Otomatis</h4><p>Ringkas email panjang, dokumen, atau PDF dalam hitungan detik</p></div></div>
+                    <div class="list-item"><div class="list-number">2</div><div><h4>Brainstorming Ide</h4><p>Hasilkan ide proyek, topik skripsi, atau rencana presentasi</p></div></div>
+                    <div class="list-item"><div class="list-number">3</div><div><h4>Analisis Data</h4><p>Upload spreadsheet, minta Gemini membuat grafik atau insight</p></div></div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="visual-icon-large">✦</div>
+                    <div class="visual-label">Gemini terintegrasi langsung<br>dengan Google Workspace</div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: Scispace ==================== -->
+        <div class="slide slide-content" data-slide="5">
+            <div class="content-left">
+                <h2>Scispace: Membaca Paper Ilmiah dengan AI</h2>
+                <p class="body-text">Scispace membantu mahasiswa memahami jurnal dan paper ilmiah yang kompleks tanpa harus membaca dari awal hingga akhir.</p>
+                <div class="list-items">
+                    <div class="list-item"><div class="list-number">1</div><div><h4>Highlight &amp; Tanya</h4><p>Blok teks yang sulit, Scispace langsung menjelaskan dengan bahasa sederhana</p></div></div>
+                    <div class="list-item"><div class="list-number">2</div><div><h4>Explain Equation</h4><p>Rumus matematika dalam paper dijelaskan secara tekstual</p></div></div>
+                    <div class="list-item"><div class="list-number">3</div><div><h4>Table &amp; Figure Extract</h4><p>Otomatis mengekstrak dan merangkum tabel serta grafik penting</p></div></div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="visual-icon-large">📄</div>
+                    <div class="visual-label">Baca paper dalam waktu<br>yang lebih singkat dan efisien</div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: AI Image Generation ==================== -->
+        <div class="slide slide-full" data-slide="6">
+            <h2>AI Image Generation: DALL-E &amp; Midjourney</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🎨</div></div>
+                    <div class="card-body">
+                        <h3>DALL-E (OpenAI)</h3>
+                        <p>Terintegrasi di ChatGPT. Cukup deskripsikan gambar dalam bahasa natural. Mendukung edit, inpainting, dan variasi gaya.</p>
+                        <div class="tags">
+                            <span class="tag">Terintegrasi ChatGPT</span>
+                            <span class="tag">Mudah digunakan</span>
+                            <span class="tag">Multilingual</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🖼️</div></div>
+                    <div class="card-body">
+                        <h3>Midjourney</h3>
+                        <p>Dikenal menghasilkan gambar artistik berkualitas tinggi. Digunakan melalui Discord. Prompt sangat detail menghasilkan karya yang menakjubkan.</p>
+                        <div class="tags">
+                            <span class="tag">Kualitas artistik</span>
+                            <span class="tag">Via Discord</span>
+                            <span class="tag">Komunitas aktif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box" style="margin-top: var(--sp-lg);">
+                <div class="highlight-title">Tips Prompt Gambar</div>
+                <div class="highlight-content">Gunakan formula: <strong>[Subjek] + [Gaya] + [Detail visual] + [Pencahayaan] + [Komposisi]</strong><br>Contoh: "Wisuda di kampus ITERA, gaya cat air, sore hari, kamera dari bawah, nuansa hangat"</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: AI untuk Menulis ==================== -->
+        <div class="slide slide-full" data-slide="7">
+            <h2>AI untuk Menulis &amp; Komunikasi</h2>
+            <div class="cards-grid-4">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">✉️</div></div>
+                    <div class="card-body">
+                        <h3>Email Profesional</h3>
+                        <p>ChatGPT membantu menyusun email formal ke dosen, atasan, atau rekan kerja</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📝</div></div>
+                    <div class="card-body">
+                        <h3>Penulisan Akademik</h3>
+                        <p>Membantu outline skripsi, perbaikan tata bahasa, dan parafrase referensi</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📊</div></div>
+                    <div class="card-body">
+                        <h3>Presentasi</h3>
+                        <p>Buat slide deck, catatan pembicara, dan narasi presentasi yang menarik</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🌐</div></div>
+                    <div class="card-body">
+                        <h3>Terjemahan</h3>
+                        <p>Terjemahan kontekstual yang lebih baik dari translate biasa untuk dokumen teknis</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: AI untuk Coding ==================== -->
+        <div class="slide slide-content" data-slide="8">
+            <div class="content-left">
+                <h2>AI untuk Coding &amp; Pengembangan Software</h2>
+                <div class="list-items">
+                    <div class="list-item"><div class="list-number">1</div><div><h4>GitHub Copilot</h4><p>Autocomplete kode real-time di VS Code. Menulis fungsi, test, dan boilerplate otomatis berdasarkan komentar.</p></div></div>
+                    <div class="list-item"><div class="list-number">2</div><div><h4>ChatGPT / Claude</h4><p>Debugging: tempel error, dapatkan penjelasan dan solusi. Cocok untuk belajar konsep baru.</p></div></div>
+                    <div class="list-item"><div class="list-number">3</div><div><h4>Cursor / Windsurf</h4><p>AI-native code editor yang mengerti seluruh codebase. Bisa refactor lintas file.</p></div></div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="visual-icon-large">&lt;/&gt;</div>
+                    <div class="visual-label">AI bukan pengganti programmer,<br>tapi "copilot" yang mempercepat kerja</div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Etika & Limitasi ==================== -->
+        <div class="slide slide-full" data-slide="9">
+            <h2>Etika &amp; Limitasi AI</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">⚖️</div></div>
+                    <div class="card-body">
+                        <h3>Bias (Prasangka)</h3>
+                        <p>AI dilatih dari data internet yang mengandung bias gender, ras, dan budaya. Output bisa tidak adil atau tidak representatif.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🌀</div></div>
+                    <div class="card-body">
+                        <h3>Hallucination</h3>
+                        <p>AI bisa "mengarang" fakta, referensi, dan statistik yang terdengar meyakinkan tapi sepenuhnya salah. Selalu verifikasi!</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">©️</div></div>
+                    <div class="card-body">
+                        <h3>Hak Cipta</h3>
+                        <p>Gambar dan teks dari AI berlatih dari karya orang lain. Status hukumnya belum jelas di banyak negara.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🔒</div></div>
+                    <div class="card-body">
+                        <h3>Privasi Data</h3>
+                        <p>Jangan masukkan data pribadi, rahasia perusahaan, atau ujian ke AI publik. Data bisa digunakan untuk pelatihan model.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🎓</div></div>
+                    <div class="card-body">
+                        <h3>Integritas Akademik</h3>
+                        <p>Menyalin output AI tanpa pemahaman = plagiat. Gunakan AI sebagai alat bantu, bukan pengganti proses berpikir.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🌍</div></div>
+                    <div class="card-body">
+                        <h3>Dampak Lingkungan</h3>
+                        <p>Training model AI besar mengonsumsi energi sangat tinggi. Penggunaan yang bijak = lebih sedikit query, lebih banyak hasil.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Praktik AI ==================== -->
+        <div class="slide slide-full" data-slide="10">
+            <h2>Latihan Praktik AI</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">1️⃣</div></div>
+                    <div class="card-body">
+                        <h3>Prompt Engineering Challenge</h3>
+                        <p>Buat 3 versi prompt untuk topik yang sama (umum → spesifik → sangat detail). Perhatikan bagaimana kualitas jawaban meningkat drastis.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">2️⃣</div></div>
+                    <div class="card-body">
+                        <h3>Gemini: Ringkas Artikel</h3>
+                        <p>Gunakan Google Gemini untuk meringkas artikel ilmiah 10 halaman menjadi 1 halaman dengan bullet points.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">3️⃣</div></div>
+                    <div class="card-body">
+                        <h3>Scispace: Baca Paper</h3>
+                        <p>Upload paper ke Scispace dan gunakan fitur highlight untuk memahami bagian Abstract, Method, dan Conclusion.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">4️⃣</div></div>
+                    <div class="card-body">
+                        <h3>Detect AI Hallucination</h3>
+                        <p>Minta ChatGPT membuat daftar "5 penelitian tentang AI di Indonesia". Cek fakta — mana yang nyata, mana yang dikarang?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="11">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Teknik prompt "Berikan jawaban langkah demi langkah" disebut?</div><div class="q-options"><div class="q-opt">A. Role Prompting</div><div class="q-opt">B. Zero-shot Learning</div><div class="q-opt">C. Chain of Thought</div><div class="q-opt">D. Few-shot Prompting</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. AI yang terintegrasi langsung dengan Google Docs dan Gmail adalah?</div><div class="q-options"><div class="q-opt">A. ChatGPT</div><div class="q-opt">B. Midjourney</div><div class="q-opt">C. GitHub Copilot</div><div class="q-opt">D. Google Gemini</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Kejadian saat AI "mengarang" fakta yang terdengar meyakinkan disebut?</div><div class="q-options"><div class="q-opt">A. Overfitting</div><div class="q-opt">B. Hallucination</div><div class="q-opt">C. Bias</div><div class="q-opt">D. Training</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Tools yang digunakan untuk membaca paper ilmiah dengan bantuan AI adalah?</div><div class="q-options"><div class="q-opt">A. DALL-E</div><div class="q-opt">B. GitHub Copilot</div><div class="q-opt">C. Scispace</div><div class="q-opt">D. Midjourney</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Yang BUKAN merupakan etika penggunaan AI adalah?</div><div class="q-options"><div class="q-opt">A. Memverifikasi fakta dari AI</div><div class="q-opt">B. Menyalin output AI tanpa pemahaman</div><div class="q-opt">C. Tidak memasukkan data pribadi ke AI</div><div class="q-opt">D. Menggunakan AI sebagai alat bantu belajar</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="12">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Teknik prompt "Berikan jawaban langkah demi langkah" disebut?</div><div class="q-options"><div class="q-opt">A. Role Prompting</div><div class="q-opt">B. Zero-shot Learning</div><div class="q-opt correct">C. Chain of Thought ✓</div><div class="q-opt">D. Few-shot Prompting</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. AI yang terintegrasi langsung dengan Google Docs dan Gmail adalah?</div><div class="q-options"><div class="q-opt">A. ChatGPT</div><div class="q-opt">B. Midjourney</div><div class="q-opt">C. GitHub Copilot</div><div class="q-opt correct">D. Google Gemini ✓</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Kejadian saat AI "mengarang" fakta yang terdengar meyakinkan disebut?</div><div class="q-options"><div class="q-opt">A. Overfitting</div><div class="q-opt correct">B. Hallucination ✓</div><div class="q-opt">C. Bias</div><div class="q-opt">D. Training</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Tools yang digunakan untuk membaca paper ilmiah dengan bantuan AI adalah?</div><div class="q-options"><div class="q-opt">A. DALL-E</div><div class="q-opt">B. GitHub Copilot</div><div class="q-opt correct">C. Scispace ✓</div><div class="q-opt">D. Midjourney</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Yang BUKAN merupakan etika penggunaan AI adalah?</div><div class="q-options"><div class="q-opt">A. Memverifikasi fakta dari AI</div><div class="q-opt correct">B. Menyalin output AI tanpa pemahaman ✓</div><div class="q-opt">C. Tidak memasukkan data pribadi ke AI</div><div class="q-opt">D. Menggunakan AI sebagai alat bantu belajar</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="13">
+            <div class="overline">Rangkuman</div>
+            <h2>Poin-Poin Penting Pertemuan 14</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span><strong>Prompt engineering</strong> adalah kunci — gunakan teknik spesifik, konteks, format, dan iterasi untuk mendapatkan jawaban terbaik dari AI.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span><strong>Google Gemini</strong> terintegrasi ekosistem Google; <strong>Scispace</strong> mempercepat pemahaman paper ilmiah; keduanya meningkatkan produktivitas akademik.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span><strong>DALL-E &amp; Midjourney</strong> menghasilkan gambar dari teks — perhatikan formula prompt (subjek + gaya + detail + pencahayaan).</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span>AI untuk menulis dan coding (ChatGPT, Copilot) adalah <strong>copilot, bukan pengganti</strong> — tetap perlu pemahaman dan verifikasi.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span>Waspadai <strong>bias, hallucination, hak cipta, dan privasi</strong> — gunakan AI secara bertanggung jawab dan selalu verifikasi output.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Penutup ==================== -->
+        <div class="slide slide-closing" data-slide="14">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">AI adalah alat yang sangat powerful — tapi yang membedakan adalah bagaimana kita menggunakannya dengan bijak, kritis, dan bertanggung jawab.</p>
+            <p class="closing-meta">Pertemuan 15: Tren Teknologi Masa Depan &amp; Persiapan Karier di Era Digital</p>
+            <div class="slide-footer"><span>Pertemuan 14 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 14;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        goToSlide(1);
+    </script>
+</body>
+</html>
