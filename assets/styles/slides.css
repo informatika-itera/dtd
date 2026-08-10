@@ -915,17 +915,17 @@ body {
 }
 .data-table th {
     background: var(--surface-soft);
-    font-size: var(--font-caption-sm);
+    font-size: var(--font-body-sm);
     font-weight: 600;
     color: var(--ink);
     text-align: left;
-    padding: clamp(6px, 0.6vw, 10px) clamp(8px, 0.8vw, 14px);
+    padding: clamp(8px, 0.8vw, 14px) clamp(10px, 1vw, 18px);
     border: 1px solid var(--hairline-soft);
 }
 .data-table td {
-    font-size: var(--font-caption-sm);
+    font-size: var(--font-body-sm);
     color: var(--body);
-    padding: clamp(4px, 0.5vw, 8px) clamp(8px, 0.8vw, 14px);
+    padding: clamp(6px, 0.6vw, 10px) clamp(10px, 1vw, 18px);
     border: 1px solid var(--hairline-soft);
 }
 
