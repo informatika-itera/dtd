@@ -23,35 +23,37 @@
     --shadow: rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.04) 0 0.167vw 0.5vw 0, rgba(0,0,0,0.1) 0 0.33vw 0.67vw 0;
 
     /* --- Responsive scale unit --- */
-    --font-display-xl:  clamp(56px, 7.5vw, 120px);
-    --font-display-lg:  clamp(44px, 5.8vw,  92px);
-    --font-display-md:  clamp(38px, 5vw,    80px);
-    --font-display-sm:  clamp(32px, 4.2vw,  68px);
-    --font-title:       clamp(26px, 3.2vw,  52px);
-    --font-body:        clamp(20px, 2.2vw,  36px);
-    --font-body-sm:     clamp(18px, 1.8vw,  28px);
-    --font-caption:     clamp(16px, 1.5vw,  24px);
-    --font-caption-sm:  clamp(14px, 1.3vw,  20px);
-    --font-micro:       clamp(11px, 1vw,    16px);
+    --font-display-xl:  clamp(42px, 5.5vw, 90px);
+    --font-display-lg:  clamp(34px, 4.2vw, 70px);
+    --font-display-md:  clamp(30px, 3.8vw, 62px);
+    --font-display-sm:  clamp(26px, 3.2vw, 52px);
+    --font-title:       clamp(22px, 2.4vw, 40px);
+    --font-body-lg:     clamp(18px, 1.75vw, 28px);
+    --font-heading-box: clamp(20px, 2.2vw, 40px);
+    --font-body:        clamp(16px, 1.5vw, 28px);
+    --font-body-sm:     clamp(14px, 1.2vw, 22px);
+    --font-caption:     clamp(12px, 1vw, 20px);
+    --font-caption-sm:  clamp(11px, 0.85vw, 16px);
+    --font-micro:       clamp(10px, 0.7vw, 14px);
 
     /* --- Spacing --- */
-    --sp-xs:   clamp(6px,  0.5vw,  10px);
-    --sp-sm:   clamp(8px,  0.8vw,  14px);
-    --sp-md:   clamp(14px, 1.2vw,  20px);
-    --sp-base: clamp(18px, 1.6vw,  26px);
-    --sp-lg:   clamp(26px, 2.4vw,  40px);
-    --sp-xl:   clamp(36px, 3.2vw,  52px);
-    --sp-2xl:  clamp(48px, 4.8vw,  76px);
-    --sp-page: clamp(40px, 6vw,    96px);
+    --sp-xs:   clamp(4px,  0.35vw,  8px);
+    --sp-sm:   clamp(6px,  0.5vw,  12px);
+    --sp-md:   clamp(10px, 0.8vw,  18px);
+    --sp-base: clamp(12px, 1vw,    22px);
+    --sp-lg:   clamp(16px, 1.5vw,  32px);
+    --sp-xl:   clamp(20px, 2vw,    40px);
+    --sp-2xl:  clamp(32px, 3vw,    56px);
+    --sp-page: clamp(28px, 3.5vw,  64px);
 
     /* --- Component sizes --- */
-    --icon-sm:   clamp(26px, 2.4vw,  40px);
-    --icon-md:   clamp(48px, 4.5vw,  72px);
-    --icon-lg:   clamp(96px, 10vw,  160px);
-    --icon-xl:   clamp(64px, 8vw,   128px);
-    --radius-sm: clamp(8px,  0.8vw,  14px);
-    --radius-md: clamp(14px, 1.3vw,  22px);
-    --radius-lg: clamp(18px, 2vw,    32px);
+    --icon-sm:   clamp(20px, 1.7vw,  36px);
+    --icon-md:   clamp(36px, 3vw,    60px);
+    --icon-lg:   clamp(64px, 7vw,   140px);
+    --icon-xl:   clamp(48px, 5.5vw, 112px);
+    --radius-sm: clamp(6px,  0.5vw,  12px);
+    --radius-md: clamp(10px, 0.9vw,  18px);
+    --radius-lg: clamp(14px, 1.3vw,  26px);
     --radius-pill: 9999px;
 }
 
@@ -295,13 +297,42 @@ body {
 
 .slide-full {
     flex-direction: column;
-    padding: var(--sp-page) var(--sp-page) var(--sp-2xl);
+    padding: var(--sp-page) var(--sp-page) clamp(80px, 8vw, 120px);
     position: relative;
     min-height: 100vh;
 }
 
+.slide-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    gap: var(--sp-md);
+}
+
+.slide-center .diagram-container {
+    flex: 0 1 auto;
+}
+
 .slide-full > *:not(.slide-footer) {
     width: 100%;
+}
+
+.slide-full h2 {
+    font-size: var(--font-display-md);
+}
+
+.slide-full h3 {
+    font-size: var(--font-body-lg);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: var(--sp-sm);
+}
+
+.slide-full .two-col h3 {
+    font-size: var(--font-heading-box);
 }
 
 .slide-full > .slide-footer {
@@ -365,7 +396,7 @@ body {
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--sp-lg);
+    gap: var(--sp-xl);
     flex: 1;
     min-height: 0;
 }
@@ -410,7 +441,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(20px, 2.19vw, 32px);
+    font-size: clamp(16px, 1.7vw, 26px);
     margin-bottom: var(--sp-base);
 }
 
@@ -573,15 +604,15 @@ body {
 }
 
 .timeline-dot {
-    width: clamp(32px, 3.75vw, 60px);
-    height: clamp(32px, 3.75vw, 60px);
+    width: clamp(24px, 2.8vw, 44px);
+    height: clamp(24px, 2.8vw, 44px);
     border-radius: 50%;
     background: var(--canvas);
     border: clamp(2px, 0.2vw, 4px) solid var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(14px, 1.5vw, 24px);
+    font-size: clamp(12px, 1.2vw, 20px);
     margin-bottom: var(--sp-md);
 }
 
@@ -622,7 +653,7 @@ body {
 }
 
 .stat-number {
-    font-size: clamp(28px, 3.75vw, 56px);
+    font-size: clamp(22px, 2.8vw, 48px);
     font-weight: 700;
     color: var(--ink);
     line-height: 1;
@@ -642,7 +673,7 @@ body {
 
 .diagram-container {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
     gap: clamp(8px, 1.25vw, 20px);
     flex: 1;
@@ -656,6 +687,30 @@ body {
     text-align: center;
     min-width: 0;
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.diagram-box-top {
+    justify-content: flex-start;
+}
+
+.diagram-box-top h3 {
+    align-self: stretch;
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-md);
+    padding: var(--sp-xs) var(--sp-md);
+    margin-bottom: var(--sp-xs);
+    flex-shrink: 0;
+    font-size: var(--font-heading-box);
+}
+
+.diagram-box-top p {
+    margin-top: 0 !important;
+    margin-bottom: auto !important;
 }
 
 .diagram-box.primary {
@@ -664,23 +719,26 @@ body {
 }
 
 .diagram-box h4 {
-    font-size: var(--font-body);
+    font-size: var(--font-body-lg);
     font-weight: 600;
     color: var(--ink);
-    margin-bottom: var(--sp-xs);
+    margin-bottom: var(--sp-sm);
 }
 
 .diagram-box p {
-    font-size: var(--font-body-sm) !important;
+    font-size: var(--font-body) !important;
     color: var(--muted);
-    line-height: 1.4;
+    line-height: 1.5;
     margin-bottom: 0 !important;
 }
 
 .diagram-arrow {
-    font-size: clamp(16px, 1.5vw, 24px);
+    font-size: clamp(14px, 1.2vw, 20px);
     color: var(--muted-soft);
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ============================================
@@ -690,7 +748,7 @@ body {
 .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--sp-lg);
+    column-gap: var(--sp-2xl);
     flex: 1;
     min-height: 0;
 }
@@ -742,7 +800,8 @@ body {
     border-left: clamp(3px, 0.31vw, 5px) solid var(--primary);
     border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
     padding: var(--sp-lg) var(--sp-xl);
-    margin: var(--sp-md) 0;
+    margin: var(--sp-md) auto;
+    max-width: clamp(32em, 75vw, 70em);
 }
 
 .quote-block p {
@@ -794,6 +853,49 @@ body {
 /* ============================================
    ADDITIONAL COMPONENTS
    ============================================ */
+
+/* --- Reusable text utilities --- */
+.slide-full p.text-caption {
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--font-caption-sm);
+}
+
+.slide-full p.text-caption-highlight {
+    text-align: center;
+    color: var(--muted);
+    font-size: var(--font-body-lg);
+}
+
+.slide-full p.text-source {
+    text-align: center;
+    font-size: var(--font-micro);
+    color: var(--muted-soft);
+    margin-top: var(--sp-sm);
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.reference-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    text-align: left;
+    font-size: var(--font-caption-sm);
+    color: var(--body);
+    line-height: 1.6;
+}
+
+/* --- Spacing utilities --- */
+.mt-sm  { margin-top: var(--sp-sm) !important; }
+.mt-md  { margin-top: var(--sp-md) !important; }
+.mt-lg  { margin-top: var(--sp-lg) !important; }
+.mt-xl  { margin-top: var(--sp-xl) !important; }
+.mb-sm  { margin-bottom: var(--sp-sm) !important; }
+.mb-md  { margin-bottom: var(--sp-md) !important; }
+.mb-lg  { margin-bottom: var(--sp-lg) !important; }
+.mb-xl  { margin-bottom: var(--sp-xl) !important; }
+.text-left { text-align: left !important; }
 
 .mono {
     font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
@@ -872,10 +974,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: var(--font-caption);
+    font-size: var(--font-title);
     font-weight: 700;
     color: var(--primary);
-    letter-spacing: 0.04em;
+    letter-spacing: 0;
 }
 
 /* ============================================
@@ -893,7 +995,7 @@ body {
     font-size: var(--font-body);
     color: var(--body);
     line-height: 1.5;
-    padding-left: var(--sp-lg);
+    padding-left: var(--sp-xl);
     position: relative;
 }
 
@@ -901,9 +1003,9 @@ body {
     content: '';
     position: absolute;
     left: 0;
-    top: 0.65em;
-    width: 8px;
-    height: 8px;
+    top: 0.4em;
+    width: clamp(12px, 1.5vw, 24px);
+    height: clamp(12px, 1.5vw, 24px);
     border-radius: 50%;
     background: var(--primary);
 }
@@ -930,7 +1032,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--sp-page);
+    padding: var(--sp-page) var(--sp-page) clamp(80px, 8vw, 120px);
     gap: clamp(12px, 1.5vw, 24px);
     overflow: hidden;
 }
@@ -942,7 +1044,7 @@ body {
 .quiz-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(10px, 1.2vw, 18px);
+    gap: clamp(6px, 0.8vw, 12px);
     width: 100%;
     max-width: 60em;
 }
@@ -950,7 +1052,7 @@ body {
     background: var(--canvas);
     border: 1px solid var(--hairline);
     border-radius: var(--radius-md);
-    padding: clamp(10px, 1.2vw, 18px);
+    padding: clamp(6px, 0.8vw, 12px);
 }
 .quiz-q .q-text {
     font-size: var(--font-body-sm);
@@ -978,7 +1080,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding: var(--sp-page);
+    padding: var(--sp-page) var(--sp-page) clamp(80px, 8vw, 120px);
     text-align: center;
     gap: var(--sp-sm);
     background: linear-gradient(135deg, var(--canvas) 0%, #f0fdf4 100%);
@@ -993,9 +1095,9 @@ body {
 .rangkuman-list {
     display: flex;
     flex-direction: column;
-    gap: clamp(10px, 1.2vw, 18px);
+    gap: clamp(6px, 0.8vw, 12px);
     text-align: left;
-    max-width: 48em;
+    max-width: clamp(30em, 70vw, 55em);
     width: 100%;
     flex: 1;
 }
@@ -1027,7 +1129,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--sp-page);
+    padding: var(--sp-page) var(--sp-page) clamp(80px, 8vw, 120px);
     text-align: center;
     gap: var(--sp-md);
     background: linear-gradient(135deg, var(--canvas) 0%, var(--surface-soft) 100%);
