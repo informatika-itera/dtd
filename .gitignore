@@ -1,2 +1,13 @@
-assets/images/
-PREVIEW-*.md
+SLIDE-VERIFICATION-GUIDE.md
+verify
+AUDIT-REPORT.md
+*PREVIEW*.md
+
+# OS generated files
+.DS_Store
+._*
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
