@@ -654,14 +654,14 @@ def build(deck: str) -> None:
             meeting=9,
             next_heading="Selanjutnya: Pertemuan 10",
             next_boxes=[
-                ("📄", "Mail Merge", "Membuat surat massal otomatis"),
+                ("📚", "Sitasi & Daftar Pustaka", "Tools → Citations, APA/MLA/Chicago"),
                 ("🔖", "Daftar Isi Otomatis", "Navigasi dokumen profesional"),
                 ("🤝", "Kolaborasi & Template", "Bekerja bersama dalam dokumen"),
             ],
             quote="The pen is mightier than the sword.",
             cite="Edward Bulwer-Lytton",
             meta_old="Pertemuan 10: Pengolah Kata Bagian 2 — Mail Merge, Review &amp; Kolaborasi",
-            meta_new="Pertemuan 10: Pengolah Kata Bagian 2 — Mail Merge, Review &amp; Kolaborasi",
+            meta_new="Pertemuan 10: Pengolah Kata Bagian 2 — Sitasi, Review &amp; Kolaborasi",
             closing_anchor="        <!-- ==================== SLIDE 14: Penutup ==================== -->",
         ),
         "pertemuan-10.html": dict(
@@ -1506,16 +1506,16 @@ def build(deck: str) -> None:
             '        <section class="slide slide-full" data-slide="2">\n'
             '            <h2>Dokumen Ada di Mana-Mana</h2>\n'
             '            <div class="stats-row mb-md">\n'
-            '                <div class="stat-box"><div class="stat-number">1,4 miliar</div><div class="stat-label">pengguna Microsoft<br>Word di dunia</div></div>\n'
-            '                <div class="stat-box"><div class="stat-number">80%</div><div class="stat-label">dokumen akademik<br>&amp; kantor dibuat digital</div></div>\n'
-            '                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">dokumen bisa diakses<br>dari mana saja</div></div>\n'
+            '                <div class="stat-box"><div class="stat-number">1 miliar+</div><div class="stat-label">pengguna Google<br>Docs di dunia</div></div>\n'
+            '                <div class="stat-box"><div class="stat-number">3 miliar+</div><div class="stat-label">pengguna Google<br>Workspace</div></div>\n'
+            '                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">kolaborasi real-time<br>dari mana saja</div></div>\n'
             '            </div>\n'
             '            <ul class="bullet-list mt-xl">\n'
             '                <li><strong>Laporan praktikum</strong> — tugas kuliah yang wajib rapi dan terstruktur</li>\n'
             '                <li><strong>Surat resmi &amp; proposal</strong> — organisasi, beasiswa, dan magang</li>\n'
             '                <li><strong>Skripsi &amp; publikasi</strong> — dokumen panjang dengan format ketat</li>\n'
             '            </ul>\n'
-            '            <p class="body-text text-source">Sumber: Microsoft (2024), Statista (2023)</p>\n'
+            '            <p class="body-text text-source">Sumber: Google (2024), Statista (2024)</p>\n'
             '            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>2 / 17</span></div>\n'
             '        </section>\n\n'
         )
@@ -1560,11 +1560,12 @@ def build(deck: str) -> None:
             '        <section class="slide slide-full" data-slide="15">\n'
             '            <h2 class="text-left">Referensi</h2>\n'
             '            <div class="reference-list">\n'
-            '                <p>1. Microsoft. (2024). "Word Help &amp; Learning." <em>support.microsoft.com/word</em></p>\n'
-            '                <p>2. Lambert, J., &amp; Frye, C. (2022). <em>Microsoft Word Step by Step (Office 2021 and Microsoft 365)</em>. Microsoft Press.</p>\n'
-            '                <p>3. Gookin, D. (2021). <em>Word For Dummies (Office 2021 Edition)</em>. John Wiley &amp; Sons.</p>\n'
-            '                <p>4. Google. (2024). "Docs Editors Help." <em>support.google.com/docs</em></p>\n'
-            '                <p>5. Statista. (2023). "Most used office productivity software worldwide." <em>statista.com</em></p>\n'
+            '                <p>1. Google. (2024). "Google Docs Editors Help." <em>support.google.com/docs</em></p>\n'
+            '                <p>2. Google. (2024). "Keyboard shortcuts for Google Docs." <em>support.google.com/docs/answer/179738</em></p>\n'
+            '                <p>3. Google. (2024). "Add different headers and footers or page numbers in Google Docs." <em>support.google.com/docs/answer/86629</em></p>\n'
+            '                <p>4. Google. (2024). "Add a title, heading, or table of contents in a document." <em>support.google.com/docs/answer/116338</em></p>\n'
+            '                <p>5. Google. (2024). "Add borders and shading to a paragraph." <em>support.google.com/docs/answer/1663349</em></p>\n'
+            '                <p>6. Google. (2024). "Insert and arrange text, shapes, diagrams, and lines." <em>support.google.com/docs/answer/179740</em></p>\n'
             '            </div>\n'
             '            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>15 / 17</span></div>\n'
             '        </section>\n\n'
@@ -1573,6 +1574,600 @@ def build(deck: str) -> None:
             '        <!-- ==================== Selanjutnya: Pertemuan 10 ==================== -->',
             refs9 + '        <!-- ==================== Selanjutnya: Pertemuan 10 ==================== -->',
         )
+
+        # --- Google Docs conversion -------------------------------------
+        # The course teaches word processing on Google Docs (not Microsoft
+        # Word). Replace Word-specific UI names, shortcuts, and paper/margin
+        # presets with their current Google Docs equivalents (verified against
+        # support.google.com/docs, 2024). Archive source stays pristine.
+        body = body.replace(
+            'Pengenalan Microsoft Word &amp; Google Docs',
+            'Pengenalan Google Docs',
+        )
+        body = body.replace(
+            '<span class="tag">Microsoft Word</span>\n                    <span class="tag">Google Docs</span>',
+            '<span class="tag">Google Docs</span>\n                    <span class="tag">Microsoft Word</span>',
+        )
+        body = body.replace(
+            'Sans-serif (Calibri, Arial)',
+            'Sans-serif (Arial, Roboto)',
+        )
+        body = body.replace(
+            'Standar: <strong>2,5 cm</strong> untuk semua sisi (Normal). Pilihan lain: Narrow (1,27 cm), Wide (2,54 cm).',
+            'Default Google Docs: <strong>1 inci (2,54 cm)</strong> untuk semua sisi. Ubah via <strong>File → Page setup</strong>.',
+        )
+        body = body.replace(
+            ' untuk dokumen resmi.',
+            ' memerlukan ukuran kustom atau add-on (tidak tersedia bawaan).',
+        )
+        body = body.replace(
+            'Tab <strong>Layout</strong> (Word) atau ',
+            '',
+        )
+        body = body.replace(
+            'File &gt; Page Setup',
+            'File → Page setup',
+        )
+        body = body.replace(
+            '</strong> (Google Docs) ',
+            '</strong> ',
+        )
+        body = body.replace(
+            'Atur wrap text (in line, square, tight).',
+            'Atur perataan teks: <strong>In line</strong>, <strong>Wrap text</strong>, atau <strong>Break text</strong>.',
+        )
+        body = body.replace(
+            '                            <tr><td>Even/Odd Page</td><td>Section baru di halaman genap/ganjil</td></tr>\n',
+            '',
+        )
+        body = body.replace(
+            'Word bisa otomatis membuat Daftar Isi',
+            'Google Docs bisa otomatis membuat Daftar Isi',
+        )
+        body = body.replace(
+            'Tab <strong>References</strong> → Table of Contents → pilih gaya otomatis.',
+            '<strong>Insert → Table of contents</strong> → pilih dengan nomor halaman atau tautan biru.',
+        )
+        body = body.replace(
+            '<tr><td>Go To</td><td class="mono">Ctrl + G</td><td>Lompat ke halaman/bab</td></tr>',
+            '<tr><td>Find Next</td><td class="mono">Ctrl + G</td><td>Kecocokan berikutnya</td></tr>',
+        )
+        body = body.replace(
+            'Gunakan <strong>Match Case</strong> untuk pencarian case-sensitive dan <strong>Use Wildcards</strong> untuk pola fleksibel.',
+            'Gunakan <strong>Match case</strong> untuk pencarian case-sensitive dan <strong>Match using regular expressions</strong> untuk pola fleksibel.',
+        )
+        body = body.replace(
+            'contoh: <strong>Microsoft Word</strong> dan <strong>Google Docs</strong>.',
+            'contoh: <strong>Google Docs</strong> dan <strong>Microsoft Word</strong>.',
+        )
+        body = body.replace(
+            'ukuran kertas (A4, Letter, F4).',
+            'ukuran kertas (A4, Letter).',
+        )
+        body = body.replace(
+            'Kotak, lingkaran, panah, dan bentuk lainnya untuk diagram atau ilustrasi.',
+            'Buat via <strong>Insert → Drawing → New</strong> (bentuk, panah, callout), lalu <strong>Save and close</strong>.',
+        )
+        body = body.replace(
+            'Bar, pie, line chart untuk memvisualisasikan data. Data bisa diedit langsung di spreadsheet.',
+            'Bar, column, line, pie. Dibuat di Google Sheets, lalu disisipkan via <strong>Insert → Chart → From Sheets</strong>.',
+        )
+        body = body.replace(
+            '<span class="tag">Heading 1</span>\n'
+            '                        <span class="tag">Heading 2</span>\n'
+            '                        <span class="tag">Heading 3</span>\n'
+            '                        <span class="tag">Normal</span>\n'
+            '                        <span class="tag">Title</span>',
+            '<span class="tag">Title</span>\n'
+            '                        <span class="tag">Subtitle</span>\n'
+            '                        <span class="tag">Heading 1</span>\n'
+            '                        <span class="tag">Heading 2</span>\n'
+            '                        <span class="tag">Heading 3</span>\n'
+            '                        <span class="tag">Normal text</span>',
+        )
+        body = body.replace(
+            '(Heading 1, Heading 2, Normal, Title)',
+            '(Title, Subtitle, Heading 1–6, Normal text)',
+        )
+        body = body.replace(
+            'Dengan menggunakan Styles (Heading 1, 2, 3), Google Docs',
+            'Dengan menerapkan Styles judul (Heading 1, 2, 3), Google Docs',
+        )
+
+        # --- Layout & praktikum fixes (Google Docs) ----------------------
+        # 1) "Apa Itu Pengolah Kata?" — the two-side split looked cramped;
+        #    render as one full-width column (definition + tags + diagram).
+        _apa_re = re.compile(
+            r'        <!-- ==================== SLIDE 3: Apa Itu Pengolah Kata ==================== -->\n'
+            r'        <section class="slide slide-content"[^>]*>.*?</section>\n\n',
+            flags=re.S,
+        )
+        _apa_new = (
+            '        <!-- ==================== SLIDE 3: Apa Itu Pengolah Kata ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="4">\n'
+            '            <h2>Apa Itu Pengolah Kata?</h2>\n'
+            '            <div class="highlight-box">\n'
+            '                <div class="highlight-title">Definisi</div>\n'
+            '                <div class="highlight-content">Pengolah kata (word processor) adalah aplikasi untuk membuat, mengedit, memformat, dan mencetak dokumen berbasis teks.</div>\n'
+            '            </div>\n'
+            '            <p>Contoh populer:</p>\n'
+            '            <div class="tags">\n'
+            '                <span class="tag">Google Docs</span>\n'
+            '                <span class="tag">Microsoft Word</span>\n'
+            '                <span class="tag">LibreOffice Writer</span>\n'
+            '                <span class="tag">WPS Writer</span>\n'
+            '                <span class="tag">Pages (macOS)</span>\n'
+            '            </div>\n'
+            '            <div class="diagram-container mt-lg">\n'
+            '                <div class="diagram-box primary"><h4>✏️ Tulis</h4><p>Ketik &amp; edit teks</p></div>\n'
+            '                <div class="diagram-arrow">→</div>\n'
+            '                <div class="diagram-box primary"><h4>🎨 Format</h4><p>Atur tampilan</p></div>\n'
+            '                <div class="diagram-arrow">→</div>\n'
+            '                <div class="diagram-box primary"><h4>🖨️ Cetak</h4><p>Simpan / Print</p></div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>4 / 19</span></div>\n'
+            '        </section>\n\n'
+        )
+        body = _apa_re.sub(_apa_new, body, count=1)
+
+        # 2) "Warna Teks & Highlight" — drop the empty "Shortcut" column.
+        body = body.replace(
+            '<thead><tr><th>Fitur</th><th>Fungsi</th><th>Shortcut</th></tr></thead>\n'
+            '                        <tbody>\n'
+            '                            <tr><td>Font Color</td><td>Mengubah warna huruf</td><td class="mono">—</td></tr>\n'
+            '                            <tr><td>Highlight</td><td>Warna latar belakang teks</td><td class="mono">—</td></tr>\n'
+            '                            <tr><td>Shading</td><td>Warna latar seluruh paragraf</td><td class="mono">—</td></tr>\n'
+            '                        </tbody>',
+            '<thead><tr><th>Fitur</th><th>Fungsi</th></tr></thead>\n'
+            '                        <tbody>\n'
+            '                            <tr><td>Warna Teks</td><td>Mengubah warna huruf (ikon "A" di toolbar)</td></tr>\n'
+            '                            <tr><td>Highlight</td><td>Warna latar belakang teks (ikon stabilo di toolbar)</td></tr>\n'
+            '                            <tr><td>Borders &amp; Shading</td><td>Warna latar paragraf via <strong>Format → Paragraph styles → Borders and shading</strong></td></tr>\n'
+            '                        </tbody>',
+        )
+
+        # 3) Split "Find & Replace + Shortcuts" into two full-width slides.
+        _find_re = re.compile(
+            r'        <!-- ==================== SLIDE 10: Find & Replace \+ Shortcuts ==================== -->\n'
+            r'        <section class="slide slide-content"[^>]*>.*?</section>\n\n',
+            flags=re.S,
+        )
+        _find_new = (
+            '        <!-- ==================== SLIDE 10: Find & Replace ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="11">\n'
+            '            <h2>Find &amp; Replace</h2>\n'
+            '            <p class="body-text">Mencari dan mengganti teks secara massal di seluruh dokumen.</p>\n'
+            '            <div class="data-table">\n'
+            '                <table>\n'
+            '                    <thead><tr><th>Aksi</th><th>Shortcut</th><th>Keterangan</th></tr></thead>\n'
+            '                    <tbody>\n'
+            '                        <tr><td>Find</td><td class="mono">Ctrl + F</td><td>Mencari teks</td></tr>\n'
+            '                        <tr><td>Replace</td><td class="mono">Ctrl + H</td><td>Cari &amp; ganti teks</td></tr>\n'
+            '                        <tr><td>Find Next</td><td class="mono">Ctrl + G</td><td>Kecocokan berikutnya</td></tr>\n'
+            '                    </tbody>\n'
+            '                </table>\n'
+            '            </div>\n'
+            '            <div class="highlight-box">\n'
+            '                <div class="highlight-title">Fitur Lanjutan</div>\n'
+            '                <div class="highlight-content">Gunakan <strong>Match case</strong> untuk pencarian case-sensitive dan <strong>Match using regular expressions</strong> untuk pola fleksibel.</div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>11 / 19</span></div>\n'
+            '        </section>\n\n'
+            '        <!-- ==================== SLIDE 11: Shortcut Penting ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="12">\n'
+            '            <h2>Shortcut Penting</h2>\n'
+            '            <div class="cards-grid-4">\n'
+            '                <div class="card"><div class="card-icon">🔠</div><h3 class="mono">Ctrl + B</h3><p>Bold (tebal)</p></div>\n'
+            '                <div class="card"><div class="card-icon">✒️</div><h3 class="mono">Ctrl + I</h3><p>Italic (miring)</p></div>\n'
+            '                <div class="card"><div class="card-icon">🖍️</div><h3 class="mono">Ctrl + U</h3><p>Underline (garis bawah)</p></div>\n'
+            '                <div class="card"><div class="card-icon">↩️</div><h3 class="mono">Ctrl + Z</h3><p>Undo (batalkan)</p></div>\n'
+            '                <div class="card"><div class="card-icon">↪️</div><h3 class="mono">Ctrl + Shift + Z</h3><p>Redo (ulangi)</p></div>\n'
+            '                <div class="card"><div class="card-icon">✅</div><h3 class="mono">Ctrl + A</h3><p>Select all (pilih semua)</p></div>\n'
+            '                <div class="card"><div class="card-icon">📋</div><h3 class="mono">Ctrl + C / X / V</h3><p>Copy / Cut / Paste</p></div>\n'
+            '                <div class="card"><div class="card-icon">⌨️</div><h3 class="mono">Ctrl + /</h3><p>Daftar semua shortcut</p></div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>12 / 19</span></div>\n'
+            '        </section>\n\n'
+        )
+        body = _find_re.sub(_find_new, body, count=1)
+
+        # 4) Add a "Tugas Praktikum" slide (in-class exercise, ~30 min).
+        tugas9 = (
+            '        <!-- ==================== SLIDE 12: Tugas Praktikum ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="13">\n'
+            '            <h2>Tugas Praktikum: Dokumen Digital Pertama</h2>\n'
+            '            <div class="highlight-box">\n'
+            '                <div class="highlight-title">Tugas (±30 menit)</div>\n'
+            '                <div class="highlight-content">Buat dokumen Google Docs rapi yang menerapkan format teks, layout halaman, dan penyisipan objek — dikerjakan mandiri selama kelas.</div>\n'
+            '            </div>\n'
+            '            <div class="task-grid">\n'
+            '                <div class="task-col-head">Langkah 1–4</div>\n'
+            '                <div class="task-col-head">Langkah 5–8</div>\n'
+            '                <div class="list-item"><div class="list-number">1</div><div><h4>Buat dokumen baru</h4><p>Buka <strong>docs.google.com</strong> → pilih <strong>Blank document</strong>. Ganti nama dokumen menjadi <span class="mono">DTD_P09_NIM_NAMA</span> (contoh: <span class="mono">DTD_P09_12212345_Budi</span>).</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">5</div><div><h4>Sisipkan tabel</h4><p>Masukkan tabel minimal <strong>3 kolom × 2 baris</strong> (1 baris judul + 1 baris data) berisi data sederhana, mis. daftar mata kuliah.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">2</div><div><h4>Ketik konten</h4><p>Tulis <strong>3–5 kalimat</strong> dengan topik <strong>"Manfaat Teknologi Digital dalam Perkuliahan"</strong>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">6</div><div><h4>Sisipkan gambar &amp; penekanan</h4><p>Tambahkan 1 gambar dengan perataan <strong>Wrap text</strong>. <strong>Tebalkan</strong> kata kunci dan beri <strong>highlight</strong> pada istilah penting.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">3</div><div><h4>Terapkan Styles</h4><p>Baris judul pakai <strong>Heading 1</strong>; paragraf isi pakai <strong>Normal text</strong> ukuran 11–12 pt.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">7</div><div><h4>Atur akses berbagi</h4><p>Klik tombol <strong>Share</strong> (kanan atas) → pada <strong>General access</strong> pilih <strong>Anyone with the link</strong> → biarkan role <strong>Viewer</strong> → klik <strong>Done</strong>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">4</div><div><h4>Atur layout</h4><p>Buka <strong>File → Page setup</strong>: kertas <strong>A4</strong>, orientasi <strong>Portrait</strong>, margin <strong>atas 3 cm, bawah 3 cm, kiri 4 cm, kanan 3 cm</strong>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">8</div><div><h4>Salin &amp; kumpulkan tautan</h4><p>Klik <strong>Share</strong> lagi → <strong>Copy link</strong> → tempel tautan tersebut ke form/LMS pengumpulan dosen.</p></div></div>\n'
+            '            </div>\n'
+            '            <div class="highlight-box">\n'
+            '                <div class="highlight-title">Kriteria Pengumpulan</div>\n'
+            '                <div class="highlight-content">Nama dokumen sesuai format <span class="mono">DTD_P09_NIM_NAMA</span>, margin 3-3-4-3 cm, tabel minimal 3×2, minimal 1 gambar, dan tautan share berfungsi.</div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>13 / 19</span></div>\n'
+            '        </section>\n\n'
+        )
+        body = body.replace(
+            '        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->',
+            tugas9 + '        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->',
+        )
+
+        # 5) Add "Tugas Praktikum" to the agenda (item 6).
+        body = body.replace(
+            '<div class="list-item"><div class="list-number">5</div><div><h4>Fitur Lanjutan</h4><p>Page break, styles, find &amp; replace, dan shortcut</p></div></div>',
+            '<div class="list-item"><div class="list-number">5</div><div><h4>Fitur Lanjutan</h4><p>Page break, styles, find &amp; replace, dan shortcut</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">6</div><div><h4>Tugas Praktikum</h4><p>Membuat dokumen Google Docs secara mandiri</p></div></div>',
+        )
+
+        body = body.replace(
+            '<tr><td>Next Page</td><td>Section baru dimulai di halaman baru</td></tr>',
+            '<tr><td>Section break (next page)</td><td>Section baru dimulai di halaman baru</td></tr>',
+        )
+        body = body.replace(
+            '<tr><td>Continuous</td><td>Section baru di halaman yang sama</td></tr>',
+            '<tr><td>Section break (continuous)</td><td>Section baru di halaman yang sama</td></tr>',
+        )
+        body = body.replace(
+            'Membagi dokumen menjadi bagian independen. Setiap section bisa punya margin, orientasi, dan header/footer berbeda.',
+            'Membagi dokumen menjadi bagian independen. Disisipkan via <strong>Insert → Break</strong>. Setiap section bisa punya orientasi dan header/footer berbeda.',
+        )
+
+    # 6j) Pertemuan-10: Google Docs conversion (legacy source untouched).
+    #     The course teaches word processing on Google Docs, not Word. Replace
+    #     every Word-only UI path (Mailings/References/Design/Review ribbon,
+    #     Track Changes, Create PDF/XPS, native page border, F4 paper) with the
+    #     current Google Docs equivalent (verified against support.google.com/docs).
+    #     Also: inject Hook + Referensi + Tugas Praktikum (praktikum rule),
+    #     unwrap the 4 photos, and rework the post-test 5->4 with Docs-accurate
+    #     answers (Suggesting mode, Insert->Watermark, Mail Merge add-on).
+    if deck == "pertemuan-10.html":
+        # --- Hook slide (mirrors deck 9; praktikum decks keep a stats hook).
+        hook10 = (
+            '        <!-- ==================== SLIDE 2: Hook ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="2">\n'
+            '            <h2>Dokumen Profesional, Bekerja Sendiri</h2>\n'
+            '            <div class="stats-row mb-md">\n'
+            '                <div class="stat-box"><div class="stat-number">1 miliar+</div><div class="stat-label">pengguna Google<br>Docs di dunia</div></div>\n'
+            '                <div class="stat-box"><div class="stat-number">100%</div><div class="stat-label">perubahan tersimpan<br>otomatis di cloud</div></div>\n'
+            '                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">kolaborasi real-time<br>dari mana saja</div></div>\n'
+            '            </div>\n'
+            '            <ul class="bullet-list mt-xl">\n'
+            '                <li><strong>Laporan &amp; skripsi</strong> — header, nomor halaman, dan daftar isi otomatis</li>\n'
+            '                <li><strong>Sitasi &amp; daftar pustaka</strong> — Tools → Citations untuk rujukan APA/MLA/Chicago</li>\n'
+            '                <li><strong>Kerja kelompok</strong> — komentar dan mode suggesting untuk revisi bersama</li>\n'
+            '            </ul>\n'
+            '            <p class="body-text text-source">Sumber: Google (2024)</p>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>2 / 18</span></div>\n'
+            '        </section>\n\n'
+        )
+        body = body.replace(
+            '        <!-- ==================== SLIDE 2: Agenda ==================== -->',
+            hook10 + '        <!-- ==================== SLIDE 2: Agenda ==================== -->',
+        )
+
+        # --- Unwrap the 4 photos: flat <img> in .content-right, no rounded
+        #     .visual-block wrapper (matches deck 1/2 flat image style).
+        _visual_unwrap10 = re.compile(
+            r'<div class="visual-block">\s*'
+            r'(<img src="[^"]+" alt="[^"]*" loading="lazy">)\s*'
+            r'</div>',
+            flags=re.S,
+        )
+        body = _visual_unwrap10.sub(r"\1", body)
+
+        body = body.replace(
+            '<div class="list-item"><div class="list-number">3</div><div><h4>Mail Merge</h4><p>Membuat surat massal dari data sumber</p></div></div>',
+            '<div class="list-item"><div class="list-number">3</div><div><h4>Sitasi &amp; Daftar Pustaka</h4><p>Tools → Citations (APA, MLA, Chicago)</p></div></div>',
+        )
+        body = body.replace(
+            '<div class="list-item"><div class="list-number">4</div><div><h4>Watermark, Page Border &amp; Cetak</h4><p>Pengamanan dan pengaturan cetak dokumen</p></div></div>',
+            '<div class="list-item"><div class="list-number">4</div><div><h4>Watermark &amp; Cetak</h4><p>Pengamanan dan pengaturan cetak dokumen</p></div></div>',
+        )
+
+        # --- Word -> Google Docs terminology conversions.
+        body = body.replace(
+            'Fitur lanjutan pengolah kata: header &amp; footer, mail merge, watermark, page border, cetak &amp; kolaborasi',
+            'Fitur lanjutan Google Docs: header &amp; footer, sitasi &amp; daftar pustaka, watermark, cetak &amp; kolaborasi',
+        )
+        body = body.replace(
+            'Cara menambahkan: <strong>Insert &rarr; Header &amp; Footer</strong> di ribbon. Klik area header/footer untuk mulai mengedit.',
+            'Cara menambahkan: <strong>Insert → Headers &amp; footers → Header</strong> (atau Footer). Klik area header/footer untuk mulai mengedit.',
+        )
+        body = body.replace(
+            'Gunakan <strong>Page Number</strong> untuk menambahkan nomor halaman otomatis di posisi yang diinginkan.',
+            'Gunakan <strong>Insert → Page numbers</strong> untuk menambahkan nomor halaman otomatis di posisi yang diinginkan.',
+        )
+        body = body.replace(
+            'Centang <strong>"Different First Page"</strong> untuk menyembunyikan header/footer di halaman pertama (cover).',
+            'Centang <strong>"Different first page"</strong> pada area header/footer untuk menyembunyikannya di halaman pertama (cover).',
+        )
+        body = body.replace(
+            'Insert &rarr; Page Number. Posisi: atas, bawah, margin, atau posisi kursor',
+            'Insert → Page numbers → pilih posisi (kiri/kanan header atau footer) atau <strong>More options</strong>',
+        )
+        body = body.replace(
+            'Angka (1,2,3), Romawi (i,ii,iii), atau huruf (a,b,c)',
+            'Angka (1,2,3) atau Romawi (i,ii,iii) via <strong>More options</strong>',
+        )
+        body = body.replace(
+            'Layout &rarr; Breaks &rarr; Next Page. Membagi dokumen menjadi section berbeda',
+            'Insert → Break → <strong>Section break (next page)</strong>. Membagi dokumen menjadi section berbeda',
+        )
+        body = body.replace(
+            'Putuskan link antar section agar setiap section punya header/footer berbeda',
+            'Hapus centang <strong>"Link to previous"</strong> di header/footer tiap section agar berbeda',
+        )
+        body = body.replace(
+            'References &rarr; <strong>Table of Contents</strong>',
+            'Insert → <strong>Table of contents</strong>',
+        )
+        body = body.replace(
+            'Pilih gaya otomatis yang diinginkan',
+            'Pilih dengan nomor halaman atau tautan biru',
+        )
+        body = body.replace(
+            'Klik <strong>Update Table</strong> saat konten berubah',
+            'Klik ikon <strong>Refresh (↻)</strong> pada TOC saat konten berubah',
+        )
+        # Mail Merge (slide 6 + 7) is REMOVED — it depends on a third-party
+        # add-on, which contradicts the "native Google Docs only" scope. Its
+        # replacement is "Sitasi & Daftar Pustaka" (Tools → Citations), a
+        # built-in feature that complements the TOC/heading workflow.
+        _mailmerge_re = re.compile(
+            r'        <!-- ==================== SLIDE 6: Mail Merge ==================== -->\n'
+            r'        <section class="slide slide-full"[^>]*>.*?</section>\n\n'
+            r'        <!-- ==================== SLIDE 7: Contoh Mail Merge ==================== -->\n'
+            r'        <section class="slide slide-content"[^>]*>.*?</section>',
+            flags=re.S,
+        )
+        _citations_new = (
+            '        <!-- ==================== SLIDE 6: Sitasi & Daftar Pustaka ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="6">\n'
+            '            <h2>Sitasi &amp; Daftar Pustaka</h2>\n'
+            '            <div class="diagram-container">\n'
+            '                <div class="diagram-box primary"><h4>1. Sumber</h4><p>Buku, website,<br>jurnal, surat kabar</p></div>\n'
+            '                <div class="diagram-arrow">&rarr;</div>\n'
+            '                <div class="diagram-box warning"><h4>2. Citations</h4><p>Tools → Citations<br>pilih gaya APA/MLA/Chicago</p></div>\n'
+            '                <div class="diagram-arrow">&rarr;</div>\n'
+            '                <div class="diagram-box success"><h4>3. Daftar Pustaka</h4><p>Insert bibliography<br>terisi otomatis</p></div>\n'
+            '            </div>\n'
+            '            <div class="highlight-box" style="margin-top: var(--sp-md);">\n'
+            '                <div class="highlight-title">Cara Kerja</div>\n'
+            '                <div class="highlight-content">Buka <strong>Tools → Citations</strong> → pilih gaya (APA 7, MLA 8, Chicago 17) → <strong>+ Add citation source</strong> (cari buku via ISBN atau website via URL) → klik <strong>Cite</strong> untuk sitasi di teks, lalu <strong>Insert bibliography</strong> untuk daftar pustaka.</div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>6 / 18</span></div>\n'
+            '        </section>\n\n'
+            '        <!-- ==================== SLIDE 7: Contoh Sitasi ==================== -->\n'
+            '        <section class="slide slide-content" data-slide="7">\n'
+            '            <div class="content-left">\n'
+            '                <h2>Contoh Sitasi &amp; Daftar Pustaka</h2>\n'
+            '                <h3>Jenis Sumber yang Didukung</h3>\n'
+            '                <div class="data-table">\n'
+            '                    <table>\n'
+            '                        <thead><tr><th>Tipe</th><th>Cari otomatis</th></tr></thead>\n'
+            '                        <tbody>\n'
+            '                            <tr><td>Book</td><td>ISBN</td></tr>\n'
+            '                            <tr><td>Website</td><td>URL</td></tr>\n'
+            '                            <tr><td>Journal article</td><td>manual</td></tr>\n'
+            '                            <tr><td>Newspaper article</td><td>manual</td></tr>\n'
+            '                        </tbody>\n'
+            '                    </table>\n'
+            '                </div>\n'
+            '                <h3 style="margin-top: var(--sp-md);">Sitasi In-Text</h3>\n'
+            '                <div class="highlight-box">\n'
+            '                    <div class="highlight-content">Hasil penelitian menunjukkan <strong>(Santoso, 2023)</strong>…<br><br>Daftar pustaka muncul otomatis dengan klik <strong>Insert bibliography</strong>.</div>\n'
+            '                </div>\n'
+            '            </div>\n'
+            '            <div class="content-right">\n'
+            '                <img src="assets/images/scientific-research.jpg" alt="Sitasi dan Daftar Pustaka" loading="lazy">\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>7 / 18</span></div>\n'
+            '        </section>'
+        )
+        body = _mailmerge_re.sub(_citations_new, body, count=1)
+        body = body.replace(
+            'Design &rarr; Watermark &rarr; Custom Watermark',
+            'Insert → Watermark → pilih <strong>Teks</strong> atau <strong>Gambar</strong>',
+        )
+        body = body.replace(
+            'Atur ukuran, warna, dan transparansi',
+            'Atur skala, transparansi, dan posisi di panel samping',
+        )
+        body = body.replace(
+            'Design &rarr; Page Borders',
+            'Tidak ada menu Page Borders di Docs — gunakan <strong>tabel 1×1</strong> atau <strong>Drawing</strong>',
+        )
+        body = body.replace(
+            'Pilih <strong>Box, Shadow, 3-D</strong>, atau <strong>Custom</strong>',
+            'Atur garis &amp; warna via <strong>Table properties</strong> atau <strong>Drawing</strong>',
+        )
+        body = body.replace(
+            'Bisa ditambahkan <strong>Art Border</strong> dekoratif',
+            'Atur posisinya ke <strong>Behind text</strong> agar jadi bingkai latar',
+        )
+        body = body.replace(
+            'File &rarr; Export &rarr; Create PDF/XPS. Format tetap, tidak bisa diedit sembarangan, standar industri.',
+            'File → Download → <strong>PDF Document (.pdf)</strong>. Format tetap, tidak bisa diedit sembarangan, standar industri.',
+        )
+        body = body.replace(
+            'A4, Letter, F4, Legal, dll.',
+            'A4, Letter, Legal, dll.',
+        )
+        body = body.replace(
+            'Bisa diatur password agar hanya orang tertentu yang bisa membuka dokumen.',
+            'Batasi siapa yang bisa membuka via tombol <strong>Share</strong> (Viewer / Commenter / Editor).',
+        )
+        body = body.replace(
+            'Review &rarr; New Comment. Tambahkan catatan tanpa mengubah isi dokumen.',
+            'Insert → Comment (atau <strong>Ctrl + Alt + M</strong>). Tambahkan catatan tanpa mengubah isi dokumen.',
+        )
+        body = body.replace(
+            'Review &rarr; Track Changes. Semua perubahan ditandai — bisa diterima atau ditolak satu per satu.',
+            'Mode <strong>Suggesting</strong> (dropdown Editing, kanan atas). Semua perubahan ditandai — bisa diterima atau ditolak satu per satu.',
+        )
+        body = body.replace(
+            'File &rarr; New &rarr; Pilih template profesional (surat, laporan, CV). Template sudah punya format dan layout siap pakai.',
+            'Buka <strong>docs.google.com → Template gallery</strong> → pilih template (surat, laporan, CV). Template sudah punya format dan layout siap pakai.',
+        )
+        body = body.replace(
+            '<strong>Mail Merge</strong> menggabungkan template dokumen dengan data Excel untuk menghasilkan surat massal yang personal.',
+            '<strong>Sitasi &amp; daftar pustaka</strong> (Tools → Citations) menghasilkan sitasi in-text dan daftar pustaka otomatis dalam gaya APA, MLA, atau Chicago.',
+        )
+        body = body.replace(
+            '<strong>Fitur kolaborasi</strong> (comments, track changes) memudahkan review dan revisi bersama; export PDF menjaga format tetap konsisten.',
+            '<strong>Fitur kolaborasi</strong> (komentar, mode suggesting) memudahkan review dan revisi bersama; download PDF menjaga format tetap konsisten.',
+        )
+
+        # --- Post-test 5 -> 4, reworked to Google Docs-accurate answers.
+        _posttest10_re = re.compile(
+            r'<!-- ==================== SLIDE 11: Post-Test Soal ==================== -->\s*'
+            r'<section class="slide slide-quiz"[^>]*>.*?</section>\s*'
+            r'<!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->\s*'
+            r'<section class="slide slide-quiz"[^>]*>.*?</section>',
+            flags=re.S,
+        )
+        _posttest10_new = (
+            '        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->\n'
+            '        <section class="slide slide-quiz" data-slide="11">\n'
+            '            <h2>Post-Test: Uji Pemahaman</h2>\n'
+            '            <div class="quiz-grid">\n'
+            '                <div class="quiz-q"><div class="q-text">1. Menu Google Docs untuk menambahkan sitasi dan daftar pustaka otomatis?</div><div class="q-options"><div class="q-opt">A. Insert → Table of contents</div><div class="q-opt">B. Tools → Citations</div><div class="q-opt">C. Format → Styles</div><div class="q-opt">D. Extensions → Add-ons</div></div></div>\n'
+            '                <div class="quiz-q"><div class="q-text">2. Agar Daftar Isi otomatis mendeteksi judul, teks harus memakai?</div><div class="q-options"><div class="q-opt">A. Bold manual</div><div class="q-opt">B. Heading style</div><div class="q-opt">C. Ukuran besar</div><div class="q-opt">D. Warna merah</div></div></div>\n'
+            '                <div class="quiz-q"><div class="q-text">3. Fitur untuk menandai status dokumen (mis. "DRAFT") di belakang teks?</div><div class="q-options"><div class="q-opt">A. Watermark (Insert → Watermark)</div><div class="q-opt">B. Page border</div><div class="q-opt">C. Highlight</div><div class="q-opt">D. Comment</div></div></div>\n'
+            '                <div class="quiz-q"><div class="q-text">4. Mode Google Docs untuk melihat, menerima, dan menolak perubahan reviewer?</div><div class="q-options"><div class="q-opt">A. Mode Viewing</div><div class="q-opt">B. Mode Editing</div><div class="q-opt">C. Mode Suggesting</div><div class="q-opt">D. Mode Print</div></div></div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>11 / 18</span></div>\n'
+            '        </section>\n\n'
+            '        <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->\n'
+            '        <section class="slide slide-quiz" data-slide="12">\n'
+            '            <h2>Post-Test: Jawaban</h2>\n'
+            '            <div class="quiz-grid">\n'
+            '                <div class="quiz-q"><div class="q-text">1. Menu Google Docs untuk menambahkan sitasi dan daftar pustaka otomatis?</div><div class="q-options"><div class="q-opt">A. Insert → Table of contents</div><div class="q-opt correct">B. Tools → Citations ✓</div><div class="q-opt">C. Format → Styles</div><div class="q-opt">D. Extensions → Add-ons</div></div></div>\n'
+            '                <div class="quiz-q"><div class="q-text">2. Agar Daftar Isi otomatis mendeteksi judul, teks harus memakai?</div><div class="q-options"><div class="q-opt">A. Bold manual</div><div class="q-opt correct">B. Heading style ✓</div><div class="q-opt">C. Ukuran besar</div><div class="q-opt">D. Warna merah</div></div></div>\n'
+            '                <div class="quiz-q"><div class="q-text">3. Fitur untuk menandai status dokumen (mis. "DRAFT") di belakang teks?</div><div class="q-options"><div class="q-opt correct">A. Watermark (Insert → Watermark) ✓</div><div class="q-opt">B. Page border</div><div class="q-opt">C. Highlight</div><div class="q-opt">D. Comment</div></div></div>\n'
+            '                <div class="quiz-q"><div class="q-text">4. Mode Google Docs untuk melihat, menerima, dan menolak perubahan reviewer?</div><div class="q-options"><div class="q-opt">A. Mode Viewing</div><div class="q-opt">B. Mode Editing</div><div class="q-opt correct">C. Mode Suggesting ✓</div><div class="q-opt">D. Mode Print</div></div></div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>12 / 18</span></div>\n'
+            '        </section>'
+        )
+        body = _posttest10_re.sub(_posttest10_new, body, count=1)
+
+        # --- Tugas Praktikum slide (praktikum deck rule), before Post-Test.
+        tugas10 = (
+            '        <!-- ==================== SLIDE 12: Tugas Praktikum ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="13">\n'
+            '            <h2>Tugas Praktikum: Sitasi &amp; Dokumen Terstruktur</h2>\n'
+            '            <div class="highlight-box">\n'
+            '                <div class="highlight-title">Tugas (±30 menit)</div>\n'
+            '                <div class="highlight-content">Buat dokumen akademik singkat dengan sitasi &amp; daftar pustaka, lengkapi dengan header/footer, daftar isi, dan watermark — dikerjakan mandiri selama kelas.</div>\n'
+            '            </div>\n'
+            '            <div class="task-grid">\n'
+            '                <div class="task-col-head">Langkah 1–4</div>\n'
+            '                <div class="task-col-head">Langkah 5–8</div>\n'
+            '                <div class="list-item"><div class="list-number">1</div><div><h4>Buat dokumen</h4><p>Buka <strong>docs.google.com → Blank document</strong>, beri nama <span class="mono">DTD_P10_NIM_NAMA</span>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">5</div><div><h4>Header &amp; footer</h4><p><strong>Insert → Headers &amp; footers → Header</strong> berisi judul; footer: <strong>Insert → Page numbers</strong>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">2</div><div><h4>Struktur konten</h4><p>Tulis 2 paragraf bertopik <strong>"Manfaat Teknologi Digital"</strong> dengan judul bagian memakai <strong>Heading 1</strong>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">6</div><div><h4>Daftar isi</h4><p>Letakkan kursor di atas dokumen, lalu <strong>Insert → Table of contents</strong>.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">3</div><div><h4>Tambah sitasi</h4><p><strong>Tools → Citations</strong> → pilih gaya <strong>APA</strong> → <strong>+ Add citation source</strong> (minimal 1 buku via ISBN dan 1 website via URL).</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">7</div><div><h4>Sisipkan daftar pustaka</h4><p>Klik <strong>Cite</strong> pada sumber di paragraf, lalu <strong>Insert bibliography</strong> di akhir dokumen.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">4</div><div><h4>Watermark</h4><p><strong>Insert → Watermark</strong> → pilih <strong>Teks</strong>, ketik "DRAFT", atur transparansi.</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">8</div><div><h4>Export &amp; kumpulkan</h4><p><strong>File → Download → PDF Document (.pdf)</strong>, lalu share link dokumen ke dosen.</p></div></div>\n'
+            '            </div>\n'
+            '            <div class="highlight-box">\n'
+            '                <div class="highlight-title">Kriteria Pengumpulan</div>\n'
+            '                <div class="highlight-content">Nama dokumen sesuai format, minimal 2 sitasi (buku &amp; website), daftar pustaka otomatis, header/footer + nomor halaman, TOC dari heading, watermark DRAFT, dan tautan share berfungsi.</div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>13 / 18</span></div>\n'
+            '        </section>\n\n'
+        )
+        body = body.replace(
+            '        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->',
+            tugas10 + '        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->',
+        )
+
+        # --- Agenda: add Tugas Praktikum as item 6.
+        body = body.replace(
+            '<div class="list-item"><div class="list-number">5</div><div><h4>Fitur Kolaborasi &amp; Template</h4><p>Komentar, track changes, dan template profesional</p></div></div>',
+            '<div class="list-item"><div class="list-number">5</div><div><h4>Fitur Kolaborasi &amp; Template</h4><p>Komentar, mode suggesting, dan template profesional</p></div></div>\n'
+            '                <div class="list-item"><div class="list-number">6</div><div><h4>Tugas Praktikum</h4><p>Sitasi &amp; dokumen terstruktur di Google Docs</p></div></div>',
+        )
+
+        # --- Referensi slide before the "Selanjutnya" slide (from 6e).
+        refs10 = (
+            '        <!-- ==================== SLIDE 15: Referensi ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="15">\n'
+            '            <h2 class="text-left">Referensi</h2>\n'
+            '            <div class="reference-list">\n'
+            '                <p>1. Google. (2024). "Google Docs Editors Help." <em>support.google.com/docs</em></p>\n'
+            '                <p>2. Google. (2024). "Use headers, footers, page numbers, &amp; footnotes." <em>support.google.com/docs/answer/86629</em></p>\n'
+            '                <p>3. Google. (2024). "Add a title, heading, or table of contents in a document." <em>support.google.com/docs/answer/116338</em></p>\n'
+            '                <p>4. Google. (2024). "Add citations and a bibliography." <em>support.google.com/docs/answer/10090962</em></p>\n'
+            '                <p>5. Google. (2024). "Add watermarks." <em>support.google.com/docs/answer/11560109</em></p>\n'
+            '                <p>6. Google. (2024). "Suggest edits in Google Docs." <em>support.google.com/docs/answer/6033474</em></p>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>15 / 18</span></div>\n'
+            '        </section>\n\n'
+        )
+        body = body.replace(
+            '        <!-- ==================== Selanjutnya: Pertemuan 11 ==================== -->',
+            refs10 + '        <!-- ==================== Selanjutnya: Pertemuan 11 ==================== -->',
+        )
+
+        body = body.replace(
+            '<div class="highlight-title">📝 Track Changes</div>',
+            '<div class="highlight-title">📝 Mode Suggesting</div>',
+        )
+
+        # --- "Pengaturan Cetak & Export PDF" (slide 9) re-layout: the
+        #     slide-content split is lopsided (left = 5-row table + h2, right =
+        #     3 dense highlight-boxes). Re-render as slide-full + balanced
+        #     .two-col: Print settings left, Export to PDF right. Also drop the
+        #     printer-driver-only "Duplex" row (not a Docs document setting).
+        _print_re = re.compile(
+            r'        <!-- ==================== SLIDE 9: Print & PDF Export ==================== -->\n'
+            r'        <section class="slide slide-content"[^>]*>.*?</section>',
+            flags=re.S,
+        )
+        _print_new = (
+            '        <!-- ==================== SLIDE 9: Print & PDF Export ==================== -->\n'
+            '        <section class="slide slide-full" data-slide="10">\n'
+            '            <h2>Pengaturan Cetak &amp; Export PDF</h2>\n'
+            '            <div class="two-col">\n'
+            '                <div class="col">\n'
+            '                    <h3>🖨️ Pengaturan Print</h3>\n'
+            '                    <ul>\n'
+            '                        <li><strong>Print Range</strong> — semua halaman, halaman tertentu, atau seleksi</li>\n'
+            '                        <li><strong>Copies</strong> — jumlah salinan yang dicetak</li>\n'
+            '                        <li><strong>Orientation</strong> — portrait atau landscape</li>\n'
+            '                        <li><strong>Paper size</strong> — A4, Letter, Legal, dll.</li>\n'
+            '                        <li>Tekan <strong>Ctrl + P</strong> untuk preview sebelum mencetak</li>\n'
+            '                    </ul>\n'
+            '                </div>\n'
+            '                <div class="col">\n'
+            '                    <h3>📄 Export ke PDF</h3>\n'
+            '                    <ul>\n'
+            '                        <li><strong>File → Download → PDF Document (.pdf)</strong> — format tetap, standar industri</li>\n'
+            '                        <li>Batasi akses buka dokumen via tombol <strong>Share</strong> (Viewer / Commenter / Editor)</li>\n'
+            '                        <li>Alternatif: <strong>File → Print</strong> → tujuan "Save as PDF"</li>\n'
+            '                    </ul>\n'
+            '                </div>\n'
+            '            </div>\n'
+            '            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>10 / 18</span></div>\n'
+            '        </section>'
+        )
+        body = _print_re.sub(_print_new, body, count=1)
 
     # 7) Editorial masthead: replace the legacy `.meta` pill row
     #    (course · meeting) with a journal-style signature line.

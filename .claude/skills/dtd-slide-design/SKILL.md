@@ -202,6 +202,43 @@ topic. Actual next-deck chain: 4→5 Data & Informasi, 5→6 Inovasi/AI,
   (they render at height 0 in print-pdf). Use an **exact literal string**
   replacement covering the whole `quiz-q` block including its closing `</div>`.
 
+## Praktikum decks (9–14) — in-class exercise
+
+Praktikum decks (9–14: word processor, spreadsheet, AI tools) teach hands-on
+software skills. They add two rules on top of the canonical ending:
+
+1. **Every praktikum deck MUST have a "Tugas Praktikum" slide** — a concrete
+   in-class exercise the student completes during the session. Place it right
+   BEFORE the Post-Test (after the last body slide), and add it to the Agenda
+   as the final item. Structure (see pertemuan-9):
+   - `<h2>Tugas Praktikum: <nama></h2>` with a `.highlight-box` header stating
+     the duration (e.g. `Tugas (±30 menit)`).
+   - A `.task-grid` (see `reveal-deck.css`) of numbered, step-by-step
+     instructions: two `.task-col-head` headers ("Langkah 1–4" / "Langkah 5–8")
+     followed by interleaved `.list-item` steps — left column holds steps
+     1–4, right column steps 5–8, so each grid row pairs one left step with
+     one right step on the same horizontal line. Each step is one concrete
+     action with the exact menu path (`File → Page setup`, `Insert → Table of
+     contents`) and any expected input/name.
+   - A closing `.highlight-box` titled `Kriteria Pengumpulan` listing what the
+     student must submit (e.g. shareable link, specific elements present).
+     Keep `.task-grid + .highlight-box` spacing (already in `reveal-deck.css`);
+     do NOT add `flex: 1; min-height: 0` to `.task-grid` — it must auto-size to
+     content or steps overflow the box.
+   - Instructions must be unambiguous enough that a student can complete the
+     task without further explanation.
+2. **Shortcuts must be valid for the tool actually taught.** Praktikum decks
+   migrate between tools (e.g. pertemuan-9/10 teach **Google Docs**, not
+   Microsoft Word). Never copy Word/Excel shortcut tables verbatim into a
+   Google Docs/Sheets deck. Verify each shortcut against the current official
+   docs (support.google.com/docs, support.microsoft.com). Known differences:
+   - **Redo**: `Ctrl + Y` (Word/Excel) vs **`Ctrl + Shift + Z`** (Google Docs).
+   - **Save**: `Ctrl + S` auto-saves in Google Docs (no manual save needed).
+   - **Find & replace**: `Ctrl + H` both; **`Ctrl + G`** = Go To (Word) vs
+     **Find Next** (Google Docs).
+   - When a table column would be empty (e.g. "Shortcut" with no value), drop
+     the column — never render a `—` placeholder row.
+
 ## Image rules
 
 - **Images on slides must NOT be rounded-corner.** The wrapper `.visual-block`

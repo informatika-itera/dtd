@@ -201,6 +201,31 @@ body {
     min-height: 0;
 }
 
+/* Praktikum task steps: row-aligned two-column grid (left 1–4, right 5–8).
+   Each grid row pairs one left step with one right step so the two columns
+   line up on the same horizontal line instead of stacking independently. */
+.task-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--sp-2xl);
+    row-gap: var(--sp-md);
+    align-content: start;
+}
+
+.task-grid .task-col-head {
+    font-size: var(--font-title);
+    font-weight: 600;
+    color: var(--ink);
+    align-self: end;
+    padding-bottom: var(--sp-xs);
+}
+
+/* Extra breathing room above the submission-criteria box so it never
+   touches the last row of steps. */
+.task-grid + .highlight-box {
+    margin-top: var(--sp-lg);
+}
+
 /* Formula callouts (Pertemuan 12) */
 .formula-box {
     background: var(--surface-soft);
