@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pertemuan 9 - Dasar Teknologi Digital</title>
-    <link rel="stylesheet" href="assets/styles/slides.css">
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/styles/slides-reveal.css">
+    <link rel="stylesheet" href="assets/styles/reveal-deck.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="reveal">
+        <div class="slides">
 
-    <div class="presentation" id="presentation">
 
         <!-- ==================== SLIDE 1: Title ==================== -->
-        <div class="slide slide-title active" data-slide="1">
+        <section class="slide slide-title" data-slide="1">
             <div class="title-header">
                 <div class="header-logos">
                     <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
@@ -21,16 +26,29 @@
             </div>
             <h1>Pengolah Kata Bagian 1</h1>
             <p class="subtitle">Mengenal dasar-dasar pengolah kata (word processor) untuk membuat, memformat, dan mengelola dokumen profesional</p>
-            <div class="meta">
-                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
-                <div class="meta-item"><span>&middot;</span></div>
-                <div class="meta-item"><span>Pertemuan 9</span></div>
+            <div class="masthead"><span class="masthead-course">Dasar Teknologi Digital</span><span class="masthead-part">Pertemuan 9</span></div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>1 / 17</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 2: Hook ==================== -->
+        <section class="slide slide-full" data-slide="2">
+            <h2>Dokumen Ada di Mana-Mana</h2>
+            <div class="stats-row mb-md">
+                <div class="stat-box"><div class="stat-number">1,4 miliar</div><div class="stat-label">pengguna Microsoft<br>Word di dunia</div></div>
+                <div class="stat-box"><div class="stat-number">80%</div><div class="stat-label">dokumen akademik<br>&amp; kantor dibuat digital</div></div>
+                <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">dokumen bisa diakses<br>dari mana saja</div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
-        </div>
+            <ul class="bullet-list mt-xl">
+                <li><strong>Laporan praktikum</strong> — tugas kuliah yang wajib rapi dan terstruktur</li>
+                <li><strong>Surat resmi &amp; proposal</strong> — organisasi, beasiswa, dan magang</li>
+                <li><strong>Skripsi &amp; publikasi</strong> — dokumen panjang dengan format ketat</li>
+            </ul>
+            <p class="body-text text-source">Sumber: Microsoft (2024), Statista (2023)</p>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>2 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 2: Agenda ==================== -->
-        <div class="slide slide-full" data-slide="2">
+        <section class="slide slide-full" data-slide="3">
             <h2>Agenda Pertemuan</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Apa Itu Pengolah Kata?</h4><p>Pengenalan Microsoft Word &amp; Google Docs</p></div></div>
@@ -39,11 +57,11 @@
                 <div class="list-item"><div class="list-number">4</div><div><h4>Menyisipkan Objek</h4><p>Gambar, tabel, bentuk, dan grafik</p></div></div>
                 <div class="list-item"><div class="list-number">5</div><div><h4>Fitur Lanjutan</h4><p>Page break, styles, find &amp; replace, dan shortcut</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>3 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 3: Apa Itu Pengolah Kata ==================== -->
-        <div class="slide slide-content" data-slide="3">
+        <section class="slide slide-content" data-slide="4">
             <div class="content-left">
                 <h2>Apa Itu Pengolah Kata?</h2>
                 <div class="highlight-box">
@@ -77,11 +95,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>4 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 4: Format Teks Dasar ==================== -->
-        <div class="slide slide-full" data-slide="4">
+        <section class="slide slide-full" data-slide="5">
             <h2>Format Teks Dasar</h2>
             <div class="cards-grid">
                 <div class="card">
@@ -104,11 +122,11 @@
                 <div class="highlight-title">Tips</div>
                 <div class="highlight-content">Gunakan ukuran 11–12 pt untuk isi dokumen, 14–16 pt untuk sub-judul, dan 18–24 pt untuk judul utama.</div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>5 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 5: Warna & Highlight ==================== -->
-        <div class="slide slide-content" data-slide="5">
+        <section class="slide slide-content" data-slide="6">
             <div class="content-left">
                 <h2>Warna Teks &amp; Highlight</h2>
                 <p>Mengatur warna teks dan latar belakang membantu menonkankan informasi penting dalam dokumen.</p>
@@ -137,11 +155,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>6 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 6: Layout Halaman ==================== -->
-        <div class="slide slide-full" data-slide="6">
+        <section class="slide slide-full" data-slide="7">
             <h2>Layout Halaman</h2>
             <div class="cards-grid">
                 <div class="card">
@@ -164,11 +182,11 @@
                 <div class="highlight-title">Akses Layout</div>
                 <div class="highlight-content">Tab <strong>Layout</strong> (Word) atau <strong>File &gt; Page Setup</strong> (Google Docs) → atur margin, orientasi, dan ukuran kertas.</div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>7 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 7: Menyisipkan Objek ==================== -->
-        <div class="slide slide-full" data-slide="7">
+        <section class="slide slide-full" data-slide="8">
             <h2>Menyisipkan Objek</h2>
             <div class="cards-grid-4">
                 <div class="card">
@@ -192,11 +210,11 @@
                     <p>Bar, pie, line chart untuk memvisualisasikan data. Data bisa diedit langsung di spreadsheet.</p>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>8 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 8: Page Break & Section Break ==================== -->
-        <div class="slide slide-content" data-slide="8">
+        <section class="slide slide-content" data-slide="9">
             <div class="content-left">
                 <h2>Page Break &amp; Section Break</h2>
                 <div class="highlight-box">
@@ -227,11 +245,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>9 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 9: Styles & Headings ==================== -->
-        <div class="slide slide-full" data-slide="9">
+        <section class="slide slide-full" data-slide="10">
             <h2>Styles &amp; Headings</h2>
             <div class="cards-grid-2">
                 <div class="card">
@@ -256,11 +274,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>10 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 10: Find & Replace + Shortcuts ==================== -->
-        <div class="slide slide-content" data-slide="10">
+        <section class="slide slide-content" data-slide="11">
             <div class="content-left">
                 <h2>Find &amp; Replace</h2>
                 <p>Mencari dan mengganti teks secara massal di seluruh dokumen.</p>
@@ -297,39 +315,36 @@
                     </table>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>11 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
-        <div class="slide slide-quiz" data-slide="11">
+        <section class="slide slide-quiz" data-slide="12">
             <h2>Post-Test: Uji Pemahaman</h2>
             <div class="quiz-grid">
-                <div class="quiz-q"><div class="q-text">1. Apa kepanjangan dari WYSIWYG?</div><div class="q-options"><div class="q-opt">A. What You See Is What You Get</div><div class="q-opt">B. What You Save Is What You Get</div><div class="q-opt">C. Write Your Script In Web Graphics</div><div class="q-opt">D. When You Start It Will Go</div></div></div>
-                <div class="quiz-q"><div class="q-text">2. Shortcut untuk menyimpan dokumen?</div><div class="q-options"><div class="q-opt">A. Ctrl + P</div><div class="q-opt">B. Ctrl + S</div><div class="q-opt">C. Ctrl + D</div><div class="q-opt">D. Ctrl + N</div></div></div>
-                <div class="quiz-q"><div class="q-text">3. Ukuran kertas standar di Indonesia?</div><div class="q-options"><div class="q-opt">A. Letter</div><div class="q-opt">B. Legal</div><div class="q-opt">C. A4</div><div class="q-opt">D. F4</div></div></div>
-                <div class="quiz-q"><div class="q-text">4. Untuk memaksa teks ke halaman baru, gunakan?</div><div class="q-options"><div class="q-opt">A. Enter berulang</div><div class="q-opt">B. Page Break (Ctrl + Enter)</div><div class="q-opt">C. Tab</div><div class="q-opt">D. Spasi berulang</div></div></div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Fitur yang membagi dokumen menjadi section independen?</div><div class="q-options"><div class="q-opt">A. Page Break</div><div class="q-opt">B. Section Break</div><div class="q-opt">C. Column Break</div><div class="q-opt">D. Line Break</div></div></div>
+                <div class="quiz-q"><div class="q-text">1. Shortcut untuk menyimpan dokumen?</div><div class="q-options"><div class="q-opt">A. Ctrl + P</div><div class="q-opt">B. Ctrl + S</div><div class="q-opt">C. Ctrl + D</div><div class="q-opt">D. Ctrl + N</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Ukuran kertas standar di Indonesia?</div><div class="q-options"><div class="q-opt">A. Letter</div><div class="q-opt">B. Legal</div><div class="q-opt">C. A4</div><div class="q-opt">D. F4</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Untuk memaksa teks ke halaman baru, gunakan?</div><div class="q-options"><div class="q-opt">A. Enter berulang</div><div class="q-opt">B. Page Break (Ctrl + Enter)</div><div class="q-opt">C. Tab</div><div class="q-opt">D. Spasi berulang</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Fitur yang membagi dokumen menjadi section independen?</div><div class="q-options"><div class="q-opt">A. Page Break</div><div class="q-opt">B. Section Break</div><div class="q-opt">C. Column Break</div><div class="q-opt">D. Line Break</div></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>12 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
-        <div class="slide slide-quiz" data-slide="12">
+        <section class="slide slide-quiz" data-slide="13">
             <h2>Post-Test: Jawaban</h2>
             <div class="quiz-grid">
-                <div class="quiz-q"><div class="q-text">1. Apa kepanjangan dari WYSIWYG?</div><div class="q-options"><div class="q-opt correct">A. What You See Is What You Get ✓</div><div class="q-opt">B. What You Save Is What You Get</div><div class="q-opt">C. Write Your Script In Web Graphics</div><div class="q-opt">D. When You Start It Will Go</div></div></div>
-                <div class="quiz-q"><div class="q-text">2. Shortcut untuk menyimpan dokumen?</div><div class="q-options"><div class="q-opt">A. Ctrl + P</div><div class="q-opt correct">B. Ctrl + S ✓</div><div class="q-opt">C. Ctrl + D</div><div class="q-opt">D. Ctrl + N</div></div></div>
-                <div class="quiz-q"><div class="q-text">3. Ukuran kertas standar di Indonesia?</div><div class="q-options"><div class="q-opt">A. Letter</div><div class="q-opt">B. Legal</div><div class="q-opt correct">C. A4 ✓</div><div class="q-opt">D. F4</div></div></div>
-                <div class="quiz-q"><div class="q-text">4. Untuk memaksa teks ke halaman baru, gunakan?</div><div class="q-options"><div class="q-opt">A. Enter berulang</div><div class="q-opt correct">B. Page Break (Ctrl + Enter) ✓</div><div class="q-opt">C. Tab</div><div class="q-opt">D. Spasi berulang</div></div></div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Fitur yang membagi dokumen menjadi section independen?</div><div class="q-options"><div class="q-opt">A. Page Break</div><div class="q-opt correct">B. Section Break ✓</div><div class="q-opt">C. Column Break</div><div class="q-opt">D. Line Break</div></div></div>
+                <div class="quiz-q"><div class="q-text">1. Shortcut untuk menyimpan dokumen?</div><div class="q-options"><div class="q-opt">A. Ctrl + P</div><div class="q-opt correct">B. Ctrl + S ✓</div><div class="q-opt">C. Ctrl + D</div><div class="q-opt">D. Ctrl + N</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Ukuran kertas standar di Indonesia?</div><div class="q-options"><div class="q-opt">A. Letter</div><div class="q-opt">B. Legal</div><div class="q-opt correct">C. A4 ✓</div><div class="q-opt">D. F4</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Untuk memaksa teks ke halaman baru, gunakan?</div><div class="q-options"><div class="q-opt">A. Enter berulang</div><div class="q-opt correct">B. Page Break (Ctrl + Enter) ✓</div><div class="q-opt">C. Tab</div><div class="q-opt">D. Spasi berulang</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Fitur yang membagi dokumen menjadi section independen?</div><div class="q-options"><div class="q-opt">A. Page Break</div><div class="q-opt correct">B. Section Break ✓</div><div class="q-opt">C. Column Break</div><div class="q-opt">D. Line Break</div></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>13 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 13: Rangkuman ==================== -->
-        <div class="slide slide-rangkuman" data-slide="13">
-            <div class="overline">Rangkuman</div>
-            <h2>Poin-Poin Penting Pertemuan 9</h2>
+        <section class="slide slide-rangkuman" data-slide="14">
+            <h2>Rangkuman Pertemuan 9</h2>
             <div class="rangkuman-list">
                 <div class="rangkuman-item"><div class="rnum">1</div><span>Pengolah kata (word processor) adalah aplikasi untuk membuat, mengedit, dan memformat dokumen — contoh: <strong>Microsoft Word</strong> dan <strong>Google Docs</strong>.</span></div>
                 <div class="rangkuman-item"><div class="rnum">2</div><span>Format teks dasar meliputi <strong>jenis huruf, ukuran, gaya (bold/italic), perataan, dan warna</strong>.</span></div>
@@ -337,73 +352,94 @@
                 <div class="rangkuman-item"><div class="rnum">4</div><span>Objek seperti <strong>gambar, tabel, bentuk, dan grafik</strong> dapat disisipkan untuk memperkaya dokumen.</span></div>
                 <div class="rangkuman-item"><div class="rnum">5</div><span>Fitur lanjutan seperti <strong>Page/Section Break, Styles, Find &amp; Replace, dan shortcut</strong> meningkatkan produktivitas secara signifikan.</span></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>14 / 17</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 15: Referensi ==================== -->
+        <section class="slide slide-full" data-slide="15">
+            <h2 class="text-left">Referensi</h2>
+            <div class="reference-list">
+                <p>1. Microsoft. (2024). "Word Help &amp; Learning." <em>support.microsoft.com/word</em></p>
+                <p>2. Lambert, J., &amp; Frye, C. (2022). <em>Microsoft Word Step by Step (Office 2021 and Microsoft 365)</em>. Microsoft Press.</p>
+                <p>3. Gookin, D. (2021). <em>Word For Dummies (Office 2021 Edition)</em>. John Wiley &amp; Sons.</p>
+                <p>4. Google. (2024). "Docs Editors Help." <em>support.google.com/docs</em></p>
+                <p>5. Statista. (2023). "Most used office productivity software worldwide." <em>statista.com</em></p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>15 / 17</span></div>
+        </section>
+
+        <!-- ==================== Selanjutnya: Pertemuan 10 ==================== -->
+        <section class="slide slide-full" data-slide="16">
+            <h2>Selanjutnya: Pertemuan 10</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>📄</h3>
+                        <p><strong>Mail Merge</strong><br>Membuat surat massal otomatis</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🔖</h3>
+                        <p><strong>Daftar Isi Otomatis</strong><br>Navigasi dokumen profesional</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🤝</h3>
+                        <p><strong>Kolaborasi & Template</strong><br>Bekerja bersama dalam dokumen</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>16 / 17</span></div>
+        </section>
 
         <!-- ==================== SLIDE 14: Penutup ==================== -->
-        <div class="slide slide-closing" data-slide="14">
+        <section class="slide slide-closing" data-slide="17">
             <h1>Terima Kasih</h1>
             <p class="closing-subtitle">Pengolah kata adalah keterampilan dasar yang akan digunakan di setiap aspek akademik dan profesional. Terus berlatih!</p>
-            <p class="closing-meta">Pertemuan 10: Pengolah Kata Bagian 2 — Mail Merge, Review &amp; Kolaborasi</p>
-            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+                        <div class="quote-block text-left">
+                <p>"The pen is mightier than the sword."</p>
+                <cite>— Edward Bulwer-Lytton</cite>
+            </div>
+<p class="closing-meta">Pertemuan 10: Pengolah Kata Bagian 2 — Mail Merge, Review &amp; Kolaborasi</p>
+            <div class="slide-footer"><span>Pertemuan 9 — Dasar Teknologi Digital</span><span>17 / 17</span></div>
+        </section>
+    
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav-hover-zone"></div>
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
-        <span class="slide-counter" id="slideCounter">1 / 14</span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
-        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
-    </div>
-
+    <script src="assets/vendor/reveal/reveal.js"></script>
+    <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="assets/vendor/reveal/plugin/search/search.js"></script>
     <script>
-        let currentSlide = 1;
-        const totalSlides = 14;
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
-        }
-
-        function goToSlide(slideNumber) {
-            document.querySelector('.slide.active').classList.remove('active');
-            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
-            if (el) {
-                el.classList.add('active');
-                currentSlide = slideNumber;
-                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
-                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
-                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
-            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0,
+            minScale: 0.2,
+            maxScale: 2.0,
+            center: false,
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: false,
+            transition: 'none',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            overview: true,
+            keyboard: true,
+            touch: true,
+            fragments: false,
+            pdfSeparateFragments: false,
+            plugins: [ RevealNotes, RevealZoom, RevealSearch ]
         });
 
-        let touchStartX = 0;
-        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-        });
-
-        function printSlides() {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(s => { s.style.display = 'flex'; });
-            window.print();
-            slides.forEach(s => { s.style.display = ''; });
-            goToSlide(currentSlide);
+        // One-click PDF export parity with the legacy `?print=1` flow:
+        // reveal renders paginated pages on `?print-pdf`; fire the print
+        // dialog once layout settles.
+        if ( /print-pdf/gi.test( window.location.search ) ) {
+            window.addEventListener( 'load', function () {
+                setTimeout( function () { window.print(); }, 800 );
+            } );
         }
-
-        goToSlide(1);
     </script>
 </body>
 </html>

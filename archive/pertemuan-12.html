@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 12 - Dasar Teknologi Digital</title>
+    <link rel="stylesheet" href="assets/styles/slides.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
+                </div>
+            </div>
+            <h1>Pengolah Angka Bagian 2</h1>
+            <p class="subtitle">Menguasai fungsi logika (IF), pencarian data (VLOOKUP, HLOOKUP), dan analisis bersyarat (COUNTIF, SUMIF) dalam spreadsheet</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 12</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Fungsi IF &amp; Nested IF</h4><p>Pengambilan keputusan otomatis berdasarkan kondisi</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>COUNTIF &amp; SUMIF</h4><p>Menghitung dan menjumlah data berdasarkan kriteria</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>VLOOKUP &amp; HLOOKUP</h4><p>Mencari data dari tabel referensi secara vertikal dan horizontal</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>INDEX &amp; MATCH</h4><p>Pencarian data fleksibel sebagai alternatif VLOOKUP</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>Studi Kasus Penjualan</h4><p>Menerapkan semua fungsi pada data penjualan nyata</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Fungsi IF ==================== -->
+        <div class="slide slide-content" data-slide="3">
+            <div class="content-left">
+                <h2>Fungsi IF</h2>
+                <p>Fungsi <strong>IF</strong> menguji suatu kondisi dan mengembalikan nilai berdasarkan hasil uji tersebut — <strong>TRUE</strong> atau <strong>FALSE</strong>.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks</div>
+                    <code>=IF(kondisi; nilai_jika_TRUE; nilai_jika_FALSE)</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Contoh</div>
+                    <div class="highlight-content">Jika nilai ≥ 70 maka "Lulus", jika tidak "Tidak Lulus":<br><code>=IF(A1&gt;=70; "Lulus"; "Tidak Lulus")</code></div>
+                </div>
+                <p>Parameter <strong>kondisi</strong> bisa menggunakan operator perbandingan: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, <code>&lt;&gt;</code> (tidak sama dengan).</p>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="diagram-container">
+                        <div class="diagram-box primary">
+                            <h4>Kondisi?</h4>
+                            <p>A1 ≥ 70?</p>
+                        </div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box">
+                            <h4>TRUE</h4>
+                            <p>"Lulus" ✓</p>
+                        </div>
+                    </div>
+                    <div class="diagram-container" style="margin-top: var(--sp-sm);">
+                        <div style="width: clamp(80px, 10vw, 140px);"></div>
+                        <div class="diagram-arrow">→</div>
+                        <div class="diagram-box">
+                            <h4>FALSE</h4>
+                            <p>"Tidak Lulus" ✗</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: Nested IF ==================== -->
+        <div class="slide slide-content" data-slide="4">
+            <div class="content-left">
+                <h2>Nested IF (IF Bersarang)</h2>
+                <p>Menyusun <strong>beberapa IF</strong> di dalam satu formula untuk menguasi <strong>banyak kondisi sekaligus</strong> — seperti membuat grading otomatis.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks Nested IF</div>
+                    <code>=IF(kondisi1; nilai1; IF(kondisi2; nilai2; IF(kondisi3; nilai3; nilai_default)))</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Contoh: Grading Nilai</div>
+                    <div class="highlight-content">
+                        <code>=IF(A1&gt;=85;"A";IF(A1&gt;=70;"B";IF(A1&gt;=55;"C";"D")))</code><br><br>
+                        A1=90 → <strong>A</strong> &nbsp;|&nbsp; A1=75 → <strong>B</strong> &nbsp;|&nbsp; A1=60 → <strong>C</strong> &nbsp;|&nbsp; A1=40 → <strong>D</strong>
+                    </div>
+                </div>
+                <p>Tip: Bisa juga menggunakan <strong>IFS()</strong> di Google Sheets / Excel 365 sebagai alternatif yang lebih rapi.</p>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="diagram-container" style="flex-direction: column; gap: var(--sp-sm);">
+                        <div class="diagram-box primary">
+                            <h4>≥ 85?</h4>
+                            <p>Ya → A</p>
+                        </div>
+                        <div class="diagram-arrow">↓ Tidak</div>
+                        <div class="diagram-box primary">
+                            <h4>≥ 70?</h4>
+                            <p>Ya → B</p>
+                        </div>
+                        <div class="diagram-arrow">↓ Tidak</div>
+                        <div class="diagram-box primary">
+                            <h4>≥ 55?</h4>
+                            <p>Ya → C</p>
+                        </div>
+                        <div class="diagram-arrow">↓ Tidak</div>
+                        <div class="diagram-box">
+                            <h4>Sisa</h4>
+                            <p>D</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: COUNTIF & SUMIF ==================== -->
+        <div class="slide slide-full" data-slide="5">
+            <h2>COUNTIF &amp; SUMIF</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">🔢</div></div>
+                    <div class="card-body">
+                        <h3>COUNTIF</h3>
+                        <p><strong>Menghitung</strong> jumlah sel yang memenuhi kriteria tertentu.</p>
+                        <div class="formula-box" style="margin-top: var(--sp-sm);">
+                            <div class="formula-label">Sintaks</div>
+                            <code>=COUNTIF(range; kriteria)</code>
+                        </div>
+                        <p><strong>Contoh:</strong> Hitung jumlah siswa yang lulus (nilai ≥ 70):</p>
+                        <p><code>=COUNTIF(B2:B50; "&gt;=70")</code></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon primary">➕</div></div>
+                    <div class="card-body">
+                        <h3>SUMIF</h3>
+                        <p><strong>Menjumlah</strong> nilai-nilai yang memenuhi kriteria tertentu.</p>
+                        <div class="formula-box" style="margin-top: var(--sp-sm);">
+                            <div class="formula-label">Sintaks</div>
+                            <code>=SUMIF(range_kriteria; kriteria; range_jumlah)</code>
+                        </div>
+                        <p><strong>Contoh:</strong> Jumlah penjualan produk "Laptop":</p>
+                        <p><code>=SUMIF(A2:A100; "Laptop"; C2:C100)</code></p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: VLOOKUP ==================== -->
+        <div class="slide slide-content" data-slide="6">
+            <div class="content-left">
+                <h2>VLOOKUP</h2>
+                <p><strong>Vertical Lookup</strong> — mencari nilai di kolom pertama tabel, lalu mengambil nilai dari kolom lain pada baris yang sama.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks</div>
+                    <code>=VLOOKUP(kolom_cari; tabel; kolom_index; [pencocokan])</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Parameter</div>
+                    <div class="highlight-content">
+                        <strong>kolom_cari</strong> — nilai yang ingin dicari<br>
+                        <strong>tabel</strong> — range tabel referensi<br>
+                        <strong>kolom_index</strong> — nomor kolom yang ingin diambil (mulai dari 1)<br>
+                        <strong>pencocokan</strong> — FALSE (exact match) atau TRUE (approximate)
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="highlight-box" style="width: 100%;">
+                        <div class="highlight-title">Contoh</div>
+                        <div class="highlight-content">
+                            Cari harga produk berdasarkan kode:
+                            <div class="data-table" style="margin-top: var(--sp-sm);">
+                                <table>
+                                    <thead><tr><th>Kode</th><th>Produk</th><th>Harga</th></tr></thead>
+                                    <tbody>
+                                        <tr><td class="mono">P001</td><td>Laptop</td><td class="mono">8.500.000</td></tr>
+                                        <tr><td class="mono">P002</td><td>Mouse</td><td class="mono">150.000</td></tr>
+                                        <tr><td class="mono">P003</td><td>Keyboard</td><td class="mono">350.000</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <code>=VLOOKUP("P002"; A2:C4; 3; FALSE)</code><br>
+                            Hasil: <strong>150.000</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: HLOOKUP ==================== -->
+        <div class="slide slide-content" data-slide="7">
+            <div class="content-left">
+                <h2>HLOOKUP</h2>
+                <p><strong>Horizontal Lookup</strong> — mencari nilai di baris pertama tabel, lalu mengambil nilai dari baris lain pada kolom yang sama.</p>
+                <div class="formula-box">
+                    <div class="formula-label">Sintaks</div>
+                    <code>=HLOOKUP(baris_cari; tabel; baris_index; [pencocokan])</code>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Kapan Pakai?</div>
+                    <div class="highlight-content">
+                        Gunakan <strong>HLOOKUP</strong> ketika data tersusun secara <strong>horizontal</strong> — header (label) berada di <strong>baris pertama</strong>, bukan kolom pertama.<br><br>
+                        Jika data vertikal → pakai <strong>VLOOKUP</strong>.<br>
+                        Jika data horizontal → pakai <strong>HLOOKUP</strong>.
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="highlight-box" style="width: 100%;">
+                        <div class="highlight-title">Contoh</div>
+                        <div class="highlight-content">
+                            Cari nilai UTS mata kuliah "Matematika":
+                            <div class="data-table" style="margin-top: var(--sp-sm);">
+                                <table>
+                                    <thead><tr><th></th><th>Matematika</th><th>Fisika</th><th>Kimia</th></tr></thead>
+                                    <tbody>
+                                        <tr><td><strong>UTS</strong></td><td class="mono">85</td><td class="mono">78</td><td class="mono">90</td></tr>
+                                        <tr><td><strong>UAS</strong></td><td class="mono">92</td><td class="mono">80</td><td class="mono">88</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <code>=HLOOKUP("Matematika"; A1:D3; 1; FALSE)</code><br>
+                            Hasil: <strong>85</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: INDEX & MATCH ==================== -->
+        <div class="slide slide-content" data-slide="8">
+            <div class="content-left">
+                <h2>INDEX &amp; MATCH</h2>
+                <p>Kombinasi <strong>INDEX</strong> dan <strong>MATCH</strong> adalah alternatif fleksibel untuk VLOOKUP — bisa mencari ke kiri, tidak terbatas kolom pertama.</p>
+                <div class="formula-box">
+                    <div class="formula-label">MATCH — mencari posisi</div>
+                    <code>=MATCH(nilai_cari; range; 0)</code>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-label">INDEX — mengambil nilai</div>
+                    <code>=INDEX(range; baris; kolom)</code>
+                </div>
+                <div class="formula-box">
+                    <div class="formula-label">Kombinasi INDEX + MATCH</div>
+                    <code>=INDEX(kolom_diambil; MATCH(nilai_cari; kolom_cari; 0))</code>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <div class="highlight-box" style="width: 100%;">
+                        <div class="highlight-title">Contoh: Cari Nama dari ID</div>
+                        <div class="highlight-content">
+                            <div class="data-table" style="margin-top: var(--sp-sm);">
+                                <table>
+                                    <thead><tr><th>Nama</th><th>ID</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>Budi</td><td class="mono">101</td></tr>
+                                        <tr><td>Ani</td><td class="mono">102</td></tr>
+                                        <tr><td>Citra</td><td class="mono">103</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <code>=INDEX(A2:A4; MATCH(102; B2:B4; 0))</code><br>
+                            Hasil: <strong>Ani</strong><br><br>
+                            <span style="color: var(--primary); font-weight: 600;">Kelebihan:</span> Kolom yang dicari (ID) ada di <strong>kanan</strong> kolom hasil (Nama) — VLOOKUP tidak bisa!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Studi Kasus — Data Penjualan ==================== -->
+        <div class="slide slide-full" data-slide="9">
+            <h2>Studi Kasus: Data Penjualan</h2>
+            <div class="data-table">
+                <table>
+                    <thead><tr><th>No</th><th>Tanggal</th><th>Produk</th><th>Kategori</th><th>Jumlah</th><th>Harga Satuan</th><th>Total</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>01/07/2026</td><td>Laptop ASUS</td><td>Komputer</td><td class="mono">2</td><td class="mono">8.500.000</td><td class="mono">17.000.000</td></tr>
+                        <tr><td>2</td><td>01/07/2026</td><td>Mouse Logitech</td><td>Aksesoris</td><td class="mono">10</td><td class="mono">150.000</td><td class="mono">1.500.000</td></tr>
+                        <tr><td>3</td><td>02/07/2026</td><td>Keyboard Rexus</td><td>Aksesoris</td><td class="mono">5</td><td class="mono">350.000</td><td class="mono">1.750.000</td></tr>
+                        <tr><td>4</td><td>02/07/2026</td><td>Monitor LG 24"</td><td>Komputer</td><td class="mono">3</td><td class="mono">2.400.000</td><td class="mono">7.200.000</td></tr>
+                        <tr><td>5</td><td>03/07/2026</td><td>Laptop ASUS</td><td>Komputer</td><td class="mono">1</td><td class="mono">8.500.000</td><td class="mono">8.500.000</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="stats-row" style="margin-top: var(--sp-md);">
+                <div class="stat-box">
+                    <div class="stat-number">21</div>
+                    <div class="stat-label">Total Qty Terjual</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Rp 35,95 Jt</div>
+                    <div class="stat-label">Total Pendapatan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">Kategori Produk</div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Praktik — Menerapkan Rumus ==================== -->
+        <div class="slide slide-full" data-slide="10">
+            <h2>Praktik: Menerapkan Rumus pada Data Penjualan</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>🎯 IF — Status Penjualan Besar</h3>
+                        <p>Tandai transaksi ≥ Rp 5 juta sebagai "Besar":</p>
+                        <div class="formula-box">
+                            <code>=IF(G2&gt;=5000000;"Besar";"Biasa")</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>📊 COUNTIF — Jumlah per Kategori</h3>
+                        <p>Hitung berapa kali muncul kategori "Komputer":</p>
+                        <div class="formula-box">
+                            <code>=COUNTIF(D2:D100;"Komputer")</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>➕ SUMIF — Total per Produk</h3>
+                        <p>Jumlahkan pendapatan dari "Laptop ASUS":</p>
+                        <div class="formula-box">
+                            <code>=SUMIF(C2:C100;"Laptop ASUS";G2:G100)</code>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>🔍 VLOOKUP — Cari Harga Produk</h3>
+                        <p>Ambil harga satuan dari tabel master:</p>
+                        <div class="formula-box">
+                            <code>=VLOOKUP("Mouse Logitech";Master!A:C;3;FALSE)</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="11">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Fungsi IF di spreadsheet digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Menjumlah angka</div><div class="q-opt">B. Mengambil keputusan berdasarkan kondisi</div><div class="q-opt">C. Mencari data di tabel</div><div class="q-opt">D. Mengurutkan data</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Rumus =COUNTIF(A1:A10;"Merah") akan?</div><div class="q-options"><div class="q-opt">A. Menjumlah semua data</div><div class="q-opt">B. Menghitung sel berisi "Merah"</div><div class="q-opt">C. Mencari kata "Merah"</div><div class="q-opt">D. Mengganti sel dengan "Merah"</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. VLOOKUP mencari data secara?</div><div class="q-options"><div class="q-opt">A. Horizontal (baris)</div><div class="q-opt">B. Vertikal (kolom)</div><div class="q-opt">C. Diagonal</div><div class="q-opt">D. Acak</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Kelebihan INDEX+MATCH dibanding VLOOKUP?</div><div class="q-options"><div class="q-opt">A. Lebih cepat</div><div class="q-opt">B. Bisa mencari ke kiri</div><div class="q-opt">C. Tidak butuh argumen</div><div class="q-opt">D. Hanya untuk angka</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. =SUMIF(B1:B10;"Komputer";C1:C10) menjumlahkan?</div><div class="q-options"><div class="q-opt">A. Kolom B yang berisi "Komputer"</div><div class="q-opt">B. Kolom C jika kolom B = "Komputer"</div><div class="q-opt">C. Semua kolom C</div><div class="q-opt">D. Kolom B dan C sekaligus</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="12">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Fungsi IF di spreadsheet digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Menjumlah angka</div><div class="q-opt correct">B. Mengambil keputusan berdasarkan kondisi ✓</div><div class="q-opt">C. Mencari data di tabel</div><div class="q-opt">D. Mengurutkan data</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Rumus =COUNTIF(A1:A10;"Merah") akan?</div><div class="q-options"><div class="q-opt">A. Menjumlah semua data</div><div class="q-opt correct">B. Menghitung sel berisi "Merah" ✓</div><div class="q-opt">C. Mencari kata "Merah"</div><div class="q-opt">D. Mengganti sel dengan "Merah"</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. VLOOKUP mencari data secara?</div><div class="q-options"><div class="q-opt">A. Horizontal (baris)</div><div class="q-opt correct">B. Vertikal (kolom) ✓</div><div class="q-opt">C. Diagonal</div><div class="q-opt">D. Acak</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Kelebihan INDEX+MATCH dibanding VLOOKUP?</div><div class="q-options"><div class="q-opt">A. Lebih cepat</div><div class="q-opt correct">B. Bisa mencari ke kiri ✓</div><div class="q-opt">C. Tidak butuh argumen</div><div class="q-opt">D. Hanya untuk angka</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. =SUMIF(B1:B10;"Komputer";C1:C10) menjumlahkan?</div><div class="q-options"><div class="q-opt">A. Kolom B yang berisi "Komputer"</div><div class="q-opt correct">B. Kolom C jika kolom B = "Komputer" ✓</div><div class="q-opt">C. Semua kolom C</div><div class="q-opt">D. Kolom B dan C sekaligus</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="13">
+            <div class="overline">Rangkuman</div>
+            <h2>Poin-Poin Penting Pertemuan 12</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span><strong>IF</strong> menguji kondisi TRUE/FALSE untuk mengembalikan nilai tertentu. <strong>Nested IF</strong> memungkinkan pengujian banyak kondisi sekaligus.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span><strong>COUNTIF</strong> menghitung jumlah sel sesuai kriteria, sedangkan <strong>SUMIF</strong> menjumlahkan nilai berdasarkan kriteria tertentu.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span><strong>VLOOKUP</strong> mencari data secara vertikal (kolom pertama), sementara <strong>HLOOKUP</strong> mencari secara horizontal (baris pertama).</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span>Kombinasi <strong>INDEX + MATCH</strong> lebih fleksibel daripada VLOOKUP karena bisa mencari ke arah mana pun, termasuk ke kiri.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span>Semua fungsi ini diterapkan secara nyata pada <strong>data penjualan</strong> untuk menghitung, mencari, dan menganalisis data secara otomatis.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Penutup ==================== -->
+        <div class="slide slide-closing" data-slide="14">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">Dengan menguasai fungsi logika dan pencarian data, Anda kini bisa membuat spreadsheet yang cerdas dan otomatis — dari pengambilan keputusan hingga analisis penjualan.</p>
+            <p class="closing-meta">Pertemuan 13: Pengolah Angka Bagian 3 — Pivot Table, Grafik &amp; Analisis Data Lanjutan</p>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 14;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        goToSlide(1);
+    </script>
+</body>
+</html>

@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pertemuan 7 — Dasar Teknologi Digital</title>
-    <link rel="stylesheet" href="assets/styles/slides.css">
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/styles/slides-reveal.css">
+    <link rel="stylesheet" href="assets/styles/reveal-deck.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="reveal">
+        <div class="slides">
 
-    <div class="presentation" id="presentation">
 
         <!-- ==================== SLIDE 1: Title ==================== -->
-        <div class="slide slide-title active" data-slide="1">
+        <section class="slide slide-title" data-slide="1">
             <div class="title-header">
                 <div class="header-logos">
                     <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
@@ -21,32 +26,43 @@
             </div>
             <h1>Review, Refleksi, Evaluasi &amp; Kuis 1</h1>
             <p class="subtitle">Mengingat dan menguji pemahaman materi Dasar Teknologi Digital dari pertemuan 1 hingga 6</p>
-            <div class="meta">
-                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
-                <div class="meta-item"><span>&middot;</span></div>
-                <div class="meta-item"><span>Pertemuan 7</span></div>
+            <div class="masthead"><span class="masthead-course">Dasar Teknologi Digital</span><span class="masthead-part">Pertemuan 7</span></div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>1 / 10</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 2: Hook ==================== -->
+        <section class="slide slide-full" data-slide="2">
+            <h2>Saatnya Merefleksikan Perjalanan</h2>
+            <div class="slide-center">
+                <ul class="bullet-list">
+                    <li><strong>Fondasi digital</strong> — data, biner, sistem bilangan, dan gerbang logika</li>
+                    <li><strong>Internet &amp; aplikasi</strong> — web, cloud, media sosial, AI, dan industri 4.0</li>
+                    <li><strong>Keamanan &amp; etika digital</strong> — cybersecurity, privasi, dan tanggung jawab warga digital</li>
+                    <li><strong>Kuis 1</strong> — uji pemahaman menyeluruh sebagai persiapan UTS</li>
+                </ul>
+                <p class="body-text text-caption mt-lg">Semua materi Pertemuan 1–6 akan kita ingat kembali — lalu kita uji lewat kuis.</p>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>1 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>2 / 10</span></div>
+        </section>
 
         <!-- ==================== SLIDE 2: Agenda ==================== -->
-        <div class="slide slide-full" data-slide="2">
+        <section class="slide slide-full" data-slide="3">
             <h2>Agenda Pertemuan</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Rangkuman Pertemuan 1 &amp; 2</h4><p>Konsep data, representasi biner, sistem bilangan, dan gerbang logika</p></div></div>
                 <div class="list-item"><div class="list-number">2</div><div><h4>Rangkuman Pertemuan 3 &amp; 4</h4><p>Internet, website, basis data, cloud, dan media sosial</p></div></div>
                 <div class="list-item"><div class="list-number">3</div><div><h4>Rangkuman Pertemuan 5 &amp; 6</h4><p>Big data, cybersecurity, e-government, e-commerce, AI, dan industri 4.0</p></div></div>
-                <div class="list-item"><div class="list-number">4</div><div><h4>Refleksi &amp; Kuis 1</h4><p>Pertanyaan pemantik dan kuis 5 soal dari seluruh materi</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>Refleksi &amp; Kuis 1</h4><p>Pertanyaan pemantik dan kuis terjadwal (maks. 50 menit)</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>2 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>3 / 10</span></div>
+        </section>
 
         <!-- ==================== SLIDE 3: Rangkuman Pertemuan 1 & 2 ==================== -->
-        <div class="slide slide-full" data-slide="3">
+        <section class="slide slide-full" data-slide="4">
             <h2>Rangkuman: Pertemuan 1 &amp; 2</h2>
             <div class="two-col">
                 <div class="col">
-                    <h3>Pertemuan 1 — Pengenalan Teknologi Digital</h3>
+                    <h3>Pengenalan Teknologi Digital</h3>
                     <ul>
                         <li><strong>Data, Informasi, Pengetahuan</strong> — data diproses menjadi informasi, informasi menjadi pengetahuan</li>
                         <li><strong>Digital vs Analog</strong> — sinyal digital diskrit (0/1), analog kontinu</li>
@@ -55,7 +71,7 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <h3>Pertemuan 2 — Bilangan &amp; Logika Digital</h3>
+                    <h3>Bilangan &amp; Logika Digital</h3>
                     <ul>
                         <li><strong>Sistem Bilangan</strong> — desimal, biner, oktal, heksadesimal</li>
                         <li><strong>Konversi Basis</strong> — desimal ↔ biner ↔ oktal ↔ hex</li>
@@ -64,15 +80,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>3 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>4 / 10</span></div>
+        </section>
 
         <!-- ==================== SLIDE 4: Rangkuman Pertemuan 3 & 4 ==================== -->
-        <div class="slide slide-full" data-slide="4">
+        <section class="slide slide-full" data-slide="5">
             <h2>Rangkuman: Pertemuan 3 &amp; 4</h2>
             <div class="two-col">
                 <div class="col">
-                    <h3>Pertemuan 3 — Internet &amp; Web</h3>
+                    <h3>Internet &amp; Web</h3>
                     <ul>
                         <li><strong>Internet</strong> — jaringan global via protokol TCP/IP</li>
                         <li><strong>Website</strong> — dibangun dari HTML, CSS, JavaScript</li>
@@ -82,7 +98,7 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <h3>Pertemuan 4 — Transformasi Digital</h3>
+                    <h3>Transformasi Digital</h3>
                     <ul>
                         <li><strong>Inovasi Digital Indonesia</strong> — e-commerce, ride-hailing, fintech</li>
                         <li><strong>AI &amp; Machine Learning</strong> — komputer belajar dari data</li>
@@ -91,15 +107,15 @@
                     </ul>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>4 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>5 / 10</span></div>
+        </section>
 
         <!-- ==================== SLIDE 5: Rangkuman Pertemuan 5 & 6 ==================== -->
-        <div class="slide slide-full" data-slide="5">
+        <section class="slide slide-full" data-slide="6">
             <h2>Rangkuman: Pertemuan 5 &amp; 6</h2>
             <div class="two-col">
                 <div class="col">
-                    <h3>Pertemuan 5 — Data &amp; Keamanan</h3>
+                    <h3>Data &amp; Keamanan</h3>
                     <ul>
                         <li><strong>Data → Informasi → Pengetahuan</strong> — hierarki data</li>
                         <li><strong>Big Data 4V</strong> — Volume, Velocity, Variety, Veracity</li>
@@ -108,7 +124,7 @@
                     </ul>
                 </div>
                 <div class="col">
-                    <h3>Pertemuan 6 — Aplikasi &amp; Etika Digital</h3>
+                    <h3>Aplikasi &amp; Etika Digital</h3>
                     <ul>
                         <li><strong>Aplikasi Digital</strong> — pendidikan, kesehatan, bisnis, pemerintahan</li>
                         <li><strong>e-Government</strong> — digitalisasi layanan publik</li>
@@ -118,11 +134,11 @@
                     </ul>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>5 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>6 / 10</span></div>
+        </section>
 
         <!-- ==================== SLIDE 6: Refleksi ==================== -->
-        <div class="slide slide-full" data-slide="6">
+        <section class="slide slide-full" data-slide="7">
             <h2>Refleksi: Pertanyaan Pemantik</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Tentang Fondasi Digital</h4><p>Mengapa komputer hanya menggunakan bilangan biner, dan bagaimana hal ini mempengaruhi semua data yang kita gunakan sehari-hari?</p></div></div>
@@ -130,91 +146,131 @@
                 <div class="list-item"><div class="list-number">3</div><div><h4>Tentang Keamanan</h4><p>Apa langkah konkrit yang sudah kamu lakukan untuk melindungi data pribadimu di dunia digital?</p></div></div>
                 <div class="list-item"><div class="list-number">4</div><div><h4>Tentang Etika &amp; Masa Depan</h4><p>Bagaimana peran kita sebagai pengguna teknologi digital dalam menciptakan ekosistem digital yang aman dan bertanggung jawab?</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>6 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>7 / 10</span></div>
+        </section>
 
-        <!-- ==================== SLIDE 7: Kuis 1 ==================== -->
-        <div class="slide slide-quiz" data-slide="7">
+                <!-- ==================== SLIDE 7: Kuis 1 ==================== -->
+        <section class="slide slide-full" data-slide="8">
             <h2>Kuis 1: Uji Pemahaman</h2>
-            <div class="quiz-grid">
-                <div class="quiz-q"><div class="q-text">1. Berapa bit dalam 1 byte?</div><div class="q-options"><div class="q-opt">A. 4 bit</div><div class="q-opt">B. 8 bit</div><div class="q-opt">C. 16 bit</div><div class="q-opt">D. 32 bit</div></div></div>
-                <div class="quiz-q"><div class="q-text">2. Gerbang logika yang menghasilkan 1 hanya jika semua input berbeda?</div><div class="q-options"><div class="q-opt">A. AND</div><div class="q-opt">B. OR</div><div class="q-opt">C. XOR</div><div class="q-opt">D. NOT</div></div></div>
-                <div class="quiz-q"><div class="q-text">3. Protokol utama yang digunakan oleh internet?</div><div class="q-options"><div class="q-opt">A. HTTP</div><div class="q-opt">B. FTP</div><div class="q-opt">C. TCP/IP</div><div class="q-opt">D. SMTP</div></div></div>
-                <div class="quiz-q"><div class="q-text">4. Big Data ditandai oleh 4V. Yang bukan termasuk 4V?</div><div class="q-options"><div class="q-opt">A. Volume</div><div class="q-opt">B. Velocity</div><div class="q-opt">C. Validity</div><div class="q-opt">D. Variety</div></div></div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Model e-commerce yang melibatkan transaksi antar konsumen disebut?</div><div class="q-options"><div class="q-opt">A. B2C</div><div class="q-opt">B. B2B</div><div class="q-opt">C. C2C</div><div class="q-opt">D. G2C</div></div></div>
+            <div class="quiz-timer">
+                <div class="timer-circle">
+                    <svg viewBox="0 0 220 220">
+                        <circle class="bg" cx="110" cy="110" r="100"></circle>
+                        <circle class="progress" id="timer-progress-7" cx="110" cy="110" r="100"></circle>
+                    </svg>
+                    <div class="timer-content">
+                        <div class="timer-time" id="timer-display-7">50:00</div>
+                        <div class="timer-label">menit</div>
+                    </div>
+                </div>
+                <div class="timer-controls">
+                    <button class="timer-btn primary" id="timer-start-7">Mulai</button>
+                    <button class="timer-btn" id="timer-pause-7">Jeda</button>
+                    <button class="timer-btn" id="timer-reset-7">Reset</button>
+                </div>
+                <p class="body-text text-caption mt-md">Kuis dikerjakan maksimal <strong>50 menit</strong> — soal diberikan oleh dosen pengampu.</p>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>7 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>8 / 10</span></div>
+        </section>
+        <script>
+(function () {
+    var TOTAL = 50 * 60;
+    var CIRC = 628.32;
+    var remaining = TOTAL;
+    var interval = null;
+    var display = document.getElementById("timer-display-7");
+    var ring = document.getElementById("timer-progress-7");
+    function fmt(s) {
+        var m = Math.floor(s / 60);
+        var ss = s % 60;
+        return (m < 10 ? "0" : "") + m + ":" + (ss < 10 ? "0" : "") + ss;
+    }
+    function paint() {
+        display.textContent = fmt(remaining);
+        ring.style.strokeDashoffset = (CIRC * (1 - remaining / TOTAL)).toFixed(2);
+    }
+    function stop() { if (interval !== null) { clearInterval(interval); interval = null; } }
+    function tick() {
+        if (remaining > 0) { remaining--; paint(); }
+        if (remaining <= 0) stop();
+    }
+    function start() { if (interval === null && remaining > 0) interval = setInterval(tick, 1000); }
+    function reset() { stop(); remaining = TOTAL; paint(); }
+    document.getElementById("timer-start-7").addEventListener("click", start);
+    document.getElementById("timer-pause-7").addEventListener("click", stop);
+    document.getElementById("timer-reset-7").addEventListener("click", reset);
+    paint();
+})();
+        </script>
 
-        <!-- ==================== SLIDE 8: Rangkuman ==================== -->
-        <div class="slide slide-rangkuman" data-slide="8">
-            <div class="overline">Rangkuman</div>
-            <h2>Poin-Poin Penting</h2>
-            <div class="rangkuman-list">
-                <div class="rangkuman-item"><div class="rnum">1</div><span>Komputer merepresentasikan semua data dalam <strong>bilangan biner</strong> (0 dan 1), dari teks hingga video.</span></div>
-                <div class="rangkuman-item"><div class="rnum">2</div><span><strong>Internet</strong> menghubungkan miliaran perangkat; website, cloud, dan media sosial adalah aplikasinya.</span></div>
-                <div class="rangkuman-item"><div class="rnum">3</div><span><strong>Big Data</strong> dan <strong>AI</strong> mengubah cara kita bekerja dan hidup di era Industri 4.0.</span></div>
-                <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Keamanan digital</strong> (cybersecurity) dan <strong>etika digital</strong> adalah tanggung jawab bersama.</span></div>
-                <div class="rangkuman-item"><div class="rnum">5</div><span>Teknologi digital hadir di <strong>semua sektor</strong>: pendidikan, kesehatan, bisnis, pemerintahan.</span></div>
+<!-- ==================== Selanjutnya: UTS (Pertemuan 8) ==================== -->
+        <section class="slide slide-full" data-slide="9">
+            <h2>Selanjutnya: UTS (Pertemuan 8)</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>📝</h3>
+                        <p><strong>Ujian Tengah Semester</strong><br>Cakupan materi Pertemuan 1–7</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🎯</h3>
+                        <p><strong>Persiapan</strong><br>Review konsep dan latihan soal</p>
+                    </div>
+                </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>8 / 9</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>9 / 10</span></div>
+        </section>
 
         <!-- ==================== SLIDE 9: Penutup ==================== -->
-        <div class="slide slide-closing" data-slide="9">
+        <section class="slide slide-closing" data-slide="10">
             <h1>Semangat UTS!</h1>
-            <p class="closing-subtitle">Setelah UTS, kita akan masuk ke materi baru: <strong>Algoritma &amp; Pemrograman Dasar</strong> — dari konsep ke kode.</p>
-            <p class="closing-meta">Pertemuan 8: Algoritma, Flowchart &amp; Pseudocode</p>
-            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>9 / 9</span></div>
+            <p class="closing-subtitle">Setelah UTS, kita akan masuk ke materi baru: <strong>Microsoft Word — Pengolah Kata</strong> untuk dokumen akademik dan profesional.</p>
+                        <div class="quote-block text-left">
+                <p>"Success is the sum of small efforts, repeated day in and day out."</p>
+                <cite>— Robert Collier</cite>
+            </div>
+<p class="closing-meta">Pertemuan 8: UTS</p>
+            <div class="slide-footer"><span>Pertemuan 7 — Dasar Teknologi Digital</span><span>10 / 10</span></div>
+        </section>
+    
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav-hover-zone"></div>
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">&larr;</button>
-        <span class="slide-counter" id="slideCounter">1 / 9</span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">&rarr;</button>
-    </div>
-
+    <script src="assets/vendor/reveal/reveal.js"></script>
+    <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="assets/vendor/reveal/plugin/search/search.js"></script>
     <script>
-        let currentSlide = 1;
-        const totalSlides = 9;
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
-        }
-
-        function goToSlide(slideNumber) {
-            document.querySelector('.slide.active').classList.remove('active');
-            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
-            if (el) {
-                el.classList.add('active');
-                currentSlide = slideNumber;
-                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
-                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
-                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
-            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0,
+            minScale: 0.2,
+            maxScale: 2.0,
+            center: false,
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: false,
+            transition: 'none',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            overview: true,
+            keyboard: true,
+            touch: true,
+            fragments: false,
+            pdfSeparateFragments: false,
+            plugins: [ RevealNotes, RevealZoom, RevealSearch ]
         });
 
-        let touchStartX = 0;
-        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-        });
-
-        goToSlide(1);
+        // One-click PDF export parity with the legacy `?print=1` flow:
+        // reveal renders paginated pages on `?print-pdf`; fire the print
+        // dialog once layout settles.
+        if ( /print-pdf/gi.test( window.location.search ) ) {
+            window.addEventListener( 'load', function () {
+                setTimeout( function () { window.print(); }, 800 );
+            } );
+        }
     </script>
 </body>
 </html>

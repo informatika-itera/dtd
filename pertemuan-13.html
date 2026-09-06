@@ -4,32 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pertemuan 13 - Dasar Teknologi Digital</title>
-    <link rel="stylesheet" href="assets/styles/slides.css">
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/styles/slides-reveal.css">
+    <link rel="stylesheet" href="assets/styles/reveal-deck.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="reveal">
+        <div class="slides">
 
-    <div class="presentation" id="presentation">
 
         <!-- ==================== SLIDE 1: Title ==================== -->
-        <div class="slide slide-title active" data-slide="1">
+        <section class="slide slide-title" data-slide="1">
             <div class="title-header">
                 <div class="header-logos">
-                    <span class="pertemuan-badge">📊 Pertemuan 13</span>
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
                 </div>
             </div>
             <h1>Pengolah Angka Bagian 3</h1>
             <p class="subtitle">Fungsi teks &amp; tanggal, tabel pivot, serta otomatisasi dengan macro dan VBA</p>
-            <div class="meta">
-                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
-                <div class="meta-item"><span>&middot;</span></div>
-                <div class="meta-item"><span>Pertemuan 13</span></div>
-            </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
-        </div>
+            <div class="masthead"><span class="masthead-course">Dasar Teknologi Digital</span><span class="masthead-part">Pertemuan 13</span></div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>1 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 2: Agenda ==================== -->
-        <div class="slide slide-full" data-slide="2">
+        <section class="slide slide-full" data-slide="2">
             <h2>Agenda Pertemuan</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Fungsi Teks (String)</h4><p>LEFT, RIGHT, MID, LEN — memanipulasi teks dalam sel</p></div></div>
@@ -38,11 +40,11 @@
                 <div class="list-item"><div class="list-number">4</div><div><h4>Tabel Pivot</h4><p>Konsep dasar dan praktik membuat pivot table</p></div></div>
                 <div class="list-item"><div class="list-number">5</div><div><h4>Macro &amp; VBA</h4><p>Pengenalan, perekaman, dan otomatisasi tugas</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>2 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 3: Fungsi String Dasar ==================== -->
-        <div class="slide slide-content" data-slide="3">
+        <section class="slide slide-content" data-slide="3">
             <div class="content-left">
                 <h2>Fungsi String: LEFT, RIGHT, MID</h2>
                 <div class="highlight-box">
@@ -77,11 +79,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>3 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 4: LEN, CONCATENATE, TEXT ==================== -->
-        <div class="slide slide-full" data-slide="4">
+        <section class="slide slide-full" data-slide="4">
             <h2>Fungsi LEN, CONCATENATE, TEXT</h2>
             <div class="cards-grid-4">
                 <div class="card">
@@ -113,11 +115,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>4 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 5: Fungsi Tanggal ==================== -->
-        <div class="slide slide-content" data-slide="5">
+        <section class="slide slide-content" data-slide="5">
             <div class="content-left">
                 <h2>Fungsi Tanggal: TODAY, YEAR, MONTH, DAY</h2>
                 <div class="highlight-box">
@@ -154,11 +156,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>5 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 6: Pivot Table Basics ==================== -->
-        <div class="slide slide-full" data-slide="6">
+        <section class="slide slide-full" data-slide="6">
             <h2>Tabel Pivot: Konsep Dasar</h2>
             <p class="body-text">Pivot Table adalah fitur Excel untuk <strong>meringkas, menganalisis, dan menjelajahi</strong> data besar secara interaktif — tanpa rumus manual.</p>
             <div class="cards-grid-4">
@@ -179,11 +181,11 @@
                     <div class="card-body"><h3>Filter</h3><p>Menyaring data yang ditampilkan tanpa mengubah sumber</p></div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>6 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 7: Pivot Table Practice ==================== -->
-        <div class="slide slide-content" data-slide="7">
+        <section class="slide slide-content" data-slide="7">
             <div class="content-left">
                 <h2>Praktik: Membuat Pivot Table</h2>
                 <div class="highlight-box">
@@ -218,11 +220,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>7 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 8: Macro & VBA Intro ==================== -->
-        <div class="slide slide-full" data-slide="8">
+        <section class="slide slide-full" data-slide="8">
             <h2>Pengenalan Macro &amp; VBA</h2>
             <p class="body-text">Macro adalah <strong>rekaman perintah</strong> yang bisa diputar ulang. VBA (Visual Basic for Applications) adalah bahasa pemrograman di balik macro Excel.</p>
             <div class="cards-grid-4">
@@ -243,11 +245,11 @@
                     <div class="card-body"><h3>Keamanan</h3><p>File macro disimpan sebagai <span class="mono">.xlsm</span>, bukan <span class="mono">.xlsx</span></p></div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>8 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 9: Recording Macros ==================== -->
-        <div class="slide slide-content" data-slide="9">
+        <section class="slide slide-content" data-slide="9">
             <div class="content-left">
                 <h2>Merekam Macro</h2>
                 <div class="highlight-box">
@@ -281,11 +283,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>9 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 10: Automating Tasks ==================== -->
-        <div class="slide slide-full" data-slide="10">
+        <section class="slide slide-full" data-slide="10">
             <h2>Otomatisasi Tugas dengan Macro</h2>
             <p class="body-text">Macro menghilangkan pekerjaan repetitif. Berikut contoh tugas yang bisa diotomasi:</p>
             <div class="cards-grid-4">
@@ -306,11 +308,11 @@
                     <div class="card-body"><h3>Import Data</h3><p>Ambil data dari file lain atau database dan gabungkan otomatis</p></div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>10 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
-        <div class="slide slide-quiz" data-slide="11">
+        <section class="slide slide-quiz" data-slide="11">
             <h2>Post-Test: Uji Pemahaman</h2>
             <div class="quiz-grid">
                 <div class="quiz-q"><div class="q-text">1. Fungsi untuk mengambil 3 karakter dari kiri teks?</div><div class="q-options"><div class="q-opt">A. RIGHT(teks, 3)</div><div class="q-opt">B. LEFT(teks, 3)</div><div class="q-opt">C. MID(teks, 1, 3)</div><div class="q-opt">D. LEN(teks, 3)</div></div></div>
@@ -319,11 +321,11 @@
                 <div class="quiz-q"><div class="q-text">4. Pivot Table digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Membuat grafik</div><div class="q-opt">B. Meringkas &amp; menganalisis data</div><div class="q-opt">C. Menghitung rumus</div><div class="q-opt">D. Menyimpan file</div></div></div>
                 <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Ekstensi file Excel yang mendukung macro?</div><div class="q-options"><div class="q-opt">A. .xlsx</div><div class="q-opt">B. .xls</div><div class="q-opt">C. .xlsm</div><div class="q-opt">D. .csv</div></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>11 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
-        <div class="slide slide-quiz" data-slide="12">
+        <section class="slide slide-quiz" data-slide="12">
             <h2>Post-Test: Jawaban</h2>
             <div class="quiz-grid">
                 <div class="quiz-q"><div class="q-text">1. Fungsi untuk mengambil 3 karakter dari kiri teks?</div><div class="q-options"><div class="q-opt">A. RIGHT(teks, 3)</div><div class="q-opt correct">B. LEFT(teks, 3) ✓</div><div class="q-opt">C. MID(teks, 1, 3)</div><div class="q-opt">D. LEN(teks, 3)</div></div></div>
@@ -332,13 +334,12 @@
                 <div class="quiz-q"><div class="q-text">4. Pivot Table digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Membuat grafik</div><div class="q-opt correct">B. Meringkas &amp; menganalisis data ✓</div><div class="q-opt">C. Menghitung rumus</div><div class="q-opt">D. Menyimpan file</div></div></div>
                 <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Ekstensi file Excel yang mendukung macro?</div><div class="q-options"><div class="q-opt">A. .xlsx</div><div class="q-opt">B. .xls</div><div class="q-opt correct">C. .xlsm ✓</div><div class="q-opt">D. .csv</div></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>12 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 13: Rangkuman ==================== -->
-        <div class="slide slide-rangkuman" data-slide="13">
-            <div class="overline">Rangkuman</div>
-            <h2>Poin-Poin Penting Pertemuan 13</h2>
+        <section class="slide slide-rangkuman" data-slide="13">
+            <h2>Rangkuman Pertemuan 13</h2>
             <div class="rangkuman-list">
                 <div class="rangkuman-item"><div class="rnum">1</div><span>Fungsi teks <strong>LEFT, RIGHT, MID</strong> memungkinkan ekstraksi karakter dari posisi tertentu dalam sel.</span></div>
                 <div class="rangkuman-item"><div class="rnum">2</div><span><strong>CONCATENATE</strong> dan <strong>TEXT</strong> berguna untuk menggabungkan serta memformat nilai menjadi teks yang terbaca.</span></div>
@@ -346,73 +347,81 @@
                 <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Tabel Pivot</strong> adalah alat analisis powerful untuk meringkas data besar tanpa rumus manual.</span></div>
                 <div class="rangkuman-item"><div class="rnum">5</div><span><strong>Macro &amp; VBA</strong> mengotomasi tugas berulang, menyimpan waktu dan mengurangi kesalahan manusia.</span></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>13 / 15</span></div>
+        </section>
+
+        <!-- ==================== Selanjutnya: Pertemuan 14 ==================== -->
+        <section class="slide slide-full" data-slide="14">
+            <h2>Selanjutnya: Pertemuan 14</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🧠</h3>
+                        <p><strong>Prompt Engineering</strong><br>Berkomunikasi efektif dengan AI</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🔬</h3>
+                        <p><strong>Scispace untuk Riset</strong><br>AI membantu riset akademik</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>⚖️</h3>
+                        <p><strong>Etika & Limitasi AI</strong><br>Batas dan tanggung jawab</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>14 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 14: Closing ==================== -->
-        <div class="slide slide-closing" data-slide="14">
+        <section class="slide slide-closing" data-slide="15">
             <h1>Terima Kasih</h1>
             <p class="closing-subtitle">Dengan fungsi teks, tanggal, pivot table, dan macro — Anda sudah memiliki bekal untuk mengolah data secara profesional di Excel.</p>
-            <p class="closing-meta">Pertemuan 14: Presentasi Digital &amp; Kolaborasi Online</p>
-            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+                        <div class="quote-block text-left">
+                <p>"Without data, you're just another person with an opinion."</p>
+                <cite>— W. Edwards Deming</cite>
+            </div>
+<p class="closing-meta">Pertemuan 14: Aplikasi Kecerdasan Buatan</p>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>15 / 15</span></div>
+        </section>
+    
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav-hover-zone"></div>
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
-        <span class="slide-counter" id="slideCounter">1 / 14</span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
-        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
-    </div>
-
+    <script src="assets/vendor/reveal/reveal.js"></script>
+    <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="assets/vendor/reveal/plugin/search/search.js"></script>
     <script>
-        let currentSlide = 1;
-        const totalSlides = 14;
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
-        }
-
-        function goToSlide(slideNumber) {
-            document.querySelector('.slide.active').classList.remove('active');
-            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
-            if (el) {
-                el.classList.add('active');
-                currentSlide = slideNumber;
-                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
-                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
-                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
-            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0,
+            minScale: 0.2,
+            maxScale: 2.0,
+            center: false,
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: false,
+            transition: 'none',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            overview: true,
+            keyboard: true,
+            touch: true,
+            fragments: false,
+            pdfSeparateFragments: false,
+            plugins: [ RevealNotes, RevealZoom, RevealSearch ]
         });
 
-        let touchStartX = 0;
-        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-        });
-
-        function printSlides() {
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(s => { s.style.display = 'flex'; });
-            window.print();
-            slides.forEach((s, i) => { s.style.display = i === 0 ? 'flex' : 'none'; });
-            document.querySelector('.slide.active').style.display = 'flex';
+        // One-click PDF export parity with the legacy `?print=1` flow:
+        // reveal renders paginated pages on `?print-pdf`; fire the print
+        // dialog once layout settles.
+        if ( /print-pdf/gi.test( window.location.search ) ) {
+            window.addEventListener( 'load', function () {
+                setTimeout( function () { window.print(); }, 800 );
+            } );
         }
-
-        goToSlide(1);
     </script>
 </body>
 </html>

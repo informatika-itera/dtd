@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pertemuan 4 - Dasar Teknologi Digital</title>
-    <link rel="stylesheet" href="assets/styles/slides.css">
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/styles/slides-reveal.css">
+    <link rel="stylesheet" href="assets/styles/reveal-deck.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="reveal">
+        <div class="slides">
 
-    <div class="presentation" id="presentation">
 
         <!-- ==================== SLIDE 1: Title ==================== -->
-        <div class="slide slide-title active" data-slide="1">
+        <section class="slide slide-title" data-slide="1">
             <div class="title-header">
                 <div class="header-logos">
                     <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
@@ -21,16 +26,29 @@
             </div>
             <h1>Aplikasi &amp; Etika Teknologi Digital</h1>
             <p class="subtitle">Menjelajahi berbagai aplikasi teknologi digital dalam kehidupan sehari-hari dan memahami etika serta tanggung jawab penggunaannya</p>
-            <div class="meta">
-                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
-                <div class="meta-item"><span>&middot;</span></div>
-                <div class="meta-item"><span>Pertemuan 4</span></div>
+            <div class="masthead"><span class="masthead-course">Dasar Teknologi Digital</span><span class="masthead-part">Pertemuan 4</span></div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>1 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 2: Hook ==================== -->
+        <section class="slide slide-full" data-slide="2">
+            <h2>Teknologi Ada di Mana-mana</h2>
+            <div class="stats-row mb-md">
+                <div class="stat-box"><div class="stat-number">221jt</div><div class="stat-label">Pengguna internet<br>Indonesia (2025)</div></div>
+                <div class="stat-box"><div class="stat-number">8jam</div><div class="stat-label">Rata-rata waktu<br>online per hari</div></div>
+                <div class="stat-box"><div class="stat-number">130jt</div><div class="stat-label">Pengguna e-commerce<br>aktif di Indonesia</div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
-        </div>
+            <ul class="bullet-list mt-xl">
+                <li><strong>Kuliah</strong> — Zoom, Google Classroom, dan MOOC membuka akses belajar tanpa batas</li>
+                <li><strong>Berkas Kependudukan</strong> — Dukcapil Online, e-Filing pajak, dan LAPOR! menggantikan antrean fisik</li>
+                <li><strong>Kesehatan</strong> — telemedicine memungkinkan konsultasi dokter dari rumah</li>
+            </ul>
+            <p class="body-text text-source">Sumber: DataReportal (2026), APJII (2025)</p>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>2 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 2: Agenda ==================== -->
-        <div class="slide slide-full" data-slide="2">
+        <section class="slide slide-full" data-slide="3">
             <h2>Agenda Pertemuan</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Teknologi dalam Pendidikan</h4><p>E-learning, LMS, dan transformasi digital kampus</p></div></div>
@@ -38,11 +56,11 @@
                 <div class="list-item"><div class="list-number">3</div><div><h4>Teknologi di Berbagai Bidang</h4><p>Kesehatan, pertanian, dan transportasi</p></div></div>
                 <div class="list-item"><div class="list-number">4</div><div><h4>Etika &amp; Tanggung Jawab Digital</h4><p>Hak, kewajiban, dan studi kasus etika</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>3 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 3: Teknologi dalam Pendidikan ==================== -->
-        <div class="slide slide-content" data-slide="3">
+        <section class="slide slide-content" data-slide="4">
             <div class="content-left">
                 <h2>Teknologi dalam Pendidikan</h2>
                 <div class="highlight-box">
@@ -71,15 +89,13 @@
                 </div>
             </div>
             <div class="content-right">
-                <div class="visual-block">
-                    <img src="assets/images/education-technology.jpg" alt="Teknologi dalam Pendidikan" loading="lazy">
-                </div>
+                <img src="assets/images/education-technology.jpg" alt="Teknologi dalam Pendidikan" loading="lazy">
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>4 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 4: E-Government & E-Commerce ==================== -->
-        <div class="slide slide-full" data-slide="4">
+        <section class="slide slide-full" data-slide="5">
             <h2>E-Government &amp; E-Commerce</h2>
             <div class="cards-grid-2">
                 <div class="card">
@@ -119,38 +135,22 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>5 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 5: Teknologi di Bidang Kesehatan ==================== -->
-        <div class="slide slide-content" data-slide="5">
-            <div class="content-left">
-                <h2>Teknologi di Berbagai Bidang</h2>
-                <div class="highlight-box">
-                    <div class="highlight-title">🏥 Kesehatan</div>
-                    <div class="highlight-content"><strong>Telemedicine</strong> memungkinkan konsultasi dokter dari rumah. AI membantu diagnosis, wearable device memantau kesehatan real-time, dan rekam medis elektronik mempercepat layanan.</div>
-                </div>
-                <div class="highlight-box">
-                    <div class="highlight-title">🌾 Pertanian</div>
-                    <div class="highlight-content"><strong>Precision farming</strong> menggunakan drone, sensor IoT, dan GPS untuk memantau tanaman. Data analytics memprediksi cuaca dan optimalisasi irigasi — meningkatkan hasil panen hingga 30%.</div>
-                </div>
-                <div class="highlight-box">
-                    <div class="highlight-title">🚗 Transportasi</div>
-                    <div class="highlight-content">Ride-hailing (Gojek, Grab), navigasi GPS real-time, dan sistem ITS mengatur lalu lintas kota. Kendaraan otonom dan EV menjadi masa depan mobilitas.</div>
-                </div>
+                <section class="slide slide-full" data-slide="6">
+            <h2>Teknologi di Berbagai Bidang</h2>
+            <div class="cards-grid-3">
+                <div class="card"><div class="card-header"><div class="card-icon">🏥</div></div><div class="card-body"><h3>Kesehatan</h3><p><strong>Telemedicine</strong> memungkinkan konsultasi dokter dari rumah. AI membantu diagnosis dan wearable device memantau kesehatan real-time.</p><p><strong>20+ juta konsultasi/tahun</strong> di Indonesia.</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">🌾</div></div><div class="card-body"><h3>Pertanian</h3><p><strong>Precision farming</strong> menggunakan drone, sensor IoT, dan GPS untuk memantau tanaman serta memprediksi cuaca.</p><p><strong>+30% hasil panen</strong> dengan optimalisasi irigasi.</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">🚗</div></div><div class="card-body"><h3>Transportasi</h3><p>Ride-hailing (Gojek, Grab), navigasi GPS real-time, dan sistem ITS mengatur lalu lintas kota. Kendaraan otonom dan EV menjadi masa depan mobilitas.</p><p><strong>2+ juta mitra pengemudi</strong> aktif.</p></div></div>
             </div>
-            <div class="content-right">
-                <div class="diagram-container" style="flex-direction: column; gap: var(--sp-xl);">
-                    <div class="diagram-item"><div class="diagram-icon">🏥</div><div><strong>Telemedicine</strong><br>20+ juta konsultasi/tahun di Indonesia</div></div>
-                    <div class="diagram-item"><div class="diagram-icon">🌾</div><div><strong>Smart Farming</strong><br>Drone &amp; sensor IoT untuk pertanian presisi</div></div>
-                    <div class="diagram-item"><div class="diagram-icon">🚗</div><div><strong>Ride-Hailing</strong><br>2+ juta mitra pengemudi aktif</div></div>
-                </div>
-            </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>6 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 6: Aplikasi Lainnya ==================== -->
-        <div class="slide slide-full" data-slide="6">
+        <section class="slide slide-full" data-slide="7">
             <h2>Aplikasi Digital di Kehidupan Sehari-hari</h2>
             <div class="cards-grid-4">
                 <div class="card">
@@ -182,11 +182,37 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>7 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 8: Bridge — Dari Manfaat ke Tanggung Jawab ==================== -->
+        <section class="slide slide-full" data-slide="8">
+            <h2>Dari Manfaat ke Tanggung Jawab</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Teknologi memberi <strong>banyak manfaat</strong> — pendidikan, bisnis, kesehatan. Namun setiap kemudahan membawa <strong>tanggung jawab</strong>. Pertanyaannya: <strong>bagaimana kita menggunakannya secara etis?</strong></p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box">
+                        <h4>⚡ Manfaat</h4>
+                        <p>Pendidikan, bisnis,<br>kesehatan, komunikasi</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">
+                        <h4>⚖️ Tanggung Jawab</h4>
+                        <p>Etika, privasi,<br>hak &amp; kewajiban</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary">
+                        <h4>🌱 Warga Digital</h4>
+                        <p>Bijak &amp; beretika<br>dalam berdigital</p>
+                    </div>
+                </div>
+                <p class="body-text text-caption mt-md">Manfaat teknologi hanya bermakna bila kita <strong>menggunakannya dengan bertanggung jawab.</strong></p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>8 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 7: Etika Digital ==================== -->
-        <div class="slide slide-full" data-slide="7">
+        <section class="slide slide-full" data-slide="9">
             <h2>Etika Penggunaan Teknologi Digital</h2>
             <div class="cards-grid-3">
                 <div class="card">
@@ -214,11 +240,11 @@
             <div class="quote-block" style="margin-top: var(--sp-lg);">
                 <p>"Dengan kebebasan digital datanglah tanggung jawab digital — etika bukan pilihan, melainkan kebutuhan."</p>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>9 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 8: Hak & Kewajiban Digital ==================== -->
-        <div class="slide slide-content" data-slide="8">
+        <section class="slide slide-content" data-slide="10">
             <div class="content-left">
                 <h2>Hak &amp; Kewajiban Digital</h2>
                 <div class="two-col">
@@ -243,15 +269,110 @@
                 </div>
             </div>
             <div class="content-right">
-                <div class="visual-block">
-                    <img src="assets/images/digital-rights.jpg" alt="Hak dan Kewajiban Digital" loading="lazy">
+                <img src="assets/images/digital-rights.jpg" alt="Hak dan Kewajiban Digital" loading="lazy">
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>10 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 8: Etika Berkomunikasi Digital ==================== -->
+        <section class="slide slide-full" data-slide="11">
+            <h2>Etika Berkomunikasi Digital</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>✅ Lakukan</h3>
+                    <ul>
+                        <li>Gunakan bahasa yang sopan dan hormat</li>
+                        <li>Cek kebenaran informasi sebelum membagikan</li>
+                        <li>Hargai privasi dan minta izin sebelum menandai orang lain</li>
+                        <li>Berikan umpan balik yang membangun</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>🚫 Hindari</h3>
+                    <ul>
+                        <li>Ujaran kebencian dan cyberbullying</li>
+                        <li>Menyebarkan hoax atau fitnah</li>
+                        <li>Kata kasar dan nada menyinggung</li>
+                        <li>Membagikan informasi pribadi orang lain</li>
+                    </ul>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
-        </div>
+            <p class="body-text text-caption">Ingat <strong>THINK</strong> sebelum memposting: <strong>T</strong>rue (benar), <strong>H</strong>elpful (bermanfaat), <strong>I</strong>nspiring (menginspirasi), <strong>N</strong>ecessary (perlu), <strong>K</strong>ind (baik).</p>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>11 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 9: Contoh Komunikasi Digital ==================== -->
+        <section class="slide slide-full" data-slide="12">
+            <h2>Contoh: Komunikasi Digital</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>✅ Komunikasi Baik</h3>
+                    <div class="quote-block">
+                        <p>"Selamat pagi, Pak. Mohon maaf mengganggu. Saya ingin bertanya tentang jadwal bimbingan minggu ini. Terima kasih."</p>
+                    </div>
+                    <p class="body-text text-caption">Sopan, jelas, menghargai waktu, dan langsung ke maksud.</p>
+                </div>
+                <div class="col">
+                    <h3>❌ Komunikasi Tidak Baik</h3>
+                    <div class="quote-block">
+                        <p>"PAK!! KAPAN BIMBINGAN?? BALAS DONG SEKARANG JUGA"</p>
+                    </div>
+                    <p class="body-text text-caption">Nada menuntut, huruf kapital (berteriak), tanpa salam dan kesopanan.</p>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>12 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 10: Etika Mengirim Email ==================== -->
+        <section class="slide slide-full" data-slide="13">
+            <h2>Etika Mengirim Email</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Subjek yang jelas</h4><p>Tuliskan inti email di baris subjek — jangan kosong atau terlalu umum.</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>Salam pembuka &amp; perkenalan</h4><p>Mulai dengan salam yang sopan dan perkenalkan diri secara singkat sebelum menyampaikan maksud.</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>Isi ringkas &amp; bahasa formal</h4><p>Sampaikan maksud dengan jelas, ringkas, dan bahasa yang formal. Hindari bahasa gaul dan singkatan.</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>Penutup &amp; tanda tangan</h4><p>Akhiri dengan ucapan terima kasih, nama lengkap, NIM, dan informasi kontak yang relevan.</p></div></div>
+            </div>
+            <div class="quote-block">
+                <p>"Menulis email dengan HURUF KAPITAL SEMUA dianggap berteriak dalam komunikasi digital."</p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>13 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 11: Contoh Etika Email ==================== -->
+        <section class="slide slide-full" data-slide="14">
+            <h2>Contoh: Email ke Dosen</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>✅ Email Baik</h3>
+                    <div class="quote-block">
+                        <p><strong>Subjek:</strong> Permohonan Bimbingan Tugas Akhir<br><br>Yth. Bapak/Ibu Dosen,<br>Selamat pagi. Saya Rina, NIM 122150001, mahasiswa bimbingan TA Anda. Saya ingin menanyakan jadwal bimbingan minggu ini. Terima kasih.<br><br>Hormat saya,<br>Rina</p>
+                    </div>
+                    <p class="body-text text-caption">Subjek jelas, salam sopan, perkenalan lengkap, penutup formal.</p>
+                </div>
+                <div class="col">
+                    <h3>❌ Email Tidak Baik</h3>
+                    <div class="quote-block">
+                        <p><strong>Subjek:</strong> (kosong)<br><br>pak, saya mau bimbingan hari ini bisa?? gk bisa nunggu lama, tolong bales cpt ya</p>
+                    </div>
+                    <p class="body-text text-caption">Subjek kosong, tanpa salam, bahasa tidak formal, nada menuntut.</p>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>14 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 12: Etika Digital untuk Mahasiswa ==================== -->
+        <section class="slide slide-full" data-slide="15">
+            <h2>Etika Digital untuk Mahasiswa</h2>
+            <div class="cards-grid-3">
+                <div class="card"><div class="card-header"><div class="card-icon">📚</div></div><div class="card-body"><h3>Integritas Akademik</h3><p>Jangan plagiat. Kutip dan cantumkan sumber setiap ide yang bukan milik Anda.</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">🤖</div></div><div class="card-body"><h3>Penggunaan AI yang Etis</h3><p>Gunakan AI sebagai alat bantu belajar, bukan pengganti pemahaman. Selalu periksa dan pahami hasilnya.</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">🔐</div></div><div class="card-body"><h3>Keamanan &amp; Reputasi</h3><p>Jaga password dan data pribadi. Bangun jejak digital yang positif untuk masa depan karier.</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>15 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 9: Studi Kasus Etika ==================== -->
-        <div class="slide slide-full" data-slide="9">
+        <section class="slide slide-full" data-slide="16">
             <h2>Studi Kasus: Etika Digital dalam Praktik</h2>
             <div class="cards-grid-3">
                 <div class="card">
@@ -279,11 +400,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>16 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 10: Diskusi ==================== -->
-        <div class="slide slide-content" data-slide="10">
+        <section class="slide slide-content" data-slide="17">
             <div class="content-left">
                 <h2>Diskusi Kelompok</h2>
                 <div class="highlight-box">
@@ -308,15 +429,13 @@
                 </div>
             </div>
             <div class="content-right">
-                <div class="visual-block">
-                    <img src="assets/images/group-discussion.jpg" alt="Diskusi Kelompok" loading="lazy">
-                </div>
+                <img src="assets/images/group-discussion.jpg" alt="Diskusi Kelompok" loading="lazy">
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>17 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
-        <div class="slide slide-quiz" data-slide="11">
+        <section class="slide slide-quiz" data-slide="18">
             <h2>Post-Test: Uji Pemahaman</h2>
             <div class="quiz-grid">
                 <div class="quiz-q">
@@ -355,21 +474,12 @@
                         <div class="q-opt">D. Menggunakan password yang kuat</div>
                     </div>
                 </div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;">
-                    <div class="q-text">5. UU ITE digunakan untuk menjerat pelaku penyebaran?</div>
-                    <div class="q-options">
-                        <div class="q-opt">A. Software open-source</div>
-                        <div class="q-opt">B. Konten edukasi</div>
-                        <div class="q-opt">C. Hoax dan ujaran kebencian</div>
-                        <div class="q-opt">D. Jurnal ilmiah</div>
-                    </div>
-                </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>18 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
-        <div class="slide slide-quiz" data-slide="12">
+        <section class="slide slide-quiz" data-slide="19">
             <h2>Post-Test: Jawaban</h2>
             <div class="quiz-grid">
                 <div class="quiz-q">
@@ -408,23 +518,13 @@
                         <div class="q-opt">D. Menggunakan password yang kuat</div>
                     </div>
                 </div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;">
-                    <div class="q-text">5. UU ITE digunakan untuk menjerat pelaku penyebaran?</div>
-                    <div class="q-options">
-                        <div class="q-opt">A. Software open-source</div>
-                        <div class="q-opt">B. Konten edukasi</div>
-                        <div class="q-opt correct">C. Hoax dan ujaran kebencian ✓</div>
-                        <div class="q-opt">D. Jurnal ilmiah</div>
-                    </div>
-                </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>19 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 13: Rangkuman ==================== -->
-        <div class="slide slide-rangkuman" data-slide="13">
-            <div class="overline">Rangkuman</div>
-            <h2>Poin-Poin Penting Pertemuan 4</h2>
+        <section class="slide slide-rangkuman" data-slide="20">
+            <h2>Rangkuman Pertemuan 4</h2>
             <div class="rangkuman-list">
                 <div class="rangkuman-item"><div class="rnum">1</div><span>Teknologi digital <strong>mentransformasi pendidikan</strong> melalui e-learning, LMS, dan MOOC — membuat pembelajaran lebih fleksibel dan aksesibel.</span></div>
                 <div class="rangkuman-item"><div class="rnum">2</div><span><strong>E-government</strong> mempercepat layanan publik, sedangkan <strong>e-commerce</strong> menghubungkan jutaan penjual dan pembeli secara daring.</span></div>
@@ -432,65 +532,98 @@
                 <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Etika digital</strong> mencakup privasi, hak cipta, netiket, dan tanggung jawab atas informasi yang kita sebarkan.</span></div>
                 <div class="rangkuman-item"><div class="rnum">5</div><span>Hak dan kewajiban digital harus seimbang — sebagai pengguna teknologi, kita <strong>bertanggung jawab</strong> atas setiap tindakan di dunia digital.</span></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>20 / 23</span></div>
+        </section>
 
-        <!-- ==================== SLIDE 14: Penutup ==================== -->
-        <div class="slide slide-closing" data-slide="14">
+        <!-- ==================== SLIDE 15: Referensi ==================== -->
+        <section class="slide slide-full" data-slide="21">
+            <h2 class="text-left">Referensi</h2>
+            <div class="reference-list">
+                <p>1. Bates, A.W. (2019). <em>Teaching in a Digital Age</em>. 2nd ed. Tony Bates Associates.</p>
+                <p>2. Laudon, K.C. &amp; Traver, C.G. (2022). <em>E-commerce 2021-2022: Business, Technology, Society</em>. 17th ed. Pearson.</p>
+                <p>3. Heeks, R. (2006). <em>Implementing and Managing eGovernment: An International Text</em>. SAGE Publications.</p>
+                <p>4. World Health Organization (2010). <em>Telemedicine: Opportunities and Developments in Member States</em>. WHO Press.</p>
+                <p>5. Wolfert, S., Ge, L., Verdouw, C., &amp; Bogaardt, M.J. (2017). "Big Data in Smart Farming – A review." <em>Agricultural Systems</em>, 153, 69-80.</p>
+                <p>6. Turban, E., King, D., Lee, J.K., Liang, T.P., &amp; Turban, D.C. (2018). <em>Electronic Commerce 2018</em>. Springer.</p>
+                <p>7. Undang-Undang No. 19 Tahun 2016 tentang Perubahan atas UU No. 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik.</p>
+                <p>8. DataReportal (2026). "Digital 2026: Indonesia." <em>datareportal.com/reports/digital-2026-indonesia</em></p>
+                <p>9. APJII (2025). "Survei Penetrasi Internet dan Perilaku Penggunaan Internet 2025." Asosiasi Penyelenggara Jasa Internet Indonesia.</p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>21 / 23</span></div>
+        </section>
+
+        <!-- ==================== Selanjutnya: Pertemuan 5 ==================== -->
+        <section class="slide slide-full" data-slide="22">
+            <h2>Selanjutnya: Pertemuan 5</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>📊</h3>
+                        <p><strong>Data & Informasi</strong><br>Dari data mentah menjadi pengetahuan yang bermakna</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>💾</h3>
+                        <p><strong>Format & Ukuran Data</strong><br>Bit, byte, dan satuan penyimpanan digital</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>📈</h3>
+                        <p><strong>Big Data & Analytics</strong><br>Mengolah data dalam skala besar</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>22 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 16: Penutup ==================== -->
+        <section class="slide slide-closing" data-slide="23">
             <h1>Terima Kasih</h1>
             <p class="closing-subtitle">Teknologi adalah alat yang powerful — tapi bagaimana kita menggunakannya menentukan apakah ia menjadi berkah atau bencana.</p>
-            <p class="closing-meta">Pertemuan 5: Keamanan Siber &amp; Perlindungan Data Digital</p>
-            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+                        <div class="quote-block text-left">
+                <p>"Technology is a useful servant but a dangerous master."</p>
+                <cite>— Christian Lous Lange</cite>
+            </div>
+<p class="closing-meta">Pertemuan 5: Data &amp; Informasi di Era Digital</p>
+            <div class="slide-footer"><span>Pertemuan 4 — Dasar Teknologi Digital</span><span>23 / 23</span></div>
+        </section>
+    
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav-hover-zone"></div>
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
-        <span class="slide-counter" id="slideCounter">1 / 14</span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
-        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
-    </div>
-
+    <script src="assets/vendor/reveal/reveal.js"></script>
+    <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="assets/vendor/reveal/plugin/search/search.js"></script>
     <script>
-        let currentSlide = 1;
-        const totalSlides = 14;
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
-        }
-
-        function goToSlide(slideNumber) {
-            document.querySelector('.slide.active').classList.remove('active');
-            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
-            if (el) {
-                el.classList.add('active');
-                currentSlide = slideNumber;
-                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
-                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
-                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
-            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0,
+            minScale: 0.2,
+            maxScale: 2.0,
+            center: false,
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: false,
+            transition: 'none',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            overview: true,
+            keyboard: true,
+            touch: true,
+            fragments: false,
+            pdfSeparateFragments: false,
+            plugins: [ RevealNotes, RevealZoom, RevealSearch ]
         });
 
-        let touchStartX = 0;
-        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-        });
-
-        goToSlide(1);
+        // One-click PDF export parity with the legacy `?print=1` flow:
+        // reveal renders paginated pages on `?print-pdf`; fire the print
+        // dialog once layout settles.
+        if ( /print-pdf/gi.test( window.location.search ) ) {
+            window.addEventListener( 'load', function () {
+                setTimeout( function () { window.print(); }, 800 );
+            } );
+        }
     </script>
 </body>
 </html>

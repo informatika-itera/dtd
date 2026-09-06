@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 10 — Dasar Teknologi Digital</title>
+    <link rel="stylesheet" href="assets/styles/slides.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
+                </div>
+            </div>
+            <h1>Pengolah Kata Bagian 2</h1>
+            <p class="subtitle">Fitur lanjutan pengolah kata: header &amp; footer, mail merge, watermark, page border, cetak &amp; kolaborasi</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 10</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Header, Footer &amp; Page Numbering</h4><p>Mengelola informasi di setiap halaman dokumen</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>Daftar Isi Otomatis</h4><p>Membuat TOC dari heading secara otomatis</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>Mail Merge</h4><p>Membuat surat massal dari data sumber</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>Watermark, Page Border &amp; Cetak</h4><p>Pengamanan dan pengaturan cetak dokumen</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>Fitur Kolaborasi &amp; Template</h4><p>Komentar, track changes, dan template profesional</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Header & Footer ==================== -->
+        <div class="slide slide-content" data-slide="3">
+            <div class="content-left">
+                <h2>Header, Footer &amp; Page Numbering</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">Apa Itu Header &amp; Footer?</div>
+                    <div class="highlight-content">Area di <strong>atas</strong> (header) dan <strong>bawah</strong> (footer) setiap halaman yang otomatis muncul di semua halaman. Bisa berisi nomor halaman, judul dokumen, nama penulis, atau tanggal.</div>
+                </div>
+                <p>Cara menambahkan: <strong>Insert &rarr; Header &amp; Footer</strong> di ribbon. Klik area header/footer untuk mulai mengedit.</p>
+                <p>Gunakan <strong>Page Number</strong> untuk menambahkan nomor halaman otomatis di posisi yang diinginkan.</p>
+                <div class="highlight-box">
+                    <div class="highlight-title">Tips</div>
+                    <div class="highlight-content">Centang <strong>"Different First Page"</strong> untuk menyembunyikan header/footer di halaman pertama (cover).</div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <img src="assets/images/word-processing.jpg" alt="Header dan Footer" loading="lazy">
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: Page Numbering & Section ==================== -->
+        <div class="slide slide-full" data-slide="4">
+            <h2>Page Numbering &amp; Section Break</h2>
+            <div class="cards-grid-4">
+                <div class="card"><div class="card-header"><div class="card-icon">🔢</div></div><div class="card-body"><h3>Page Number</h3><p>Insert &rarr; Page Number. Posisi: atas, bawah, margin, atau posisi kursor</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">📐</div></div><div class="card-body"><h3>Format Angka</h3><p>Angka (1,2,3), Romawi (i,ii,iii), atau huruf (a,b,c)</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">✂️</div></div><div class="card-body"><h3>Section Break</h3><p>Layout &rarr; Breaks &rarr; Next Page. Membagi dokumen menjadi section berbeda</p></div></div>
+                <div class="card"><div class="card-header"><div class="card-icon">🔗</div></div><div class="card-body"><h3>Unlink Header</h3><p>Putuskan link antar section agar setiap section punya header/footer berbeda</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: Daftar Isi Otomatis ==================== -->
+        <div class="slide slide-content" data-slide="5">
+            <div class="content-left">
+                <h2>Daftar Isi Otomatis (TOC)</h2>
+                <div class="data-table">
+                    <table>
+                        <thead><tr><th>Langkah</th><th>Aksi</th></tr></thead>
+                        <tbody>
+                            <tr><td class="mono">1</td><td>Beri format <strong>Heading 1, 2, 3</strong> pada judul</td></tr>
+                            <tr><td class="mono">2</td><td>Letakkan kursor di halaman TOC</td></tr>
+                            <tr><td class="mono">3</td><td>References &rarr; <strong>Table of Contents</strong></td></tr>
+                            <tr><td class="mono">4</td><td>Pilih gaya otomatis yang diinginkan</td></tr>
+                            <tr><td class="mono">5</td><td>Klik <strong>Update Table</strong> saat konten berubah</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Penting</div>
+                    <div class="highlight-content">Selalu gunakan <strong>Heading Style</strong> (bukan bold manual) agar TOC bisa mendeteksi judul secara otomatis.</div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <img src="assets/images/table-of-contents.jpg" alt="Daftar Isi Otomatis" loading="lazy">
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: Mail Merge ==================== -->
+        <div class="slide slide-full" data-slide="6">
+            <h2>Mail Merge (Surat Massal)</h2>
+            <div class="diagram-container">
+                <div class="diagram-box primary"><h4>1. Data Sumber</h4><p>Excel / CSV<br>berisi nama, alamat, dll</p></div>
+                <div class="diagram-arrow">&rarr;</div>
+                <div class="diagram-box warning"><h4>2. Template Surat</h4><p>Dokumen Word<br>dengan field placeholder</p></div>
+                <div class="diagram-arrow">&rarr;</div>
+                <div class="diagram-box success"><h4>3. Hasil</h4><p>Ratusan surat personal<br>otomatis terisi nama</p></div>
+            </div>
+            <div class="highlight-box" style="margin-top: var(--sp-md);">
+                <div class="highlight-title">Cara Kerja</div>
+                <div class="highlight-content">Mailings &rarr; Start Mail Merge &rarr; Select Recipients &rarr; Use Existing List (pilih file Excel). Masukkan field (&laquo;Nama&raquo;, &laquo;Alamat&raquo;), lalu <strong>Finish &amp; Merge</strong>.</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: Contoh Mail Merge ==================== -->
+        <div class="slide slide-content" data-slide="7">
+            <div class="content-left">
+                <h2>Contoh Mail Merge</h2>
+                <h3>Data di Excel (Sumber)</h3>
+                <div class="data-table">
+                    <table>
+                        <thead><tr><th>Nama</th><th>Alamat</th><th>Kota</th></tr></thead>
+                        <tbody>
+                            <tr><td>Budi Santoso</td><td>Jl. Merdeka 10</td><td>Bandung</td></tr>
+                            <tr><td>Siti Rahma</td><td>Jl. Sudirman 25</td><td>Jakarta</td></tr>
+                            <tr><td>Andi Pratama</td><td>Jl. Gatot Subroto 5</td><td>Surabaya</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3 style="margin-top: var(--sp-md);">Template Surat</h3>
+                <div class="highlight-box">
+                    <div class="highlight-content">Kepada Yth. <strong>&laquo;Nama&raquo;</strong><br>di <strong>&laquo;Alamat&raquo;</strong>, <strong>&laquo;Kota&raquo;</strong><br><br>Dengan hormat, kami mengundang Bapak/Ibu...</div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <img src="assets/images/mail-merge.jpg" alt="Mail Merge" loading="lazy">
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: Watermark & Page Border ==================== -->
+        <div class="slide slide-full" data-slide="8">
+            <h2>Watermark &amp; Page Border</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>💧 Watermark</h3>
+                    <ul>
+                        <li>Design &rarr; Watermark &rarr; Custom Watermark</li>
+                        <li>Bisa <strong>teks</strong> ("DRAFT", "RAHASIA") atau <strong>gambar</strong> (logo)</li>
+                        <li>Atur ukuran, warna, dan transparansi</li>
+                        <li>Tampil di belakang teks pada semua halaman</li>
+                        <li>Berguna untuk menandai status dokumen</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>🖼️ Page Border</h3>
+                    <ul>
+                        <li>Design &rarr; Page Borders</li>
+                        <li>Pilih <strong>Box, Shadow, 3-D</strong>, atau <strong>Custom</strong></li>
+                        <li>Atur style garis (solid, dashed, double)</li>
+                        <li>Warna dan ketebalan bisa dikustomisasi</li>
+                        <li>Bisa ditambahkan <strong>Art Border</strong> dekoratif</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Print & PDF Export ==================== -->
+        <div class="slide slide-content" data-slide="9">
+            <div class="content-left">
+                <h2>Pengaturan Cetak &amp; Export PDF</h2>
+                <h3>Pengaturan Print</h3>
+                <div class="data-table">
+                    <table>
+                        <thead><tr><th>Pengaturan</th><th>Fungsi</th></tr></thead>
+                        <tbody>
+                            <tr><td class="mono">Print Range</td><td>Semua halaman, halaman tertentu, atau seleksi</td></tr>
+                            <tr><td class="mono">Copies</td><td>Jumlah salinan yang dicetak</td></tr>
+                            <tr><td class="mono">Duplex</td><td>Cetak bolak-balik (manual/otomatis)</td></tr>
+                            <tr><td class="mono">Orientation</td><td>Portrait (vertikal) atau Landscape (horizontal)</td></tr>
+                            <tr><td class="mono">Paper Size</td><td>A4, Letter, F4, Legal, dll.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-right">
+                <h3>Export ke PDF</h3>
+                <div class="highlight-box">
+                    <div class="highlight-title">📄 Save As PDF</div>
+                    <div class="highlight-content">File &rarr; Export &rarr; Create PDF/XPS. Format tetap, tidak bisa diedit sembarangan, standar industri.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">🔒 PDF Terproteksi</div>
+                    <div class="highlight-content">Bisa diatur password agar hanya orang tertentu yang bisa membuka dokumen.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">🖨️ Preview Sebelum Cetak</div>
+                    <div class="highlight-content">Tekan <strong>Ctrl + P</strong> untuk melihat preview dan memastikan layout sebelum mencetak.</div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Collaboration & Templates ==================== -->
+        <div class="slide slide-content" data-slide="10">
+            <div class="content-left">
+                <h2>Fitur Kolaborasi &amp; Template</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">💬 Comments</div>
+                    <div class="highlight-content">Review &rarr; New Comment. Tambahkan catatan tanpa mengubah isi dokumen.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">📝 Track Changes</div>
+                    <div class="highlight-content">Review &rarr; Track Changes. Semua perubahan ditandai — bisa diterima atau ditolak satu per satu.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">📋 Template</div>
+                    <div class="highlight-content">File &rarr; New &rarr; Pilih template profesional (surat, laporan, CV). Template sudah punya format dan layout siap pakai.</div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="visual-block">
+                    <img src="assets/images/team-collaboration.jpg" alt="Kolaborasi dan Template" loading="lazy">
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="11">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Menu untuk menambahkan nomor halaman?</div><div class="q-options"><div class="q-opt">A. Home</div><div class="q-opt">B. Insert</div><div class="q-opt">C. Layout</div><div class="q-opt">D. Review</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Fitur yang digunakan untuk membuat surat massal?</div><div class="q-options"><div class="q-opt">A. Track Changes</div><div class="q-opt">B. Watermark</div><div class="q-opt">C. Mail Merge</div><div class="q-opt">D. Page Border</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Untuk membuat TOC otomatis, teks harus menggunakan?</div><div class="q-options"><div class="q-opt">A. Bold manual</div><div class="q-opt">B. Heading Style</div><div class="q-opt">C. Font size besar</div><div class="q-opt">D. Warna merah</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Watermark ditambahkan melalui menu?</div><div class="q-options"><div class="q-opt">A. Insert</div><div class="q-opt">B. Home</div><div class="q-opt">C. Design</div><div class="q-opt">D. View</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Fitur untuk melihat semua perubahan yang dilakukan reviewer?</div><div class="q-options"><div class="q-opt">A. Comments</div><div class="q-opt">B. Track Changes</div><div class="q-opt">C. Watermark</div><div class="q-opt">D. Mail Merge</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="12">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Menu untuk menambahkan nomor halaman?</div><div class="q-options"><div class="q-opt">A. Home</div><div class="q-opt correct">B. Insert ✓</div><div class="q-opt">C. Layout</div><div class="q-opt">D. Review</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Fitur yang digunakan untuk membuat surat massal?</div><div class="q-options"><div class="q-opt">A. Track Changes</div><div class="q-opt">B. Watermark</div><div class="q-opt correct">C. Mail Merge ✓</div><div class="q-opt">D. Page Border</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Untuk membuat TOC otomatis, teks harus menggunakan?</div><div class="q-options"><div class="q-opt">A. Bold manual</div><div class="q-opt correct">B. Heading Style ✓</div><div class="q-opt">C. Font size besar</div><div class="q-opt">D. Warna merah</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Watermark ditambahkan melalui menu?</div><div class="q-options"><div class="q-opt">A. Insert</div><div class="q-opt">B. Home</div><div class="q-opt correct">C. Design ✓</div><div class="q-opt">D. View</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Fitur untuk melihat semua perubahan yang dilakukan reviewer?</div><div class="q-options"><div class="q-opt">A. Comments</div><div class="q-opt correct">B. Track Changes ✓</div><div class="q-opt">C. Watermark</div><div class="q-opt">D. Mail Merge</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="13">
+            <div class="overline">Rangkuman</div>
+            <h2>Poin-Poin Penting Pertemuan 10</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span><strong>Header &amp; footer</strong> menampilkan informasi konsisten di setiap halaman; page numbering bisa dikustomisasi format dan posisinya.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span><strong>Daftar isi otomatis (TOC)</strong> dibuat dari heading style dan bisa di-update sekali klik saat konten berubah.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span><strong>Mail Merge</strong> menggabungkan template dokumen dengan data Excel untuk menghasilkan surat massal yang personal.</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Watermark &amp; page border</strong> digunakan untuk menandai status dokumen dan mempercantik tampilan halaman.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span><strong>Fitur kolaborasi</strong> (comments, track changes) memudahkan review dan revisi bersama; export PDF menjaga format tetap konsisten.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Penutup ==================== -->
+        <div class="slide slide-closing" data-slide="14">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">Fitur lanjutan pengolah kata membantu Anda membuat dokumen profesional, efisien, dan siap kolaborasi.</p>
+            <p class="closing-meta">Pertemuan 11: Spreadsheet — Pengenalan &amp; Dasar-Dasar</p>
+            <div class="slide-footer"><span>Pertemuan 10 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">&larr;</button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">&rarr;</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 14;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        function printSlides() {
+            document.querySelectorAll('.slide').forEach(s => { s.style.display = 'flex'; });
+            window.print();
+            document.querySelectorAll('.slide').forEach(s => { s.style.display = ''; });
+            goToSlide(currentSlide);
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        goToSlide(1);
+    </script>
+</body>
+</html>

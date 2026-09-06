@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pertemuan 12 - Dasar Teknologi Digital</title>
-    <link rel="stylesheet" href="assets/styles/slides.css">
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/styles/slides-reveal.css">
+    <link rel="stylesheet" href="assets/styles/reveal-deck.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="reveal">
+        <div class="slides">
 
-    <div class="presentation" id="presentation">
 
         <!-- ==================== SLIDE 1: Title ==================== -->
-        <div class="slide slide-title active" data-slide="1">
+        <section class="slide slide-title" data-slide="1">
             <div class="title-header">
                 <div class="header-logos">
                     <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
@@ -21,16 +26,12 @@
             </div>
             <h1>Pengolah Angka Bagian 2</h1>
             <p class="subtitle">Menguasai fungsi logika (IF), pencarian data (VLOOKUP, HLOOKUP), dan analisis bersyarat (COUNTIF, SUMIF) dalam spreadsheet</p>
-            <div class="meta">
-                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
-                <div class="meta-item"><span>&middot;</span></div>
-                <div class="meta-item"><span>Pertemuan 12</span></div>
-            </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
-        </div>
+            <div class="masthead"><span class="masthead-course">Dasar Teknologi Digital</span><span class="masthead-part">Pertemuan 12</span></div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>1 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 2: Agenda ==================== -->
-        <div class="slide slide-full" data-slide="2">
+        <section class="slide slide-full" data-slide="2">
             <h2>Agenda Pertemuan</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Fungsi IF &amp; Nested IF</h4><p>Pengambilan keputusan otomatis berdasarkan kondisi</p></div></div>
@@ -39,11 +40,11 @@
                 <div class="list-item"><div class="list-number">4</div><div><h4>INDEX &amp; MATCH</h4><p>Pencarian data fleksibel sebagai alternatif VLOOKUP</p></div></div>
                 <div class="list-item"><div class="list-number">5</div><div><h4>Studi Kasus Penjualan</h4><p>Menerapkan semua fungsi pada data penjualan nyata</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>2 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 3: Fungsi IF ==================== -->
-        <div class="slide slide-content" data-slide="3">
+        <section class="slide slide-content" data-slide="3">
             <div class="content-left">
                 <h2>Fungsi IF</h2>
                 <p>Fungsi <strong>IF</strong> menguji suatu kondisi dan mengembalikan nilai berdasarkan hasil uji tersebut — <strong>TRUE</strong> atau <strong>FALSE</strong>.</p>
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                     <div class="diagram-container" style="margin-top: var(--sp-sm);">
-                        <div style="width: clamp(80px, 10vw, 140px);"></div>
+                        <div style="width: clamp(80px, 128.00px, 140px);"></div>
                         <div class="diagram-arrow">→</div>
                         <div class="diagram-box">
                             <h4>FALSE</h4>
@@ -80,11 +81,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>3 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 4: Nested IF ==================== -->
-        <div class="slide slide-content" data-slide="4">
+        <section class="slide slide-content" data-slide="4">
             <div class="content-left">
                 <h2>Nested IF (IF Bersarang)</h2>
                 <p>Menyusun <strong>beberapa IF</strong> di dalam satu formula untuk menguasi <strong>banyak kondisi sekaligus</strong> — seperti membuat grading otomatis.</p>
@@ -126,11 +127,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>4 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 5: COUNTIF & SUMIF ==================== -->
-        <div class="slide slide-full" data-slide="5">
+        <section class="slide slide-full" data-slide="5">
             <h2>COUNTIF &amp; SUMIF</h2>
             <div class="cards-grid-2">
                 <div class="card">
@@ -160,11 +161,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>5 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 6: VLOOKUP ==================== -->
-        <div class="slide slide-content" data-slide="6">
+        <section class="slide slide-content" data-slide="6">
             <div class="content-left">
                 <h2>VLOOKUP</h2>
                 <p><strong>Vertical Lookup</strong> — mencari nilai di kolom pertama tabel, lalu mengambil nilai dari kolom lain pada baris yang sama.</p>
@@ -204,11 +205,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>6 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 7: HLOOKUP ==================== -->
-        <div class="slide slide-content" data-slide="7">
+        <section class="slide slide-content" data-slide="7">
             <div class="content-left">
                 <h2>HLOOKUP</h2>
                 <p><strong>Horizontal Lookup</strong> — mencari nilai di baris pertama tabel, lalu mengambil nilai dari baris lain pada kolom yang sama.</p>
@@ -246,11 +247,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>7 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 8: INDEX & MATCH ==================== -->
-        <div class="slide slide-content" data-slide="8">
+        <section class="slide slide-content" data-slide="8">
             <div class="content-left">
                 <h2>INDEX &amp; MATCH</h2>
                 <p>Kombinasi <strong>INDEX</strong> dan <strong>MATCH</strong> adalah alternatif fleksibel untuk VLOOKUP — bisa mencari ke kiri, tidak terbatas kolom pertama.</p>
@@ -289,11 +290,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>8 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 9: Studi Kasus — Data Penjualan ==================== -->
-        <div class="slide slide-full" data-slide="9">
+        <section class="slide slide-full" data-slide="9">
             <h2>Studi Kasus: Data Penjualan</h2>
             <div class="data-table">
                 <table>
@@ -321,11 +322,11 @@
                     <div class="stat-label">Kategori Produk</div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>9 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 10: Praktik — Menerapkan Rumus ==================== -->
-        <div class="slide slide-full" data-slide="10">
+        <section class="slide slide-full" data-slide="10">
             <h2>Praktik: Menerapkan Rumus pada Data Penjualan</h2>
             <div class="cards-grid-2">
                 <div class="card">
@@ -365,11 +366,11 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>10 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
-        <div class="slide slide-quiz" data-slide="11">
+        <section class="slide slide-quiz" data-slide="11">
             <h2>Post-Test: Uji Pemahaman</h2>
             <div class="quiz-grid">
                 <div class="quiz-q"><div class="q-text">1. Fungsi IF di spreadsheet digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Menjumlah angka</div><div class="q-opt">B. Mengambil keputusan berdasarkan kondisi</div><div class="q-opt">C. Mencari data di tabel</div><div class="q-opt">D. Mengurutkan data</div></div></div>
@@ -378,11 +379,11 @@
                 <div class="quiz-q"><div class="q-text">4. Kelebihan INDEX+MATCH dibanding VLOOKUP?</div><div class="q-options"><div class="q-opt">A. Lebih cepat</div><div class="q-opt">B. Bisa mencari ke kiri</div><div class="q-opt">C. Tidak butuh argumen</div><div class="q-opt">D. Hanya untuk angka</div></div></div>
                 <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. =SUMIF(B1:B10;"Komputer";C1:C10) menjumlahkan?</div><div class="q-options"><div class="q-opt">A. Kolom B yang berisi "Komputer"</div><div class="q-opt">B. Kolom C jika kolom B = "Komputer"</div><div class="q-opt">C. Semua kolom C</div><div class="q-opt">D. Kolom B dan C sekaligus</div></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>11 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
-        <div class="slide slide-quiz" data-slide="12">
+        <section class="slide slide-quiz" data-slide="12">
             <h2>Post-Test: Jawaban</h2>
             <div class="quiz-grid">
                 <div class="quiz-q"><div class="q-text">1. Fungsi IF di spreadsheet digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Menjumlah angka</div><div class="q-opt correct">B. Mengambil keputusan berdasarkan kondisi ✓</div><div class="q-opt">C. Mencari data di tabel</div><div class="q-opt">D. Mengurutkan data</div></div></div>
@@ -391,13 +392,12 @@
                 <div class="quiz-q"><div class="q-text">4. Kelebihan INDEX+MATCH dibanding VLOOKUP?</div><div class="q-options"><div class="q-opt">A. Lebih cepat</div><div class="q-opt correct">B. Bisa mencari ke kiri ✓</div><div class="q-opt">C. Tidak butuh argumen</div><div class="q-opt">D. Hanya untuk angka</div></div></div>
                 <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. =SUMIF(B1:B10;"Komputer";C1:C10) menjumlahkan?</div><div class="q-options"><div class="q-opt">A. Kolom B yang berisi "Komputer"</div><div class="q-opt correct">B. Kolom C jika kolom B = "Komputer" ✓</div><div class="q-opt">C. Semua kolom C</div><div class="q-opt">D. Kolom B dan C sekaligus</div></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>12 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 13: Rangkuman ==================== -->
-        <div class="slide slide-rangkuman" data-slide="13">
-            <div class="overline">Rangkuman</div>
-            <h2>Poin-Poin Penting Pertemuan 12</h2>
+        <section class="slide slide-rangkuman" data-slide="13">
+            <h2>Rangkuman Pertemuan 12</h2>
             <div class="rangkuman-list">
                 <div class="rangkuman-item"><div class="rnum">1</div><span><strong>IF</strong> menguji kondisi TRUE/FALSE untuk mengembalikan nilai tertentu. <strong>Nested IF</strong> memungkinkan pengujian banyak kondisi sekaligus.</span></div>
                 <div class="rangkuman-item"><div class="rnum">2</div><span><strong>COUNTIF</strong> menghitung jumlah sel sesuai kriteria, sedangkan <strong>SUMIF</strong> menjumlahkan nilai berdasarkan kriteria tertentu.</span></div>
@@ -405,65 +405,81 @@
                 <div class="rangkuman-item"><div class="rnum">4</div><span>Kombinasi <strong>INDEX + MATCH</strong> lebih fleksibel daripada VLOOKUP karena bisa mencari ke arah mana pun, termasuk ke kiri.</span></div>
                 <div class="rangkuman-item"><div class="rnum">5</div><span>Semua fungsi ini diterapkan secara nyata pada <strong>data penjualan</strong> untuk menghitung, mencari, dan menganalisis data secara otomatis.</span></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>13 / 15</span></div>
+        </section>
+
+        <!-- ==================== Selanjutnya: Pertemuan 13 ==================== -->
+        <section class="slide slide-full" data-slide="14">
+            <h2>Selanjutnya: Pertemuan 13</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>✂️</h3>
+                        <p><strong>Fungsi Teks & Tanggal</strong><br>Manipulasi string dan waktu</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🔄</h3>
+                        <p><strong>Pivot Table</strong><br>Analisis data ringkas</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>⚙️</h3>
+                        <p><strong>Macro & VBA</strong><br>Otomatisasi tugas</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>14 / 15</span></div>
+        </section>
 
         <!-- ==================== SLIDE 14: Penutup ==================== -->
-        <div class="slide slide-closing" data-slide="14">
+        <section class="slide slide-closing" data-slide="15">
             <h1>Terima Kasih</h1>
             <p class="closing-subtitle">Dengan menguasai fungsi logika dan pencarian data, Anda kini bisa membuat spreadsheet yang cerdas dan otomatis — dari pengambilan keputusan hingga analisis penjualan.</p>
-            <p class="closing-meta">Pertemuan 13: Pengolah Angka Bagian 3 — Pivot Table, Grafik &amp; Analisis Data Lanjutan</p>
-            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+                        <div class="quote-block text-left">
+                <p>"In God we trust; all others must bring data."</p>
+                <cite>— W. Edwards Deming</cite>
+            </div>
+<p class="closing-meta">Pertemuan 13: Pengolah Angka Bagian 3 — Pivot Table, Grafik &amp; Analisis Data Lanjutan</p>
+            <div class="slide-footer"><span>Pertemuan 12 — Dasar Teknologi Digital</span><span>15 / 15</span></div>
+        </section>
+    
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav-hover-zone"></div>
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
-        <span class="slide-counter" id="slideCounter">1 / 14</span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
-        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
-    </div>
-
+    <script src="assets/vendor/reveal/reveal.js"></script>
+    <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="assets/vendor/reveal/plugin/search/search.js"></script>
     <script>
-        let currentSlide = 1;
-        const totalSlides = 14;
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
-        }
-
-        function goToSlide(slideNumber) {
-            document.querySelector('.slide.active').classList.remove('active');
-            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
-            if (el) {
-                el.classList.add('active');
-                currentSlide = slideNumber;
-                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
-                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
-                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
-            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0,
+            minScale: 0.2,
+            maxScale: 2.0,
+            center: false,
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: false,
+            transition: 'none',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            overview: true,
+            keyboard: true,
+            touch: true,
+            fragments: false,
+            pdfSeparateFragments: false,
+            plugins: [ RevealNotes, RevealZoom, RevealSearch ]
         });
 
-        let touchStartX = 0;
-        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-        });
-
-        goToSlide(1);
+        // One-click PDF export parity with the legacy `?print=1` flow:
+        // reveal renders paginated pages on `?print-pdf`; fire the print
+        // dialog once layout settles.
+        if ( /print-pdf/gi.test( window.location.search ) ) {
+            window.addEventListener( 'load', function () {
+                setTimeout( function () { window.print(); }, 800 );
+            } );
+        }
     </script>
 </body>
 </html>

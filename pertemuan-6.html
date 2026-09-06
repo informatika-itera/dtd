@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pertemuan 6 - Dasar Teknologi Digital</title>
-    <link rel="stylesheet" href="assets/styles/slides.css">
+    <link rel="preload" href="assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reset.css">
+    <link rel="stylesheet" href="assets/vendor/reveal/reveal.css">
+    <link rel="stylesheet" href="assets/styles/slides-reveal.css">
+    <link rel="stylesheet" href="assets/styles/reveal-deck.css">
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
+    <div class="reveal">
+        <div class="slides">
 
-    <div class="presentation" id="presentation">
 
         <!-- ==================== SLIDE 1: Title ==================== -->
-        <div class="slide slide-title active" data-slide="1">
+        <section class="slide slide-title" data-slide="1">
             <div class="title-header">
                 <div class="header-logos">
                     <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
@@ -21,16 +26,29 @@
             </div>
             <h1>Inovasi, AI &amp; Sustainability</h1>
             <p class="subtitle">Menjelajahi inovasi digital, kecerdasan buatan, dan keberlanjutan teknologi di Indonesia dan dunia</p>
-            <div class="meta">
-                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
-                <div class="meta-item"><span>&middot;</span></div>
-                <div class="meta-item"><span>Pertemuan 6</span></div>
+            <div class="masthead"><span class="masthead-course">Dasar Teknologi Digital</span><span class="masthead-part">Pertemuan 6</span></div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>1 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 2: Hook ==================== -->
+        <section class="slide slide-full" data-slide="2">
+            <h2>Inovasi yang Mengubah Dunia</h2>
+            <div class="stats-row mb-md">
+                <div class="stat-box"><div class="stat-number">8</div><div class="stat-label">unicorn &amp; decacorn<br>teknologi Indonesia</div></div>
+                <div class="stat-box"><div class="stat-number">100 juta</div><div class="stat-label">pengguna ChatGPT<br>hanya dalam 2 bulan</div></div>
+                <div class="stat-box"><div class="stat-number">62 juta ton</div><div class="stat-label">e-waste global<br>setiap tahun</div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
-        </div>
+            <ul class="bullet-list mt-xl">
+                <li><strong>Kecerdasan buatan</strong> — menjawab, menulis, dan membuat gambar dalam hitungan detik</li>
+                <li><strong>Startup digital</strong> — mengubah cara kita bepergian, berbelanja, dan bertransaksi</li>
+                <li><strong>Keberlanjutan</strong> — setiap inovasi membawa tanggung jawab terhadap lingkungan</li>
+            </ul>
+            <p class="body-text text-source">Sumber: e-Conomy SEA (2024), Reuters (2023), Global E-waste Monitor (2024)</p>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>2 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 2: Agenda ==================== -->
-        <div class="slide slide-full" data-slide="2">
+        <section class="slide slide-full" data-slide="3">
             <h2>Agenda Pertemuan</h2>
             <div class="list-items">
                 <div class="list-item"><div class="list-number">1</div><div><h4>Inovasi Digital di Indonesia</h4><p>Ekosistem startup dan transformasi digital bangsa</p></div></div>
@@ -40,11 +58,11 @@
                 <div class="list-item"><div class="list-number">5</div><div><h4>Industry 4.0 &amp; 5.0</h4><p>Otomatisasi, chatbot, dan masa depan manusia-mesin</p></div></div>
                 <div class="list-item"><div class="list-number">6</div><div><h4>Sustainability &amp; E-Waste</h4><p>Tanggung jawab lingkungan di era digital</p></div></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>3 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 3: Inovasi Digital Indonesia ==================== -->
-        <div class="slide slide-full" data-slide="3">
+        <section class="slide slide-full" data-slide="4">
             <h2>Inovasi Digital di Indonesia</h2>
             <div class="stats-row" style="margin-bottom: var(--sp-lg);">
                 <div class="stat-box">
@@ -70,11 +88,11 @@
                 <div class="card"><div class="card-icon">💳</div><h3>OVO / DANA</h3><p>Fintek pembayaran digital yang mengubah transaksi harian</p></div>
                 <div class="card"><div class="card-icon">🏦</div><h3>BCA Digital</h3><p>Transformasi perbankan konvensional ke digital</p></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>4 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 4: Startup & Entrepreneurship ==================== -->
-        <div class="slide slide-full" data-slide="4">
+        <section class="slide slide-full" data-slide="5">
             <h2>Startup &amp; Digital Entrepreneurship</h2>
             <div class="timeline">
                 <div class="timeline-item">
@@ -121,11 +139,28 @@
                     </ul>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>5 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 5: Bridge — Dari Startup ke AI ==================== -->
+        <section class="slide slide-full" data-slide="6">
+            <h2>Dari Startup ke Kecerdasan Buatan</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Startup Indonesia tumbuh pesat. Tapi apa mesin penggerak di baliknya? <strong>Kecerdasan buatan</strong> — yang membuat aplikasi lebih pintar dan layanan lebih personal.</p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box"><h4>💡 Startup</h4><p>Ide, pasar,<br>dan modal</p></div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box"><h4>🤖 AI</h4><p>Mesin belajar<br>dari data</p></div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary"><h4>🚀 Inovasi</h4><p>Produk cerdas<br>berskala besar</p></div>
+                </div>
+                <p class="body-text text-caption mt-md">Mari kita kenali lebih dalam: <strong>apa itu AI dan bagaimana cara kerjanya?</strong></p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>6 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 5: Intro AI & ML ==================== -->
-        <div class="slide slide-content" data-slide="5">
+        <section class="slide slide-content" data-slide="7">
             <div class="content-left">
                 <h2>Pengenalan AI &amp; Machine Learning</h2>
                 <p><strong>Artificial Intelligence (AI)</strong> adalah bidang ilmu komputer yang membuat mesin dapat meniru kecerdasan manusia — belajar, bernalar, dan mengambil keputusan.</p>
@@ -142,15 +177,13 @@
                 </div>
             </div>
             <div class="content-right">
-                <div class="visual-block">
-                    <img src="assets/images/ai-machine-learning.jpg" alt="Kecerdasan Buatan dan Machine Learning" loading="lazy">
-                </div>
+                <img src="assets/images/ai-machine-learning.jpg" alt="Kecerdasan Buatan dan Machine Learning" loading="lazy">
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>7 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 6: AI in Daily Life ==================== -->
-        <div class="slide slide-full" data-slide="6">
+        <section class="slide slide-full" data-slide="8">
             <h2>AI dalam Kehidupan Sehari-hari</h2>
             <div class="cards-grid">
                 <div class="card">
@@ -185,13 +218,13 @@
                     <p>Terjemahan, label, rekomendasi</p>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>8 / 23</span></div>
+        </section>
 
-        <!-- ==================== SLIDE 7: Main AI Branches ==================== -->
-        <div class="slide slide-full" data-slide="7">
-            <h2>Cabang Utama AI</h2>
-            <div class="cards-grid-2">
+                <!-- ==================== SLIDE 7: Main AI Branches (1) ==================== -->
+        <section class="slide slide-full" data-slide="9">
+            <h2>Cabang Utama AI (1/2)</h2>
+            <div class="cards-grid-3">
                 <div class="card">
                     <div class="card-icon">🧠</div>
                     <h3>Expert Systems</h3>
@@ -199,23 +232,31 @@
                 </div>
                 <div class="card">
                     <div class="card-icon">🗣️</div>
-                    <h3>NLP (Natural Language Processing)</h3>
-                    <p>Memahami dan menghasilkan bahasa manusia — chatbot, terjemahan, ringkasan dokumen otomatis</p>
+                    <h3>NLP</h3>
+                    <p>Natural Language Processing — memahami dan menghasilkan bahasa manusia: chatbot, terjemahan, ringkasan otomatis</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">👁️</div>
                     <h3>Computer Vision</h3>
                     <p>Menganalisis gambar dan video — deteksi wajah, pengenalan objek, autonomous driving</p>
                 </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>9 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 7b: Main AI Branches (2) ==================== -->
+        <section class="slide slide-full" data-slide="10">
+            <h2>Cabang Utama AI (2/2)</h2>
+            <div class="cards-grid-3">
                 <div class="card">
                     <div class="card-icon">🤖</div>
                     <h3>Robotika</h3>
-                    <p>Robot fisik yang bisa berinteraksi dengan lingkungan — manufaktur, eksplorasi, pelayanan</p>
+                    <p>Robot fisik yang berinteraksi dengan lingkungan — manufaktur, eksplorasi, pelayanan</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">🎲</div>
                     <h3>Fuzzy Logic</h3>
-                    <p>Logika kabur untuk pengambilan keputusan dalam ketidakpastian — AC otomatis, kontrol kamera</p>
+                    <p>Logika kabur untuk keputusan dalam ketidakpastian — AC otomatis, kontrol kamera</p>
                 </div>
                 <div class="card">
                     <div class="card-icon">🧬</div>
@@ -223,11 +264,28 @@
                     <p>Inspirasi evolusi untuk optimasi — penjadwalan, routing jaringan, desain produk</p>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>10 / 23</span></div>
+        </section>
 
-        <!-- ==================== SLIDE 8: Industry 4.0 & 5.0 ==================== -->
-        <div class="slide slide-content" data-slide="8">
+        <!-- ==================== SLIDE 8: Bridge — Dari Cabang AI ke Industri ==================== -->
+        <section class="slide slide-full" data-slide="11">
+            <h2>Dari Cabang AI ke Industri</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Cabang-cabang AI ini — NLP, computer vision, robotika — <strong>tidak berjalan sendiri</strong>. Ketika digabungkan, mereka mengubah cara <strong>pabrik dan industri</strong> bekerja.</p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box"><h4>🧩 Cabang AI</h4><p>NLP, vision,<br>robotika, logika</p></div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box"><h4>🏭 Industri</h4><p>Pabrik, mesin,<br>dan produksi</p></div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary"><h4>⚙️ Industry 4.0 &amp; 5.0</h4><p>Otomatisasi &amp;<br>kolaborasi manusia-mesin</p></div>
+                </div>
+                <p class="body-text text-caption mt-md">Mari kita lihat <strong>dua babak revolusi industri</strong> yang digerakkan AI.</p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>11 / 23</span></div>
+        </section>
+
+<!-- ==================== SLIDE 8: Industry 4.0 & 5.0 ==================== -->
+        <section class="slide slide-content" data-slide="12">
             <div class="content-left">
                 <h2>Industry 4.0 &amp; 5.0</h2>
                 <div class="list-items">
@@ -252,15 +310,13 @@
                 </div>
             </div>
             <div class="content-right">
-                <div class="visual-block">
-                    <img src="assets/images/industry-4.jpg" alt="Industry 4.0 dan 5.0" loading="lazy">
-                </div>
+                <img src="assets/images/industry-4.jpg" alt="Industry 4.0 dan 5.0" loading="lazy">
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>12 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 9: Chatbot & Automation ==================== -->
-        <div class="slide slide-full" data-slide="9">
+        <section class="slide slide-full" data-slide="13">
             <h2>Chatbot &amp; Automasi</h2>
             <div class="two-col">
                 <div class="col">
@@ -307,11 +363,67 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>13 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 10: AI untuk Mahasiswa ==================== -->
+        <section class="slide slide-full" data-slide="14">
+            <h2>AI untuk Mahasiswa: Gunakan dengan Baik</h2>
+            <div class="highlight-box">
+                <div class="highlight-title">Prinsip Dasar</div>
+                <div class="highlight-content">AI adalah <strong>alat bantu belajar</strong>, bukan pengganti proses berpikirmu. Gunakan untuk memahami, bukan untuk menyalin.</div>
+            </div>
+            <ul class="bullet-list mt-md">
+                <li><strong>Pahami, jangan menyalin</strong> — baca dan pahami jawaban AI, jangan copy-paste mentah.</li>
+                <li><strong>Verifikasi fakta</strong> — AI bisa "halusinasi"; selalu cek ke sumber tepercaya.</li>
+                <li><strong>Jaga integritas akademik</strong> — kutip &amp; parafrase dengan benar, hindari plagiarisme.</li>
+                <li><strong>Lindungi data pribadi</strong> — jangan masukkan data sensitif ke AI publik.</li>
+                <li><strong>Ikuti aturan kampus</strong> — perhatikan kebijakan penggunaan AI dalam tugas.</li>
+            </ul>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>14 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 10b: Memaksimalkan AI ==================== -->
+        <section class="slide slide-full" data-slide="15">
+            <h2>Memaksimalkan AI: Akademik &amp; Non-Akademik</h2>
+            <div class="cards-grid-2">
+                <div class="card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Akademik</h3>
+                    <p>Riset &amp; literatur: mencari referensi, meringkas jurnal</p>
+                    <p>Memahami materi sulit: meminta penjelasan bertahap</p>
+                    <p>Latihan soal &amp; pembahasan untuk persiapan ujian</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3>Non-Akademik</h3>
+                    <p>Organisasi: menyusun proposal, laporan, poster</p>
+                    <p>Lomba &amp; kompetisi: ide, pitch deck, prototipe</p>
+                    <p>Portofolio &amp; konten: desain, tulisan, video</p>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>15 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 10: Bridge — Dari Automasi ke Keberlanjutan ==================== -->
+        <section class="slide slide-full" data-slide="16">
+            <h2>Dari Automasi ke Keberlanjutan</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">AI dan automasi membuat segalanya lebih cepat dan efisien. Namun <strong>semakin banyak perangkat, semakin besar limbah elektroniknya</strong>.</p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box"><h4>⚙️ Automasi</h4><p>AI, chatbot,<br>dan IoT</p></div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box"><h4>📱 Perangkat</h4><p>Smartphone,<br>gadget, server</p></div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary"><h4>♻️ E-Waste</h4><p>Limbah &amp;<br>tanggung jawab</p></div>
+                </div>
+                <p class="body-text text-caption mt-md">Inovasi harus berjalan beriringan dengan <strong>keberlanjutan</strong>.</p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>16 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 10: Sustainability & E-Waste ==================== -->
-        <div class="slide slide-full" data-slide="10">
+        <section class="slide slide-full" data-slide="17">
             <h2>Sustainability &amp; E-Waste</h2>
             <div class="stats-row" style="margin-bottom: var(--sp-lg);">
                 <div class="stat-box">
@@ -344,24 +456,15 @@
                     <p>Daur ulang komponen elektronik — logam berharga seperti emas, tembaga, lithium</p>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>17 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 11: Quiz Soal ==================== -->
-        <div class="slide slide-quiz" data-slide="11">
+        <section class="slide slide-quiz" data-slide="18">
             <h2>Post-Test: Uji Pemahaman</h2>
             <div class="quiz-grid">
                 <div class="quiz-q">
-                    <div class="q-text">1. Contoh unicorn Indonesia yang merupakan gabungan Gojek dan Tokopedia adalah?</div>
-                    <div class="q-options">
-                        <div class="q-opt">A. Bukalapak</div>
-                        <div class="q-opt">B. Traveloka</div>
-                        <div class="q-opt">C. GoTo</div>
-                        <div class="q-opt">D. Blibli</div>
-                    </div>
-                </div>
-                <div class="quiz-q">
-                    <div class="q-text">2. Teknologi yang memungkinkan mesin memahami bahasa manusia disebut?</div>
+                    <div class="q-text">1. Teknologi yang memungkinkan mesin memahami bahasa manusia disebut?</div>
                     <div class="q-options">
                         <div class="q-opt">A. Computer Vision</div>
                         <div class="q-opt">B. NLP</div>
@@ -370,7 +473,7 @@
                     </div>
                 </div>
                 <div class="quiz-q">
-                    <div class="q-text">3. Perbedaan utama Industry 4.0 dan 5.0 adalah?</div>
+                    <div class="q-text">2. Perbedaan utama Industry 4.0 dan 5.0 adalah?</div>
                     <div class="q-options">
                         <div class="q-opt">A. 4.0 pakai internet, 5.0 tidak</div>
                         <div class="q-opt">B. 5.0 mengembalikan manusia ke pusat industri</div>
@@ -379,7 +482,7 @@
                     </div>
                 </div>
                 <div class="quiz-q">
-                    <div class="q-text">4. Singkatan dari Minimum Viable Product adalah?</div>
+                    <div class="q-text">3. Singkatan dari Minimum Viable Product adalah?</div>
                     <div class="q-options">
                         <div class="q-opt">A. Produk jadi sempurna</div>
                         <div class="q-opt">B. Produk minimal yang bisa diuji pasar</div>
@@ -387,8 +490,8 @@
                         <div class="q-opt">D. Rencana bisnis tertulis</div>
                     </div>
                 </div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;">
-                    <div class="q-text">5. Prinsip 3R dalam pengelolaan e-waste adalah?</div>
+                <div class="quiz-q">
+                    <div class="q-text">4. Prinsip 3R dalam pengelolaan e-waste adalah?</div>
                     <div class="q-options">
                         <div class="q-opt">A. Read, Repair, Replace</div>
                         <div class="q-opt">B. Reduce, Reuse, Recycle</div>
@@ -397,24 +500,15 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>18 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 12: Quiz Jawaban ==================== -->
-        <div class="slide slide-quiz" data-slide="12">
+        <section class="slide slide-quiz" data-slide="19">
             <h2>Post-Test: Jawaban</h2>
             <div class="quiz-grid">
                 <div class="quiz-q">
-                    <div class="q-text">1. Contoh unicorn Indonesia yang merupakan gabungan Gojek dan Tokopedia adalah?</div>
-                    <div class="q-options">
-                        <div class="q-opt">A. Bukalapak</div>
-                        <div class="q-opt">B. Traveloka</div>
-                        <div class="q-opt correct">C. GoTo ✓</div>
-                        <div class="q-opt">D. Blibli</div>
-                    </div>
-                </div>
-                <div class="quiz-q">
-                    <div class="q-text">2. Teknologi yang memungkinkan mesin memahami bahasa manusia disebut?</div>
+                    <div class="q-text">1. Teknologi yang memungkinkan mesin memahami bahasa manusia disebut?</div>
                     <div class="q-options">
                         <div class="q-opt">A. Computer Vision</div>
                         <div class="q-opt correct">B. NLP ✓</div>
@@ -423,7 +517,7 @@
                     </div>
                 </div>
                 <div class="quiz-q">
-                    <div class="q-text">3. Perbedaan utama Industry 4.0 dan 5.0 adalah?</div>
+                    <div class="q-text">2. Perbedaan utama Industry 4.0 dan 5.0 adalah?</div>
                     <div class="q-options">
                         <div class="q-opt">A. 4.0 pakai internet, 5.0 tidak</div>
                         <div class="q-opt correct">B. 5.0 mengembalikan manusia ke pusat industri ✓</div>
@@ -432,7 +526,7 @@
                     </div>
                 </div>
                 <div class="quiz-q">
-                    <div class="q-text">4. Singkatan dari Minimum Viable Product adalah?</div>
+                    <div class="q-text">3. Singkatan dari Minimum Viable Product adalah?</div>
                     <div class="q-options">
                         <div class="q-opt">A. Produk jadi sempurna</div>
                         <div class="q-opt correct">B. Produk minimal yang bisa diuji pasar ✓</div>
@@ -440,8 +534,8 @@
                         <div class="q-opt">D. Rencana bisnis tertulis</div>
                     </div>
                 </div>
-                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;">
-                    <div class="q-text">5. Prinsip 3R dalam pengelolaan e-waste adalah?</div>
+                <div class="quiz-q">
+                    <div class="q-text">4. Prinsip 3R dalam pengelolaan e-waste adalah?</div>
                     <div class="q-options">
                         <div class="q-opt">A. Read, Repair, Replace</div>
                         <div class="q-opt correct">B. Reduce, Reuse, Recycle ✓</div>
@@ -450,13 +544,12 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>19 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 13: Rangkuman ==================== -->
-        <div class="slide slide-rangkuman" data-slide="13">
-            <div class="overline">Rangkuman</div>
-            <h2>Poin-Poin Penting Pertemuan 6</h2>
+        <section class="slide slide-rangkuman" data-slide="20">
+            <h2>Rangkuman Pertemuan 6</h2>
             <div class="rangkuman-list">
                 <div class="rangkuman-item"><div class="rnum">1</div><span>Indonesia memiliki ekosistem startup yang kuat dengan <strong>8 unicorn/decacorn</strong> dan lebih dari 2.000 startup terdaftar.</span></div>
                 <div class="rangkuman-item"><div class="rnum">2</div><span><strong>AI &amp; ML</strong> adalah teknologi yang membuat mesin belajar dari data — diterapkan di NLP, computer vision, dan sistem rekomendasi.</span></div>
@@ -464,65 +557,95 @@
                 <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Chatbot &amp; automasi</strong> berbasis AI meningkatkan efisiensi layanan pelanggan dan operasional bisnis.</span></div>
                 <div class="rangkuman-item"><div class="rnum">5</div><span>Kita bertanggung jawab atas <strong>sustainability</strong> — terapkan prinsip 3R (Reduce, Reuse, Recycle) untuk e-waste.</span></div>
             </div>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
-        </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>20 / 23</span></div>
+        </section>
+
+        <!-- ==================== SLIDE 17: Referensi ==================== -->
+        <section class="slide slide-full" data-slide="21">
+            <h2 class="text-left">Referensi</h2>
+            <div class="reference-list">
+                <p>1. Russell, S. &amp; Norvig, P. (2021). <em>Artificial Intelligence: A Modern Approach</em>. 4th ed. Pearson.</p>
+                <p>2. McCarthy, J. (1956). "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence."</p>
+                <p>3. European Commission (2021). <em>Industry 5.0: Towards a Sustainable, Human-centric and Resilient European Industry</em>.</p>
+                <p>4. Google, Temasek, &amp; Bain &amp; Company (2024). <em>e-Conomy SEA 2024: Indonesia</em>.</p>
+                <p>5. Baldé, C.P., et al. (2024). <em>The Global E-waste Monitor 2024</em>. UNITAR / ITU.</p>
+                <p>6. Startup Ranking (2024). <em>Startup Ecosystem Indonesia</em>.</p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>21 / 23</span></div>
+        </section>
+
+        <!-- ==================== Selanjutnya: Pertemuan 7 ==================== -->
+        <section class="slide slide-full" data-slide="22">
+            <h2>Selanjutnya: Pertemuan 7</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🔢</h3>
+                        <p><strong>Sistem Bilangan & Logika</strong><br>Biner, konversi, dan gerbang logika</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🌐</h3>
+                        <p><strong>Internet & Web</strong><br>Jaringan, website, dan basis data</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🛡️</h3>
+                        <p><strong>Keamanan & Etika Digital</strong><br>Cybersecurity dan tanggung jawab digital</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>22 / 23</span></div>
+        </section>
 
         <!-- ==================== SLIDE 14: Penutup ==================== -->
-        <div class="slide slide-closing" data-slide="14">
+        <section class="slide slide-closing" data-slide="23">
             <h1>Terima Kasih</h1>
             <p class="closing-subtitle">Teknologi tanpa keberlanjutan hanya menunda masalah. Inovasi sejati membangun masa depan yang cerdas sekaligus bertanggung jawab.</p>
-            <p class="closing-meta">Pertemuan 7: Keamanan Digital &amp; Etika Siber</p>
-            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+                        <div class="quote-block text-left">
+                <p>"The best way to predict the future is to invent it."</p>
+                <cite>— Alan Kay</cite>
+            </div>
+<p class="closing-meta">Pertemuan 7: Review UTS</p>
+            <div class="slide-footer"><span>Pertemuan 6 — Dasar Teknologi Digital</span><span>23 / 23</span></div>
+        </section>
+    
         </div>
     </div>
 
-    <!-- Navigation -->
-    <div class="nav-hover-zone"></div>
-    <div class="nav-controls">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
-        <span class="slide-counter" id="slideCounter">1 / 14</span>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
-        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
-    </div>
-
+    <script src="assets/vendor/reveal/reveal.js"></script>
+    <script src="assets/vendor/reveal/plugin/notes/notes.js"></script>
+    <script src="assets/vendor/reveal/plugin/zoom/zoom.js"></script>
+    <script src="assets/vendor/reveal/plugin/search/search.js"></script>
     <script>
-        let currentSlide = 1;
-        const totalSlides = 14;
-
-        function changeSlide(direction) {
-            const newSlide = currentSlide + direction;
-            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
-        }
-
-        function goToSlide(slideNumber) {
-            document.querySelector('.slide.active').classList.remove('active');
-            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
-            if (el) {
-                el.classList.add('active');
-                currentSlide = slideNumber;
-                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
-                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
-                document.getElementById('progressBar').style.width = progress + '%';
-                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
-                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
-            }
-        }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
-            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        Reveal.initialize({
+            width: 1280,
+            height: 720,
+            margin: 0,
+            minScale: 0.2,
+            maxScale: 2.0,
+            center: false,
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: false,
+            transition: 'none',
+            transitionSpeed: 'default',
+            backgroundTransition: 'fade',
+            overview: true,
+            keyboard: true,
+            touch: true,
+            fragments: false,
+            pdfSeparateFragments: false,
+            plugins: [ RevealNotes, RevealZoom, RevealSearch ]
         });
 
-        let touchStartX = 0;
-        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
-        document.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
-        });
-
-        goToSlide(1);
+        // One-click PDF export parity with the legacy `?print=1` flow:
+        // reveal renders paginated pages on `?print-pdf`; fire the print
+        // dialog once layout settles.
+        if ( /print-pdf/gi.test( window.location.search ) ) {
+            window.addEventListener( 'load', function () {
+                setTimeout( function () { window.print(); }, 800 );
+            } );
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 2 - Dasar Teknologi Digital</title>
+    <link rel="stylesheet" href="assets/styles/slides.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
+                </div>
+            </div>
+            <h1>Sistem Bilangan Digital &amp; Logika Digital</h1>
+            <p class="subtitle">Memahami bagaimana komputer merepresentasikan data dan mengambil keputusan menggunakan bilangan biner dan gerbang logika</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 2</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>1 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Hook — Dunia dalam 0 dan 1 ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Dunia dalam 0 dan 1</h2>
+            <div class="stats-row">
+                <div class="stat-box"><div class="stat-number">1 karakter</div><div class="stat-label">= 8 bit = 1 byte</div></div>
+                <div class="stat-box"><div class="stat-number">3–5 MB</div><div class="stat-label">ukuran 1 foto HP</div></div>
+                <div class="stat-box"><div class="stat-number">32 miliar</div><div class="stat-label">bit dalam 1 film HD</div></div>
+            </div>
+            <p class="body-text text-caption-highlight">Seluruh data yang kamu lihat di layar ini — teks, gambar, warna, video — pada akhirnya adalah deretan angka 0 dan 1. Bagaimana mungkin?</p>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>2 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="3">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Mengapa Biner?</h4><p>Transistor ON/OFF — bahasa dasar komputer</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>Bilangan Biner</h4><p>Konsep, konversi, dan aplikasi dalam komputasi</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>Semuanya Adalah Biner</h4><p>Teks, warna, gambar, suara — semuanya deretan bit</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>Logika Digital</h4><p>Konsep benar/salah dan gerbang logika</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>Aplikasi Logika</h4><p>Bagaimana logika membantu komputer mengambil keputusan</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>3 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: Mengapa Biner ==================== -->
+        <div class="slide slide-content" data-slide="4">
+            <div class="content-left">
+                <h2>Mengapa Komputer Menggunakan Biner?</h2>
+                <p class="body-text">Transistor — komponen dasar chip — hanya punya <strong>dua kondisi</strong>: ON (1) dan OFF (0). Inilah mengapa komputer berbicara dalam bahasa biner.</p>
+                <p class="body-text">Transistor adalah saklar elektronik super kecil. Satu chip modern bisa berisi <strong>miliaran</strong> transistor yang bekerja bersama.</p>
+                <p class="body-text">Mengapa hanya dua kondisi? Karena sinyal dua kondisi lebih <strong>stabil</strong> dan <strong>tahan terhadap noise</strong> dibanding sinyal multi-level.</p>
+                <div class="two-col mt-md">
+                    <div class="col"><div class="stat-number">2</div><div class="stat-label">Kondisi Transistor</div></div>
+                    <div class="col"><div class="stat-number">Miliaran</div><div class="stat-label">Transistor per Chip</div></div>
+                </div>
+            </div>
+            <div class="content-right">
+                <img src="assets/images/binary-data.png" alt="Representasi data biner dalam komputer" loading="lazy">
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>4 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: Biner dalam Kehidupan ==================== -->
+        <div class="slide slide-full" data-slide="5">
+            <h2>Biner dalam Kehidupan Sehari-hari</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>Dua Kondisi</h3>
+                    <ul>
+                        <li><strong>0</strong> = OFF = FALSE = Low voltage</li>
+                        <li><strong>1</strong> = ON = TRUE = High voltage</li>
+                    </ul>
+                    <p class="body-text mt-md">Representasi sederhana dalam kehidupan:</p>
+                    <ul>
+                        <li>💡 Lampu: <strong>menyala</strong> (1) atau <strong>mati</strong> (0)</li>
+                        <li>🔘 Saklar: <strong>on</strong> (1) atau <strong>off</strong> (0)</li>
+                        <li>✅ Pernyataan: <strong>benar</strong> (1) atau <strong>salah</strong> (0)</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>Dari 2 Angka ke Dunia Digital</h3>
+                    <p class="body-text">Dengan hanya 0 dan 1, komputer bisa merepresentasikan:</p>
+                    <ul>
+                        <li>🔤 <strong>Teks</strong> — huruf "A" = 01000001</li>
+                        <li>🎨 <strong>Warna</strong> — merah = FF0000<sub>16</sub></li>
+                        <li>🖼️ <strong>Gambar</strong> — matriks nilai warna per pixel</li>
+                        <li>🔊 <strong>Suara</strong> — gelombang → 44.100 sampel/detik</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>5 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: Konsep Bilangan Biner ==================== -->
+        <div class="slide slide-full" data-slide="6">
+            <h2>Konsep Bilangan Biner</h2>
+            <p class="body-text text-caption mb-md">Biner menggunakan basis 2 — setiap posisi memiliki bobot yang merupakan pangkat dari 2.</p>
+            <div class="data-table">
+                <table>
+                    <thead><tr><th>Posisi</th><th>2³</th><th>2²</th><th>2¹</th><th>2⁰</th></tr></thead>
+                    <tbody>
+                        <tr><td>Bobot</td><td class="mono">8</td><td class="mono">4</td><td class="mono">2</td><td class="mono">1</td></tr>
+                        <tr><td>Contoh</td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="highlight-box mt-md">
+                <div class="highlight-title">Cara Baca</div>
+                <div class="highlight-content">1×8 + 1×4 + 0×2 + 1×1 = <strong>13</strong> — Jadi bilangan biner <span class="mono">1101</span> = desimal <strong>13</strong></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>6 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: Konversi Biner ↔ Desimal ==================== -->
+        <div class="slide slide-full" data-slide="7">
+            <h2>Konversi Biner ↔ Desimal</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>Desimal → Biner</h3>
+                    <p class="body-text">Bagi 2 secara berulang, baca sisa dari bawah ke atas.</p>
+                    <div class="data-table">
+                        <table>
+                            <thead><tr><th>Bagi</th><th>Hasil</th><th>Sisa</th></tr></thead>
+                            <tbody>
+                                <tr><td class="mono">13 ÷ 2</td><td class="mono">6</td><td class="mono">1</td></tr>
+                                <tr><td class="mono">6 ÷ 2</td><td class="mono">3</td><td class="mono">0</td></tr>
+                                <tr><td class="mono">3 ÷ 2</td><td class="mono">1</td><td class="mono">1</td></tr>
+                                <tr><td class="mono">1 ÷ 2</td><td class="mono">0</td><td class="mono">1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="highlight-box"><div class="highlight-title">Hasil</div><div class="highlight-content"><span class="mono">13</span><sub>10</sub> = <span class="mono">1101</span><sub>2</sub></div></div>
+                </div>
+                <div class="col">
+                    <h3>Biner → Desimal</h3>
+                    <p class="body-text">Kalikan setiap digit dengan bobot posisinya, lalu jumlahkan.</p>
+                    <div class="data-table">
+                        <table>
+                            <thead><tr><th>Posisi</th><th>2³</th><th>2²</th><th>2¹</th><th>2⁰</th></tr></thead>
+                            <tbody>
+                                <tr><td>Bobot</td><td class="mono">8</td><td class="mono">4</td><td class="mono">2</td><td class="mono">1</td></tr>
+                                <tr><td>Biner</td><td class="mono">1</td><td class="mono">1</td><td class="mono">0</td><td class="mono">1</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="highlight-box"><div class="highlight-title">Hitung</div><div class="highlight-content">8 + 4 + 0 + 1 = <strong>13</strong></div></div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>7 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: Coba Konversi Sendiri ==================== -->
+        <div class="slide slide-full" data-slide="8">
+            <h2>Coba Konversi Sendiri!</h2>
+            <p class="body-text text-caption mt-md mb-md">💬 Diskusikan dengan teman di sebelahmu — 5 menit!</p>
+            <div class="diagram-container">
+                <div class="diagram-box diagram-box-top">
+                    <h3>📝 Soal 1</h3>
+                    <p>Konversikan desimal <strong>42</strong> ke biner!<br><em>(Petunjuk: bagi 2 berulang, baca sisa dari bawah)</em></p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>📝 Soal 2</h3>
+                    <p>Konversikan biner <strong>10110</strong> ke desimal!<br><em>(Petunjuk: kalikan bobot posisi, lalu jumlahkan)</em></p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>📝 Soal 3</h3>
+                    <p>Konversikan desimal <strong>100</strong> ke biner!<br><em>(Tantangan: butuh lebih dari 4 digit)</em></p>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>8 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Semuanya Adalah Biner ==================== -->
+        <div class="slide slide-full" data-slide="9">
+            <h2>Semuanya Adalah Biner</h2>
+            <p class="body-text text-caption mb-md">Setelah memahami konsep biner, mari lihat bagaimana data nyata direpresentasikan.</p>
+            <div class="cards-grid" style="grid-template-columns: repeat(4, 1fr);">
+                <div class="card"><div class="card-icon">🔤</div><h3>ASCII / Unicode</h3><p>Huruf "A" = <span class="mono">01000001</span></p></div>
+                <div class="card"><div class="card-icon">🎨</div><h3>Warna RGB</h3><p>Merah = <span class="mono">FF0000</span><sub>16</sub></p></div>
+                <div class="card"><div class="card-icon">🖼️</div><h3>Pixel</h3><p>Gambar = matriks nilai warna</p></div>
+                <div class="card"><div class="card-icon">🔊</div><h3>Audio</h3><p>Gelombang → sampel digital (44.100x/detik)</p></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>9 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Satuan Data ==================== -->
+        <div class="slide slide-full" data-slide="10">
+            <h2>Satuan Data Digital</h2>
+            <p class="body-text text-caption mb-md">Semua data tersusun dari bit. Untuk mengukur ukurannya, kita gunakan satuan berikut:</p>
+            <div class="diagram-container">
+                <div class="diagram-box diagram-box-top">
+                    <h3>0/1</h3>
+                    <p><strong>Bit</strong><br>1 digit biner</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>8b</h3>
+                    <p><strong>Byte</strong><br>8 bit = 1 karakter</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>KB</h3>
+                    <p><strong>Kilobyte</strong><br>1.024 Byte</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>MB</h3>
+                    <p><strong>Megabyte</strong><br>1.024 KB</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>GB</h3>
+                    <p><strong>Gigabyte</strong><br>1.024 MB</p>
+                </div>
+            </div>
+            <div class="highlight-box mt-md">
+                <div class="highlight-title">Fakta</div>
+                <div class="highlight-content">1 karakter ASCII = 1 byte. Satu halaman teks ≈ 2.000 karakter = 2 KB. Satu foto HP ≈ 3–5 MB. Satu film HD ≈ 4 GB.</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>10 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Bridge — Dari Angka ke Keputusan ==================== -->
+        <div class="slide slide-full" data-slide="11">
+            <h2>Dari Angka ke Keputusan</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Kita sudah tahu bagaimana komputer menyimpan data dalam 0 dan 1. Tapi bagaimana komputer <strong>mengambil keputusan</strong>?</p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box">
+                        <h4>🔢 Sistem Bilangan</h4>
+                        <p>Bagaimana komputer<br><strong>menyimpan</strong> data</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary">
+                        <h4>⚡ Logika Digital</h4>
+                        <p>Bagaimana komputer<br><strong>memproses</strong> data dan mengambil keputusan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>11 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Konsep Logika ==================== -->
+        <div class="slide slide-full" data-slide="12">
+            <h2>Konsep Logika: Benar dan Salah</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>Logika dalam Kehidupan</h3>
+                    <p class="body-text">Setiap hari kita menggunakan logika tanpa sadar:</p>
+                    <div class="highlight-box">
+                        <div class="highlight-content"><strong>JIKA</strong> hujan <strong>DAN</strong> tidak ada payung → basah</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-content"><strong>JIKA</strong> lapar <strong>ATAU</strong> haus → beli makanan/minuman</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-content"><strong>JIKA</strong> <strong>BUKAN</strong> hari Minggu → hari kerja</div>
+                    </div>
+                    <p class="body-text mt-md">Komputer menggunakan prinsip yang sama, hanya dalam bentuk <strong>0</strong> (salah) dan <strong>1</strong> (benar).</p>
+                </div>
+                <div class="col">
+                    <h3>Gerbang Logika Dasar</h3>
+                    <p class="body-text">Komputer punya "saklar keputusan" yang disebut <strong>gerbang logika</strong>:</p>
+                    <div class="highlight-box">
+                        <div class="highlight-title">AND (∧)</div>
+                        <div class="highlight-content">Benar jika <strong>SEMUA</strong> benar</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-title">OR (∨)</div>
+                        <div class="highlight-content">Benar jika <strong>SALAH SATU</strong> benar</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-title">NOT (¬)</div>
+                        <div class="highlight-content"><strong>Membalik</strong> benar jadi salah</div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>12 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Tabel Kebenaran ==================== -->
+        <div class="slide slide-full" data-slide="13">
+            <h2>Tabel Kebenaran</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-num">∧</div><h3>Gerbang AND</h3><p>Keluaran 1 jika <strong>semua input 1</strong></p><div class="data-table"><table><thead><tr><th>A</th><th>B</th><th>Out</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></tbody></table></div></div>
+                <div class="card"><div class="card-num">∨</div><h3>Gerbang OR</h3><p>Keluaran 1 jika <strong>salah satu input 1</strong></p><div class="data-table"><table><thead><tr><th>A</th><th>B</th><th>Out</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td><strong>1</strong></td></tr><tr><td>1</td><td>0</td><td><strong>1</strong></td></tr><tr><td>1</td><td>1</td><td><strong>1</strong></td></tr></tbody></table></div></div>
+                <div class="card"><div class="card-num">¬</div><h3>Gerbang NOT</h3><p><strong>Membalik</strong> input</p><div class="data-table"><table><thead><tr><th>A</th><th>Out</th></tr></thead><tbody><tr><td>0</td><td><strong>1</strong></td></tr><tr><td>1</td><td><strong>0</strong></td></tr></tbody></table></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>13 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Aplikasi Logika ==================== -->
+        <div class="slide slide-full" data-slide="14">
+            <h2>Aplikasi Logika dalam Kehidupan</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🔒</div><h3>Alarm Keamanan</h3><p>Pintu <strong>ATAU</strong> jendela terbuka → alarm bunyi<br><strong>(OR gate)</strong> — contoh: sensor pintu rumah, alarm kampus</p></div>
+                <div class="card"><div class="card-icon">💡</div><h3>Lampu 2 Saklar</h3><p>Dua saklar, satu lampu — beda posisi = nyala<br><strong>(XOR gate)</strong> — contoh: lampu tangga rumah, lorong gedung</p></div>
+                <div class="card"><div class="card-icon">🧮</div><h3>Kalkulator &amp; CPU</h3><p>Semua operasi aritmatika (+, −, ×, ÷) dibangun dari gerbang logika<br><strong>(AND + OR + NOT)</strong></p></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>14 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 15: Logika dalam Pengambilan Keputusan ==================== -->
+        <div class="slide slide-full" data-slide="15">
+            <h2>Logika dalam Pengambilan Keputusan</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>Contoh Nyata</h3>
+                    <div class="highlight-box">
+                        <div class="highlight-title">Sistem Absensi Digital</div>
+                        <div class="highlight-content"><strong>JIKA</strong> wajah cocok <strong>DAN</strong> waktu tepat → "Hadir"<br><strong>JIKA</strong> wajah cocok <strong>DAN</strong> waktu terlambat → "Terlambat"<br><strong>JIKA</strong> wajah tidak cocok → "Tidak dikenali"</div>
+                    </div>
+                    <div class="highlight-box">
+                        <div class="highlight-title">Filter Email Spam</div>
+                        <div class="highlight-content"><strong>JIKA</strong> mengandung kata "menang" <strong>DAN</strong> pengirim tidak dikenal → Spam</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>Dari Logika ke Program</h3>
+                    <p class="body-text">Setiap kali kamu menggunakan aplikasi, di balik layar ada <strong>jutaan keputusan logika</strong> yang diambil komputer dalam hitungan detik:</p>
+                    <ul>
+                        <li>📱 <strong>Scroll Instagram</strong> → logika menentukan post mana yang ditampilkan</li>
+                        <li>🗺️ <strong>Google Maps</strong> → logika menentukan rute tercepat</li>
+                        <li>🛵 <strong>Gojek</strong> → logika mencocokkan driver dengan penumpang</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>15 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 16: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="16">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Mengapa komputer menggunakan sistem biner?</div><div class="q-options"><div class="q-opt">A. Karena lebih cepat</div><div class="q-opt">B. Karena transistor hanya punya dua kondisi</div><div class="q-opt">C. Karena lebih murah</div><div class="q-opt">D. Karena lebih mudah diprogram</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Biner dari desimal 13 adalah...</div><div class="q-options"><div class="q-opt">A. <span class="mono">1011</span></div><div class="q-opt">B. <span class="mono">1101</span></div><div class="q-opt">C. <span class="mono">1110</span></div><div class="q-opt">D. <span class="mono">1001</span></div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Berapa byte dalam 1 KB?</div><div class="q-options"><div class="q-opt">A. 100 byte</div><div class="q-opt">B. 512 byte</div><div class="q-opt">C. 1.024 byte</div><div class="q-opt">D. 10.000 byte</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Gerbang OR menghasilkan 1 jika...</div><div class="q-options"><div class="q-opt">A. Semua input 1</div><div class="q-opt">B. Semua input 0</div><div class="q-opt">C. Salah satu input 1</div><div class="q-opt">D. Tidak ada yang benar</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>16 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 17: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="17">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Mengapa komputer menggunakan sistem biner?</div><div class="q-options"><div class="q-opt">A. Karena lebih cepat</div><div class="q-opt correct">B. Karena transistor hanya punya dua kondisi ✓</div><div class="q-opt">C. Karena lebih murah</div><div class="q-opt">D. Karena lebih mudah diprogram</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Biner dari desimal 13 adalah...</div><div class="q-options"><div class="q-opt">A. <span class="mono">1011</span></div><div class="q-opt correct">B. <span class="mono">1101</span> ✓</div><div class="q-opt">C. <span class="mono">1110</span></div><div class="q-opt">D. <span class="mono">1001</span></div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Berapa byte dalam 1 KB?</div><div class="q-options"><div class="q-opt">A. 100 byte</div><div class="q-opt">B. 512 byte</div><div class="q-opt correct">C. 1.024 byte ✓</div><div class="q-opt">D. 10.000 byte</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Gerbang OR menghasilkan 1 jika...</div><div class="q-options"><div class="q-opt">A. Semua input 1</div><div class="q-opt">B. Semua input 0</div><div class="q-opt correct">C. Salah satu input 1 ✓</div><div class="q-opt">D. Tidak ada yang benar</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>17 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 18: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="18">
+            <h2>Rangkuman Pertemuan 2</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span>Komputer menggunakan <strong>sistem biner</strong> (0 dan 1) karena transistor hanya punya dua kondisi: ON dan OFF.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span>Biner menggunakan <strong>basis 2</strong> — setiap posisi memiliki bobot pangkat 2. Konversi desimal↔biner adalah keterampilan dasar.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span>Semua data digital — teks (ASCII), warna (RGB), gambar (pixel), suara (sampel) — pada akhirnya adalah <strong>deretan bit</strong>.</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Logika digital</strong> beroperasi pada konsep benar (1) dan salah (0), sama seperti cara kita berpikir sehari-hari.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span><strong>Gerbang logika</strong> (AND, OR, NOT) adalah blok pembangun semua rangkaian digital — dari kalkulator hingga smartphone.</span></div>
+                <div class="rangkuman-item"><div class="rnum">6</div><span>Setiap aplikasi yang kamu gunakan mengambil <strong>jutaan keputusan logika</strong> per detik di balik layar.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>18 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 19: Referensi ==================== -->
+        <div class="slide slide-full" data-slide="19">
+            <h2 class="text-left">Referensi</h2>
+            <div class="reference-list">
+                <p>1. Stallings, W. (2021). <em>Computer Organization and Architecture: Designing for Performance</em>. 11th ed. Pearson.</p>
+                <p>2. Tanenbaum, A.S. &amp; Austin, T. (2012). <em>Structured Computer Organization</em>. 6th ed. Pearson.</p>
+                <p>3. Null, L. &amp; Lobur, J. (2014). <em>The Essentials of Computer Organization and Architecture</em>. 4th ed. Jones &amp; Bartlett.</p>
+                <p>4. Von Neumann, J. (1945). "First Draft of a Report on the EDVAC." <em>IEEE Annals of the History of Computing</em>, 15(4), 27–75.</p>
+                <p>5. Hennessy, J.L. &amp; Patterson, D.A. (2017). <em>Computer Architecture: A Quantitative Approach</em>. 6th ed. Morgan Kaufmann.</p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>19 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 20: Preview Pertemuan 3 ==================== -->
+        <div class="slide slide-full" data-slide="20">
+            <h2>Selanjutnya: Pertemuan 3</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🌐 Internet</h3>
+                        <p>Bagaimana komputer di seluruh dunia saling terhubung melalui jaringan</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🖥️ Website</h3>
+                        <p>Dari HTML hingga framework — bagaimana halaman web dibangun</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🗄️ Basis Data</h3>
+                        <p>Bagaimana data disimpan, diolah, dan menjadi platform yang menghubungkan jutaan orang</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>20 / 21</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 21: Closing ==================== -->
+        <div class="slide slide-closing" data-slide="21">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">Komputer hanya mengenal 0 dan 1 — namun dari dua digit sederhana ini, seluruh dunia digital dibangun.</p>
+            <div class="quote-block text-left">
+                <p>"The computer was born to solve problems that did not exist before."</p>
+                <cite>— Bill Gates</cite>
+            </div>
+            <p class="closing-meta">Pertemuan 3: Internet, Website, Basis Data &amp; Media Sosial</p>
+            <div class="slide-footer"><span>Pertemuan 2 — Dasar Teknologi Digital</span><span>21 / 21</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span class="slide-counter" id="slideCounter">1 / 21</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 21;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        function printSlides() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(s => { s.style.display = 'flex'; });
+            window.print();
+            setTimeout(() => {
+                slides.forEach(s => { s.style.display = ''; });
+                goToSlide(currentSlide);
+            }, 500);
+        }
+
+        goToSlide(1);
+    </script>
+</body>
+</html>

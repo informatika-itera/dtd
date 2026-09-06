@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 13 - Dasar Teknologi Digital</title>
+    <link rel="stylesheet" href="assets/styles/slides.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <span class="pertemuan-badge">📊 Pertemuan 13</span>
+                </div>
+            </div>
+            <h1>Pengolah Angka Bagian 3</h1>
+            <p class="subtitle">Fungsi teks &amp; tanggal, tabel pivot, serta otomatisasi dengan macro dan VBA</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 13</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>1 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Fungsi Teks (String)</h4><p>LEFT, RIGHT, MID, LEN — memanipulasi teks dalam sel</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>Fungsi Teks Lanjutan</h4><p>CONCATENATE &amp; TEXT — menggabungkan dan memformat nilai</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>Fungsi Tanggal</h4><p>TODAY, YEAR, MONTH, DAY — mengelola data tanggal</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>Tabel Pivot</h4><p>Konsep dasar dan praktik membuat pivot table</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>Macro &amp; VBA</h4><p>Pengenalan, perekaman, dan otomatisasi tugas</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>2 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Fungsi String Dasar ==================== -->
+        <div class="slide slide-content" data-slide="3">
+            <div class="content-left">
+                <h2>Fungsi String: LEFT, RIGHT, MID</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">LEFT(teks, n)</div>
+                    <div class="highlight-content">Mengambil <strong>n karakter dari kiri</strong>. Contoh: <span class="mono">LEFT("Jakarta", 3)</span> → <span class="mono">Jak</span></div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">RIGHT(teks, n)</div>
+                    <div class="highlight-content">Mengambil <strong>n karakter dari kanan</strong>. Contoh: <span class="mono">RIGHT("Jakarta", 3)</span> → <span class="mono">rta</span></div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">MID(teks, mulai, n)</div>
+                    <div class="highlight-content">Mengambil <strong>n karakter dari posisi tertentu</strong>. Contoh: <span class="mono">MID("Jakarta", 2, 3)</span> → <span class="mono">aka</span></div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="diagram-box">
+                    <div class="diagram-title">Visualisasi Posisi Karakter</div>
+                    <div class="diagram-content">
+                        <div class="diagram-container">
+                            <div class="diagram-item"><div class="diagram-icon">J</div><div><strong>1</strong></div></div>
+                            <div class="diagram-item"><div class="diagram-icon">a</div><div><strong>2</strong></div></div>
+                            <div class="diagram-item"><div class="diagram-icon">k</div><div><strong>3</strong></div></div>
+                            <div class="diagram-item"><div class="diagram-icon">a</div><div><strong>4</strong></div></div>
+                            <div class="diagram-item"><div class="diagram-icon">r</div><div><strong>5</strong></div></div>
+                            <div class="diagram-item"><div class="diagram-icon">t</div><div><strong>6</strong></div></div>
+                            <div class="diagram-item"><div class="diagram-icon">a</div><div><strong>7</strong></div></div>
+                        </div>
+                        <div style="margin-top: var(--sp-md); font-size: var(--font-caption-sm); color: var(--muted); text-align: center;">
+                            LEFT(3) = <strong>Jak</strong> &nbsp;|&nbsp; RIGHT(3) = <strong>rta</strong> &nbsp;|&nbsp; MID(2,3) = <strong>aka</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>3 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: LEN, CONCATENATE, TEXT ==================== -->
+        <div class="slide slide-full" data-slide="4">
+            <h2>Fungsi LEN, CONCATENATE, TEXT</h2>
+            <div class="cards-grid-4">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📏</div></div>
+                    <div class="card-body">
+                        <h3>LEN(teks)</h3>
+                        <p>Menghitung jumlah karakter. <span class="mono">LEN("Excel")</span> → <strong>5</strong></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🔗</div></div>
+                    <div class="card-body">
+                        <h3>CONCATENATE</h3>
+                        <p>Menggabungkan teks dari beberapa sel. <span class="mono">=A1&amp;" "&amp;B1</span></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">T</div></div>
+                    <div class="card-body">
+                        <h3>TEXT(nilai, format)</h3>
+                        <p>Format angka jadi teks. <span class="mono">TEXT(1234,"#,##0")</span> → <strong>"1,234"</strong></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">💡</div></div>
+                    <div class="card-body">
+                        <h3>Tips &amp;</h3>
+                        <p>Operator <span class="mono">&amp;</span> bisa gantikan CONCATENATE untuk penulisan lebih singkat</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>4 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: Fungsi Tanggal ==================== -->
+        <div class="slide slide-content" data-slide="5">
+            <div class="content-left">
+                <h2>Fungsi Tanggal: TODAY, YEAR, MONTH, DAY</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">TODAY()</div>
+                    <div class="highlight-content">Menampilkan <strong>tanggal hari ini</strong> secara otomatis. Selalu update saat file dibuka.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">YEAR(tanggal)</div>
+                    <div class="highlight-content">Mengambil <strong>tahun</strong> dari nilai tanggal. <span class="mono">YEAR(A1)</span> → <span class="mono">2026</span></div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">MONTH(tanggal) &amp; DAY(tanggal)</div>
+                    <div class="highlight-content">Mengambil <strong>bulan</strong> atau <strong>hari</strong> dari tanggal.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">DATE(tahun, bulan, hari)</div>
+                    <div class="highlight-content">Membuat tanggal dari komponen terpisah. <span class="mono">DATE(2026,12,25)</span> → <span class="mono">25/12/2026</span></div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="diagram-box">
+                    <div class="diagram-title">Anatomi Tanggal di Excel</div>
+                    <div class="data-table">
+                        <table>
+                            <thead><tr><th>Fungsi</th><th>Hasil</th></tr></thead>
+                            <tbody>
+                                <tr><td class="mono">TODAY()</td><td class="mono">05/08/2026</td></tr>
+                                <tr><td class="mono">YEAR(TODAY())</td><td class="mono">2026</td></tr>
+                                <tr><td class="mono">MONTH(TODAY())</td><td class="mono">8</td></tr>
+                                <tr><td class="mono">DAY(TODAY())</td><td class="mono">5</td></tr>
+                                <tr><td class="mono">WEEKDAY(TODAY())</td><td class="mono">4 (Rabu)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>5 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: Pivot Table Basics ==================== -->
+        <div class="slide slide-full" data-slide="6">
+            <h2>Tabel Pivot: Konsep Dasar</h2>
+            <p class="body-text">Pivot Table adalah fitur Excel untuk <strong>meringkas, menganalisis, dan menjelajahi</strong> data besar secara interaktif — tanpa rumus manual.</p>
+            <div class="cards-grid-4">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📋</div></div>
+                    <div class="card-body"><h3>Baris (Rows)</h3><p>Kategori data yang ditampilkan per baris, misal: nama departemen</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📊</div></div>
+                    <div class="card-body"><h3>Nilai (Values)</h3><p>Data numerik yang dijumlahkan, dihitung rata-rata, dll.</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📑</div></div>
+                    <div class="card-body"><h3>Kolom (Columns)</h3><p>Pemisah data berdasarkan kategori, misal: kuartal atau bulan</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🔽</div></div>
+                    <div class="card-body"><h3>Filter</h3><p>Menyaring data yang ditampilkan tanpa mengubah sumber</p></div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>6 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: Pivot Table Practice ==================== -->
+        <div class="slide slide-content" data-slide="7">
+            <div class="content-left">
+                <h2>Praktik: Membuat Pivot Table</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 1 — Siapkan Data</div>
+                    <div class="highlight-content">Pilih range data. Pastikan ada <strong>header kolom</strong> yang jelas dan tidak ada baris kosong.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 2 — Insert PivotTable</div>
+                    <div class="highlight-content">Klik <strong>Insert → PivotTable</strong>. Pilih lokasi output (sheet baru atau yang sama).</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 3 — Drag Fields</div>
+                    <div class="highlight-content">Seret field ke area <strong>Rows, Columns, Values, Filters</strong> di panel kanan.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 4 — Atur Ringkasan</div>
+                    <div class="highlight-content">Ubah dari Sum ke <strong>Count, Average, Max, Min</strong> sesuai kebutuhan analisis.</div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="diagram-box">
+                    <div class="diagram-title">Contoh Ringkasan Pivot</div>
+                    <div class="data-table">
+                        <table>
+                            <thead><tr><th>Departemen</th><th>Total Penjualan</th><th>Rata-rata</th></tr></thead>
+                            <tbody>
+                                <tr><td>Marketing</td><td class="mono">Rp 450 jt</td><td class="mono">Rp 75 jt</td></tr>
+                                <tr><td>Sales</td><td class="mono">Rp 620 jt</td><td class="mono">Rp 103 jt</td></tr>
+                                <tr><td>IT</td><td class="mono">Rp 180 jt</td><td class="mono">Rp 30 jt</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>7 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: Macro & VBA Intro ==================== -->
+        <div class="slide slide-full" data-slide="8">
+            <h2>Pengenalan Macro &amp; VBA</h2>
+            <p class="body-text">Macro adalah <strong>rekaman perintah</strong> yang bisa diputar ulang. VBA (Visual Basic for Applications) adalah bahasa pemrograman di balik macro Excel.</p>
+            <div class="cards-grid-4">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🎬</div></div>
+                    <div class="card-body"><h3>Macro</h3><p>Sekuens perintah yang direkam dan bisa dijalankan berulang kali</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">⌨️</div></div>
+                    <div class="card-body"><h3>VBA</h3><p>Bahasa pemrograman untuk membuat macro yang lebih kompleks dan fleksibel</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">⚡</div></div>
+                    <div class="card-body"><h3>Otomatisasi</h3><p>Tugas berulang seperti format, filter, dan laporan bisa diotomasi</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">🔒</div></div>
+                    <div class="card-body"><h3>Keamanan</h3><p>File macro disimpan sebagai <span class="mono">.xlsm</span>, bukan <span class="mono">.xlsx</span></p></div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>8 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Recording Macros ==================== -->
+        <div class="slide slide-content" data-slide="9">
+            <div class="content-left">
+                <h2>Merekam Macro</h2>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 1</div>
+                    <div class="highlight-content">Buka tab <strong>View → Macros → Record Macro</strong>. Beri nama tanpa spasi (misal: <span class="mono">FormatLaporan</span>).</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 2</div>
+                    <div class="highlight-content">Opsional: tentukan <strong>shortcut key</strong> (misal: Ctrl+Shift+F).</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 3</div>
+                    <div class="highlight-content">Lakukan semua langkah yang ingin direkam — format, rumus, navigasi.</div>
+                </div>
+                <div class="highlight-box">
+                    <div class="highlight-title">Langkah 4</div>
+                    <div class="highlight-content">Klik <strong>View → Macros → Stop Recording</strong>. Macro siap dijalankan!</div>
+                </div>
+            </div>
+            <div class="content-right">
+                <div class="diagram-box">
+                    <div class="diagram-title">Contoh Kode VBA</div>
+                    <div class="diagram-content">
+                        <div style="background: #1e1e1e; color: #d4d4d4; padding: var(--sp-md); border-radius: var(--radius-sm); font-family: 'Consolas', monospace; font-size: var(--font-caption-sm); line-height: 1.6;">
+                            <span style="color: #569cd6;">Sub</span> FormatLaporan()<br>
+                            &nbsp;&nbsp;<span style="color: #569cd6;">Range</span>(<span style="color: #ce9178;">"A1:D1"</span>).Font.Bold = <span style="color: #569cd6;">True</span><br>
+                            &nbsp;&nbsp;<span style="color: #569cd6;">Range</span>(<span style="color: #ce9178;">"A1:D1"</span>).Interior.Color = vbGreen<br>
+                            &nbsp;&nbsp;<span style="color: #569cd6;">Columns</span>(<span style="color: #ce9178;">"A:D"</span>).AutoFit<br>
+                            <span style="color: #569cd6;">End Sub</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>9 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Automating Tasks ==================== -->
+        <div class="slide slide-full" data-slide="10">
+            <h2>Otomatisasi Tugas dengan Macro</h2>
+            <p class="body-text">Macro menghilangkan pekerjaan repetitif. Berikut contoh tugas yang bisa diotomasi:</p>
+            <div class="cards-grid-4">
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📑</div></div>
+                    <div class="card-body"><h3>Format Laporan</h3><p>Terapkan font, warna, border, dan alignment ke ribuan baris sekaligus</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📧</div></div>
+                    <div class="card-body"><h3>Kirim Email</h3><p>Kirim email otomatis dari Excel menggunakan Outlook</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📊</div></div>
+                    <div class="card-body"><h3>Buat Grafik</h3><p>Generate chart dari data secara otomatis dengan satu klik</p></div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div class="card-icon">📁</div></div>
+                    <div class="card-body"><h3>Import Data</h3><p>Ambil data dari file lain atau database dan gabungkan otomatis</p></div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>10 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="11">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Fungsi untuk mengambil 3 karakter dari kiri teks?</div><div class="q-options"><div class="q-opt">A. RIGHT(teks, 3)</div><div class="q-opt">B. LEFT(teks, 3)</div><div class="q-opt">C. MID(teks, 1, 3)</div><div class="q-opt">D. LEN(teks, 3)</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Hasil dari LEN("Halo") adalah?</div><div class="q-options"><div class="q-opt">A. 3</div><div class="q-opt">B. 5</div><div class="q-opt">C. 4</div><div class="q-opt">D. 6</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Fungsi yang selalu menampilkan tanggal hari ini?</div><div class="q-options"><div class="q-opt">A. DATE()</div><div class="q-opt">B. NOW()</div><div class="q-opt">C. TODAY()</div><div class="q-opt">D. DAY()</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Pivot Table digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Membuat grafik</div><div class="q-opt">B. Meringkas &amp; menganalisis data</div><div class="q-opt">C. Menghitung rumus</div><div class="q-opt">D. Menyimpan file</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Ekstensi file Excel yang mendukung macro?</div><div class="q-options"><div class="q-opt">A. .xlsx</div><div class="q-opt">B. .xls</div><div class="q-opt">C. .xlsm</div><div class="q-opt">D. .csv</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>11 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="12">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Fungsi untuk mengambil 3 karakter dari kiri teks?</div><div class="q-options"><div class="q-opt">A. RIGHT(teks, 3)</div><div class="q-opt correct">B. LEFT(teks, 3) ✓</div><div class="q-opt">C. MID(teks, 1, 3)</div><div class="q-opt">D. LEN(teks, 3)</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Hasil dari LEN("Halo") adalah?</div><div class="q-options"><div class="q-opt">A. 3</div><div class="q-opt">B. 5</div><div class="q-opt correct">C. 4 ✓</div><div class="q-opt">D. 6</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Fungsi yang selalu menampilkan tanggal hari ini?</div><div class="q-options"><div class="q-opt">A. DATE()</div><div class="q-opt">B. NOW()</div><div class="q-opt correct">C. TODAY() ✓</div><div class="q-opt">D. DAY()</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Pivot Table digunakan untuk?</div><div class="q-options"><div class="q-opt">A. Membuat grafik</div><div class="q-opt correct">B. Meringkas &amp; menganalisis data ✓</div><div class="q-opt">C. Menghitung rumus</div><div class="q-opt">D. Menyimpan file</div></div></div>
+                <div class="quiz-q" style="grid-column: 1 / -1; max-width: 50%;"><div class="q-text">5. Ekstensi file Excel yang mendukung macro?</div><div class="q-options"><div class="q-opt">A. .xlsx</div><div class="q-opt">B. .xls</div><div class="q-opt correct">C. .xlsm ✓</div><div class="q-opt">D. .csv</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>12 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="13">
+            <div class="overline">Rangkuman</div>
+            <h2>Poin-Poin Penting Pertemuan 13</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span>Fungsi teks <strong>LEFT, RIGHT, MID</strong> memungkinkan ekstraksi karakter dari posisi tertentu dalam sel.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span><strong>CONCATENATE</strong> dan <strong>TEXT</strong> berguna untuk menggabungkan serta memformat nilai menjadi teks yang terbaca.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span>Fungsi tanggal <strong>TODAY, YEAR, MONTH, DAY</strong> memudahkan pengelolaan dan analisis data berbasis waktu.</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span><strong>Tabel Pivot</strong> adalah alat analisis powerful untuk meringkas data besar tanpa rumus manual.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span><strong>Macro &amp; VBA</strong> mengotomasi tugas berulang, menyimpan waktu dan mengurangi kesalahan manusia.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>13 / 14</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Closing ==================== -->
+        <div class="slide slide-closing" data-slide="14">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">Dengan fungsi teks, tanggal, pivot table, dan macro — Anda sudah memiliki bekal untuk mengolah data secara profesional di Excel.</p>
+            <p class="closing-meta">Pertemuan 14: Presentasi Digital &amp; Kolaborasi Online</p>
+            <div class="slide-footer"><span>Pertemuan 13 — Dasar Teknologi Digital</span><span>14 / 14</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span class="slide-counter" id="slideCounter">1 / 14</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 14;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        function printSlides() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(s => { s.style.display = 'flex'; });
+            window.print();
+            slides.forEach((s, i) => { s.style.display = i === 0 ? 'flex' : 'none'; });
+            document.querySelector('.slide.active').style.display = 'flex';
+        }
+
+        goToSlide(1);
+    </script>
+</body>
+</html>

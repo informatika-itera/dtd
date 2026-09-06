@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertemuan 3 — Dasar Teknologi Digital</title>
+    <link rel="stylesheet" href="assets/styles/slides.css">
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="presentation" id="presentation">
+
+        <!-- ==================== SLIDE 1: Title ==================== -->
+        <div class="slide slide-title active" data-slide="1">
+            <div class="title-header">
+                <div class="header-logos">
+                    <img src="assets/dikti-saintek-1.png" alt="DIKTI Saintek Berdampak">
+                    <img src="assets/itera-1.png" alt="ITERA">
+                </div>
+            </div>
+            <h1>Internet, Website, Basis Data &amp; Media Sosial</h1>
+            <p class="subtitle">Memahami infrastruktur internet, cara kerja website dan basis data, serta peran media sosial dalam masyarakat digital</p>
+            <div class="meta">
+                <div class="meta-item"><span>Dasar Teknologi Digital</span></div>
+                <div class="meta-item"><span>&middot;</span></div>
+                <div class="meta-item"><span>Pertemuan 3</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>1 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 2: Hook ==================== -->
+        <div class="slide slide-full" data-slide="2">
+            <h2>Dunia yang Terhubung</h2>
+            <div class="stats-row mb-md">
+                <div class="stat-box"><div class="stat-number">230jt</div><div class="stat-label">Pengguna internet<br>Indonesia (2025)</div></div>
+                <div class="stat-box"><div class="stat-number">3,5jam</div><div class="stat-label">Rata-rata waktu<br>online per hari</div></div>
+                <div class="stat-box"><div class="stat-number">180jt</div><div class="stat-label">Pengguna media sosial<br>aktif di Indonesia</div></div>
+            </div>
+            <ul class="bullet-list mt-xl">
+                <li><strong>WhatsApp</strong> — 87% pengguna internet Indonesia pakai setiap hari</li>
+                <li><strong>Tokopedia</strong> — 12 juta+ penjual UMKM terhubung ke pembeli di seluruh Indonesia</li>
+                <li><strong>GoFood</strong> — pesan makanan dari mana saja, diantar dalam hitungan menit</li>
+            </ul>
+            <p class="body-text text-source">Sumber: DataReportal (2026), APJII (2025)</p>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>2 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 3: Agenda ==================== -->
+        <div class="slide slide-full" data-slide="3">
+            <h2>Agenda Pertemuan</h2>
+            <div class="list-items">
+                <div class="list-item"><div class="list-number">1</div><div><h4>Internet sebagai Jaringan Global</h4><p>TCP/IP, DNS, dan fondasi konektivitas dunia</p></div></div>
+                <div class="list-item"><div class="list-number">2</div><div><h4>Cloud &amp; Komunikasi Real-time</h4><p>Layanan yang mengalir tanpa henti di balik layar</p></div></div>
+                <div class="list-item"><div class="list-number">3</div><div><h4>Website &amp; Basis Data</h4><p>HTML/CSS/JS, SQL vs NoSQL — apa yang terjadi di balik layar</p></div></div>
+                <div class="list-item"><div class="list-number">4</div><div><h4>Media Sosial &amp; Dampaknya</h4><p>Evolusi platform, dampak positif &amp; negatif</p></div></div>
+                <div class="list-item"><div class="list-number">5</div><div><h4>Literasi Digital &amp; Keamanan</h4><p>Berpikir kritis, keamanan, dan etika bermedia sosial</p></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>3 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 4: Internet ==================== -->
+        <div class="slide slide-full" data-slide="4">
+            <h2>Internet: Jaringan dari Jaringan</h2>
+            <div class="highlight-box mb-md">
+                <div class="highlight-title">Definisi</div>
+                <div class="highlight-content">Internet adalah <strong>jaringan global</strong> yang menghubungkan miliaran perangkat di seluruh dunia melalui protokol standar <strong>TCP/IP</strong>.</div>
+            </div>
+            <div class="two-col">
+                <div class="col">
+                    <h3>TCP/IP</h3>
+                    <div class="data-table">
+                        <table>
+                            <tbody>
+                                <tr><td><strong>TCP</strong></td><td>Membagi &amp; menyusun data</td></tr>
+                                <tr><td><strong>IP</strong></td><td>Alamat pengirim &amp; tujuan</td></tr>
+                                <tr><td><strong>Port</strong></td><td>Jalur layanan (80, 443)</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col">
+                    <h3>DNS</h3>
+                    <div class="data-table">
+                        <table>
+                            <tbody>
+                                <tr><td><strong>Fungsi</strong></td><td>Domain → IP address</td></tr>
+                                <tr><td><strong>Analogi</strong></td><td>Buku telepon internet</td></tr>
+                                <tr><td><strong>Contoh</strong></td><td>google.com → 142.250.x.x</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>4 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 5: Cara Kerja Internet ==================== -->
+        <div class="slide slide-full" data-slide="5">
+            <h2>Bagaimana Internet Bekerja?</h2>
+            <div class="diagram-container mb-md">
+                <div class="diagram-box diagram-box-top">
+                    <h3>🖥️ Client</h3>
+                    <p>Kirim request HTTP</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>📡 ISP</h3>
+                    <p>Penyedia akses</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>🔀 Router</h3>
+                    <p>Cari jalur terbaik</p>
+                </div>
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-box diagram-box-top primary">
+                    <h3>🖥️ Server</h3>
+                    <p>Proses &amp; kirim balasan</p>
+                </div>
+            </div>
+            <div class="two-col">
+                <div class="col">
+                    <h3>Paket Data</h3>
+                    <ul>
+                        <li>Data dipecah menjadi <strong>paket-paket kecil</strong></li>
+                        <li>Setiap paket punya header (alamat tujuan)</li>
+                        <li>Paket bisa lewat jalur berbeda</li>
+                        <li>Disusun ulang di tujuan oleh TCP</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>Routing</h3>
+                    <ul>
+                        <li>Router membaca <strong>alamat IP tujuan</strong></li>
+                        <li>Memilih jalur tercepat/terdekat</li>
+                        <li>BGP mengatur routing antar ISP</li>
+                        <li>Setiap hop = satu router</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>5 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 6: Bridge — Dari Jaringan ke Layanan ==================== -->
+        <div class="slide slide-full" data-slide="6">
+            <h2>Dari Jaringan ke Layanan</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Pertemuan lalu kita belajar bagaimana komputer menyimpan data dalam 0 dan 1. Sekarang: <strong>bagaimana 0 dan 1 itu mengalir dari satu komputer ke komputer lain di seluruh dunia?</strong></p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box">
+                        <h4>🌐 Internet</h4>
+                        <p>Jalur, kabel,<br>router, protokol</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">
+                        <h4>☁️ Cloud</h4>
+                        <p>Server, infrastruktur,<br>penyimpanan</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary">
+                        <h4>📱 Aplikasi</h4>
+                        <p>Yang kita pakai<br>sehari-hari</p>
+                    </div>
+                </div>
+                <p class="body-text text-caption mt-md">Internet adalah jalannya. Tapi apa yang lewat di jalur itu? <strong>Layanan yang kita gunakan setiap hari.</strong></p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>6 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 7: Cloud & Komunikasi Real-time ==================== -->
+        <div class="slide slide-full" data-slide="7">
+            <h2>Cloud &amp; Komunikasi Real-time</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">☁️</div><h3>Cloud Storage</h3><p>Simpan file online — akses dari mana saja<br><strong>Contoh:</strong> Google Drive, iCloud, Dropbox</p></div>
+                <div class="card"><div class="card-icon">⚙️</div><h3>Cloud Computing</h3><p>Proses data online — tanpa install di komputer<br><strong>Contoh:</strong> Google Docs, Zoom, Canva</p></div>
+                <div class="card"><div class="card-icon">💬</div><h3>Real-time</h3><p>Data mengalir terus-menerus — tanpa jeda<br><strong>Contoh:</strong> WhatsApp, notifikasi, live streaming</p></div>
+            </div>
+            <div class="highlight-box mt-md">
+                <div class="highlight-title">Mengapa Penting?</div>
+                <div class="highlight-content">Semua layanan ini berjalan di <strong>server</strong> yang bisa diakses dari mana saja, kapan saja. Kamu tidak perlu tahu server-nya di mana — cukup buka aplikasi, langsung jalan.</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>7 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 8: Bridge — Dari Layanan ke Dapur ==================== -->
+        <div class="slide slide-full" data-slide="8">
+            <h2>Dari Layanan ke Dapur</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Kamu buka Tokopedia, lihat produk, beli. Itu semua terjadi di layar. Tapi <strong>apa yang terjadi di balik layar?</strong></p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box">
+                        <h4>👤 User</h4>
+                        <p>Kamu klik "Beli"<br>di HP</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">
+                        <h4>🌐 Website</h4>
+                        <p>Menampilkan produk,<br>harga, keranjang</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary">
+                        <h4>🗄️ Database</h4>
+                        <p>Menyimpan data<br>produk, user, transaksi</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>8 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 9: Anatomi Website ==================== -->
+        <div class="slide slide-full" data-slide="9">
+            <h2>Anatomi Website</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🏗️</div><h3>HTML</h3><p><strong>Struktur</strong> — Tag seperti <code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code> membangun kerangka halaman</p></div>
+                <div class="card"><div class="card-icon">🎨</div><h3>CSS</h3><p><strong>Presentasi</strong> — Warna, font, layout, animasi. Membuat website menarik</p></div>
+                <div class="card"><div class="card-icon">⚡</div><h3>JavaScript</h3><p><strong>Interaktivitas</strong> — Validasi form, animasi, update tanpa reload halaman</p></div>
+            </div>
+            <div class="diagram-container mt-lg">
+                <div class="diagram-box diagram-box-top">
+                    <h4>Browser</h4>
+                    <p>Klien (Chrome, Firefox)</p>
+                </div>
+                <div class="diagram-arrow">⟺</div>
+                <div class="diagram-box diagram-box-top primary">
+                    <h4>Web Server</h4>
+                    <p>Apache, Nginx</p>
+                </div>
+                <div class="diagram-arrow">⟺</div>
+                <div class="diagram-box diagram-box-top">
+                    <h4>Database</h4>
+                    <p>MySQL, MongoDB</p>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>9 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 10: Basis Data ==================== -->
+        <div class="slide slide-full" data-slide="10">
+            <h2>Basis Data: SQL vs NoSQL</h2>
+            <div class="highlight-box mb-md">
+                <div class="highlight-title">Apa itu Basis Data?</div>
+                <div class="highlight-content">Sistem untuk <strong>menyimpan, mengelola, dan mengambil data</strong> secara terstruktur dan efisien.</div>
+            </div>
+            <div class="two-col">
+                <div class="col">
+                    <h3>SQL (Relasional)</h3>
+                    <ul>
+                        <li>Tabel dengan baris &amp; kolom</li>
+                        <li>Skema tetap (rigid)</li>
+                        <li>Query bahasa SQL</li>
+                        <li><strong>Contoh:</strong> data mahasiswa ITERA</li>
+                    </ul>
+                    <p class="text-caption mt-sm">MySQL, PostgreSQL, Oracle</p>
+                </div>
+                <div class="col">
+                    <h3>NoSQL (Non-Relasional)</h3>
+                    <ul>
+                        <li>Dokumen, key-value, graf</li>
+                        <li>Skema fleksibel</li>
+                        <li>Skalabilitas horizontal</li>
+                        <li><strong>Contoh:</strong> data postingan Instagram</li>
+                    </ul>
+                    <p class="text-caption mt-sm">MongoDB, Redis, Cassandra</p>
+                </div>
+            </div>
+            <div class="highlight-box mt-md">
+                <div class="highlight-title">Kapan Memilih?</div>
+                <div class="highlight-content">Butuh <strong>konsistensi ketat</strong> → SQL. Butuh <strong>fleksibilitas &amp; skala besar</strong> → NoSQL. Banyak sistem modern menggunakan <strong>keduanya</strong> (polyglot persistence).</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>10 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 11: Latihan Interaktif ==================== -->
+        <div class="slide slide-full" data-slide="11">
+            <h2>Coba Pikirkan...</h2>
+            <div class="diagram-container mb-md">
+                <div class="diagram-box diagram-box-top">
+                    <h3>🛒</h3>
+                    <p><strong>Produk</strong><br>Nama, harga, stok, foto</p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>👤</h3>
+                    <p><strong>User</strong><br>Nama, alamat, HP, email</p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>📦</h3>
+                    <p><strong>Transaksi</strong><br>Tanggal, jumlah, status</p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>⭐</h3>
+                    <p><strong>Review</strong><br>Rating, komentar, foto</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <div class="highlight-title">Pertanyaan</div>
+                <div class="highlight-content">Kamu beli barang di Tokopedia. <strong>Data apa saja yang tersimpan di database?</strong> Bagaimana data itu sampai ke layar HP-mu?</div>
+            </div>
+            <p class="body-text text-caption mt-md">💬 Diskusikan dengan teman di sebelahmu — 3 menit!</p>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>11 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 12: Bridge — Semua Terhubung ==================== -->
+        <div class="slide slide-full" data-slide="12">
+            <h2>Semua Terhubung</h2>
+            <div class="slide-center">
+                <p class="body-text text-caption-highlight">Internet jalannya. Website &amp; database mesinnya. <strong>Siapa yang menggunakannya? Kita semua — melalui media sosial.</strong></p>
+                <div class="diagram-container mt-lg">
+                    <div class="diagram-box">
+                        <h4>🌐 Internet</h4>
+                        <p>Jalur konektivitas</p>
+                    </div>
+                    <div class="diagram-box">
+                        <h4>🖥️ Website + DB</h4>
+                        <p>Mesin &amp; data</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box primary">
+                        <h4>📱 Media Sosial</h4>
+                        <p>Platform yang<br>kita pakai</p>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-box">
+                        <h4>👥 Kita</h4>
+                        <p>4,9 miliar<br>pengguna global</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>12 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 13: Evolusi Media Sosial ==================== -->
+        <div class="slide slide-full" data-slide="13">
+            <h2>Evolusi Media Sosial</h2>
+            <div class="timeline mb-md">
+                <div class="timeline-item"><div class="timeline-dot">📝</div><h4>2004</h4><p>Facebook<br>Era jejaring sosial</p></div>
+                <div class="timeline-item"><div class="timeline-dot">🐦</div><h4>2006</h4><p>Twitter<br>Mikroblogging</p></div>
+                <div class="timeline-item"><div class="timeline-dot">📸</div><h4>2010</h4><p>Instagram<br>Konten visual</p></div>
+                <div class="timeline-item"><div class="timeline-dot">💬</div><h4>2011</h4><p>WhatsApp<br>Messaging instan</p></div>
+                <div class="timeline-item"><div class="timeline-dot active">🎵</div><h4>2016</h4><p>TikTok<br>Video pendek &amp; AI feed</p></div>
+            </div>
+            <div class="stats-row">
+                <div class="stat-box"><div class="stat-number">4,9M</div><div class="stat-label">Pengguna media sosial<br>dunia (2024)</div></div>
+                <div class="stat-box"><div class="stat-number">2,5jam</div><div class="stat-label">Rata-rata waktu<br>per hari</div></div>
+                <div class="stat-box"><div class="stat-number">6+</div><div class="stat-label">Platform aktif<br>per pengguna</div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>13 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 14: Dampak Positif & Negatif ==================== -->
+        <div class="slide slide-full" data-slide="14">
+            <h2>Dampak Positif &amp; Negatif</h2>
+            <div class="two-col">
+                <div class="col">
+                    <h3>✅ Dampak Positif</h3>
+                    <ul>
+                        <li>🌍 <strong>Koneksi global</strong> — komunikasi tanpa batas geografis</li>
+                        <li>🛒 <strong>UMKM naik kelas</strong> — GoFood, Tokopedia, Shopee</li>
+                        <li>📚 <strong>Edukasi online</strong> — akses materi dari mana saja</li>
+                        <li>📢 <strong>Gerakan sosial</strong> — #MeToo, fundraising, awareness</li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>⚠️ Tantangan</h3>
+                    <ul>
+                        <li>📰 <strong>Misinformasi</strong> — hoaks menyebar 6x lebih cepat</li>
+                        <li>😢 <strong>Cyberbullying</strong> — dampak psikologis nyata</li>
+                        <li>🕐 <strong>Kecanduan</strong> — scroll tanpa henti, FOMO</li>
+                        <li>🔒 <strong>Privasi data</strong> — data pribadi disalahgunakan</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box mt-md">
+                <div class="highlight-title">Fakta Indonesia</div>
+                <div class="highlight-content">UMKM di Indonesia naik kelas lewat platform digital (GoFood, Tokopedia). Tapi hoaks juga menyebar cepat lewat WhatsApp — <strong>UU ITE</strong> hadir untuk mengatur etika digital.</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>14 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 15: Literasi Digital ==================== -->
+        <div class="slide slide-full" data-slide="15">
+            <h2>Literasi Digital</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🔍</div><h3>Cari &amp; Verifikasi</h3><p>Cek fakta sebelum membagikan. Gunakan sumber terpercaya</p></div>
+                <div class="card"><div class="card-icon">🛡️</div><h3>Keamanan Digital</h3><p>Password kuat, 2FA, waspada phishing &amp; social engineering</p></div>
+                <div class="card"><div class="card-icon">⚖️</div><h3>Etika Digital</h3><p>Hormati privasi, hindari cyberbullying, hormati hak cipta</p></div>
+                <div class="card"><div class="card-icon">🧠</div><h3>Berpikir Kritis</h3><p>Kenali bias algoritma, filter bubble, dan echo chamber</p></div>
+            </div>
+            <p class="body-text text-caption mt-md">Literasi digital bukan hanya kemampuan teknis — ini tentang <strong>berpikir kritis</strong>, <strong>melindungi diri</strong>, dan <strong>berpartisipasi secara bertanggung jawab</strong> dalam masyarakat digital.</p>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>15 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 16: Keamanan Bermedia Sosial ==================== -->
+        <div class="slide slide-full" data-slide="16">
+            <h2>Keamanan Bermedia Sosial</h2>
+            <div class="diagram-container mb-md">
+                <div class="diagram-box diagram-box-top">
+                    <h3>🔐</h3>
+                    <p><strong>Password Kuat + 2FA</strong><br>Minimal 12 karakter, gabungan huruf+angka+simbol. Aktifkan autentikasi dua faktor</p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>✅</h3>
+                    <p><strong>Cek Fakta Sebelum Share</strong><br>Periksa sumber, cari di situs fact-check. Jangan sebar hoaks</p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>🎣</h3>
+                    <p><strong>Waspadai Phishing</strong><br>Jangan klik link mencurigakan. "Paket gagal dikirim" via WhatsApp = modus penipuan</p>
+                </div>
+                <div class="diagram-box diagram-box-top">
+                    <h3>👁️</h3>
+                    <p><strong>Atur Privasi Akun</strong><br>Siapa yang bisa lihat postinganmu? Review izin aplikasi secara berkala</p>
+                </div>
+            </div>
+            <div class="highlight-box">
+                <div class="highlight-title">Ingat</div>
+                <div class="highlight-content">Keamanan digital dimulai dari <strong>kebiasaan kecil</strong> sehari-hari. Satu klik ceroboh bisa berdampak besar.</div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>16 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 17: Post-Test Soal ==================== -->
+        <div class="slide slide-quiz" data-slide="17">
+            <h2>Post-Test: Uji Pemahaman</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Protokol utama untuk mengirim halaman web?</div><div class="q-options"><div class="q-opt">A. FTP</div><div class="q-opt">B. SMTP</div><div class="q-opt">C. HTTP/HTTPS</div><div class="q-opt">D. SSH</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Fungsi utama DNS?</div><div class="q-options"><div class="q-opt">A. Mengenkripsi data</div><div class="q-opt">B. Mengubah domain ke IP address</div><div class="q-opt">C. Mempercepat koneksi</div><div class="q-opt">D. Mengelola password</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Data di internet dikirim dalam bentuk?</div><div class="q-options"><div class="q-opt">A. File besar tunggal</div><div class="q-opt">B. Gelombang analog</div><div class="q-opt">C. Paket-paket kecil</div><div class="q-opt">D. Sinyal radio</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Contoh layanan SaaS?</div><div class="q-options"><div class="q-opt">A. AWS EC2</div><div class="q-opt">B. Gmail</div><div class="q-opt">C. Linux Server</div><div class="q-opt">D. MySQL</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>17 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 18: Post-Test Jawaban ==================== -->
+        <div class="slide slide-quiz" data-slide="18">
+            <h2>Post-Test: Jawaban</h2>
+            <div class="quiz-grid">
+                <div class="quiz-q"><div class="q-text">1. Protokol utama untuk mengirim halaman web?</div><div class="q-options"><div class="q-opt">A. FTP</div><div class="q-opt">B. SMTP</div><div class="q-opt correct">C. HTTP/HTTPS ✓</div><div class="q-opt">D. SSH</div></div></div>
+                <div class="quiz-q"><div class="q-text">2. Fungsi utama DNS?</div><div class="q-options"><div class="q-opt">A. Mengenkripsi data</div><div class="q-opt correct">B. Mengubah domain ke IP address ✓</div><div class="q-opt">C. Mempercepat koneksi</div><div class="q-opt">D. Mengelola password</div></div></div>
+                <div class="quiz-q"><div class="q-text">3. Data di internet dikirim dalam bentuk?</div><div class="q-options"><div class="q-opt">A. File besar tunggal</div><div class="q-opt">B. Gelombang analog</div><div class="q-opt correct">C. Paket-paket kecil ✓</div><div class="q-opt">D. Sinyal radio</div></div></div>
+                <div class="quiz-q"><div class="q-text">4. Contoh layanan SaaS?</div><div class="q-options"><div class="q-opt">A. AWS EC2</div><div class="q-opt correct">B. Gmail ✓</div><div class="q-opt">C. Linux Server</div><div class="q-opt">D. MySQL</div></div></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>18 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 19: Rangkuman ==================== -->
+        <div class="slide slide-rangkuman" data-slide="19">
+            <h2>Rangkuman Pertemuan 3</h2>
+            <div class="rangkuman-list">
+                <div class="rangkuman-item"><div class="rnum">1</div><span><strong>Internet</strong> adalah jaringan global yang menghubungkan miliaran perangkat melalui protokol <strong>TCP/IP</strong> dan <strong>DNS</strong>.</span></div>
+                <div class="rangkuman-item"><div class="rnum">2</div><span>Data di internet dikirim dalam <strong>paket-paket kecil</strong> yang dirutekan melalui berbagai jalur oleh router.</span></div>
+                <div class="rangkuman-item"><div class="rnum">3</div><span><strong>Cloud computing</strong> memungkinkan akses sumber daya komputasi (storage, computing, real-time) tanpa infrastruktur lokal.</span></div>
+                <div class="rangkuman-item"><div class="rnum">4</div><span>Website dibangun dari <strong>HTML</strong> (struktur), <strong>CSS</strong> (tampilan), dan <strong>JavaScript</strong> (interaksi). Basis data: <strong>SQL</strong> untuk relasional, <strong>NoSQL</strong> untuk fleksibel.</span></div>
+                <div class="rangkuman-item"><div class="rnum">5</div><span>Media sosial punya <strong>dampak positif</strong> (koneksi, UMKM, edukasi) dan <strong>negatif</strong> (hoaks, cyberbullying, kecanduan).</span></div>
+                <div class="rangkuman-item"><div class="rnum">6</div><span><strong>Literasi digital</strong> &amp; <strong>keamanan bermedia sosial</strong> — berpikir kritis, cek fakta, password kuat, atur privasi.</span></div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>19 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 20: Referensi ==================== -->
+        <div class="slide slide-full" data-slide="20">
+            <h2 class="text-left">Referensi</h2>
+            <div class="reference-list">
+                <p>1. Tanenbaum, A.S. &amp; Wetherall, D.J. (2011). <em>Computer Networks</em>. 5th ed. Pearson.</p>
+                <p>2. Forouzan, B.A. (2013). <em>Data Communications and Networking</em>. 5th ed. McGraw-Hill.</p>
+                <p>3. Connolly, T. &amp; Begg, C. (2015). <em>Database Systems: A Practical Approach to Design, Implementation, and Management</em>. 6th ed. Pearson.</p>
+                <p>4. Boyd, D.M. &amp; Ellison, N.B. (2007). "Social Network Sites: Definition, History, and Scholarship." <em>Journal of Computer-Mediated Communication</em>, 13(1).</p>
+                <p>5. DataReportal (2026). "Digital 2026: Indonesia." <a href="https://datareportal.com">datareportal.com</a></p>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>20 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 21: Preview Pertemuan 4 ==================== -->
+        <div class="slide slide-full" data-slide="21">
+            <h2>Selanjutnya: Pertemuan 4</h2>
+            <div class="slide-center">
+                <div class="diagram-container">
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🏥🎓💼</h3>
+                        <p><strong>Aplikasi di Berbagai Bidang</strong><br>Kesehatan, pendidikan, bisnis, pemerintahan</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>⚖️</h3>
+                        <p><strong>Etika &amp; Tanggung Jawab</strong><br>Penggunaan teknologi yang bertanggung jawab</p>
+                    </div>
+                    <div class="diagram-box diagram-box-top">
+                        <h3>🏛️</h3>
+                        <p><strong>e-Government</strong><br>Digitalisasi layanan publik</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>21 / 22</span></div>
+        </div>
+
+        <!-- ==================== SLIDE 22: Closing ==================== -->
+        <div class="slide slide-closing" data-slide="22">
+            <h1>Terima Kasih</h1>
+            <p class="closing-subtitle">Internet menghubungkan, website menampilkan, database menyimpan, dan media sosial menghubungkan kita semua. Memahami ekosistem ini berarti memahami dunia digital tempat kita hidup.</p>
+            <div class="quote-block text-left">
+                <p>"The Internet is becoming the town square for the global village of tomorrow."</p>
+                <cite>— Bill Gates</cite>
+            </div>
+            <p class="closing-meta">Pertemuan 4: Aplikasi &amp; Etika Teknologi Digital di Berbagai Bidang</p>
+            <div class="slide-footer"><span>Pertemuan 3 — Dasar Teknologi Digital</span><span>22 / 22</span></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav-hover-zone"></div>
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">←</button>
+        <span class="slide-counter" id="slideCounter">1 / 22</span>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">→</button>
+        <button class="nav-btn print-btn-nav" onclick="printSlides()" title="Export PDF">🖨️</button>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 22;
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 1 && newSlide <= totalSlides) goToSlide(newSlide);
+        }
+
+        function goToSlide(slideNumber) {
+            document.querySelector('.slide.active').classList.remove('active');
+            const el = document.querySelector('[data-slide="' + slideNumber + '"]');
+            if (el) {
+                el.classList.add('active');
+                currentSlide = slideNumber;
+                document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides;
+                const progress = ((currentSlide - 1) / (totalSlides - 1)) * 100;
+                document.getElementById('progressBar').style.width = progress + '%';
+                document.getElementById('prevBtn').style.opacity = currentSlide === 1 ? '0.4' : '1';
+                document.getElementById('nextBtn').style.opacity = currentSlide === totalSlides ? '0.4' : '1';
+            }
+        }
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
+            if (e.key === 'Home') { e.preventDefault(); goToSlide(1); }
+            if (e.key === 'End') { e.preventDefault(); goToSlide(totalSlides); }
+        });
+
+        let touchStartX = 0;
+        document.addEventListener('touchstart', e => { touchStartX = e.touches[0].screenX; });
+        document.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+        });
+
+        function printSlides() {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(s => { s.style.display = 'flex'; });
+            window.print();
+            setTimeout(() => {
+                slides.forEach(s => { s.style.display = ''; });
+                goToSlide(currentSlide);
+            }, 500);
+        }
+
+        goToSlide(1);
+    </script>
+</body>
+</html>

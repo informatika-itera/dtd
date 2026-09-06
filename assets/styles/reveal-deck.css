@@ -1,0 +1,515 @@
+/* ============================================================
+   DTD — reveal.js deck overrides
+   ============================================================
+   Loaded AFTER reveal.css + reset.css + slides.css.
+   Reconciles the legacy fullscreen slide design with reveal's
+   fixed 1280x720 slide canvas. All slide content keeps the
+   original Airbnb-inspired light theme; only the container
+   geometry and reveal-owned chrome are adjusted here.
+   ============================================================ */
+
+/* --- Reset the document to reveal's full-viewport model --- */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--surface-soft);
+}
+
+body {
+    font-family: 'Inter', -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+}
+
+/* --- reveal viewport paints the canvas, not the body --- */
+.reveal-viewport {
+    background: var(--surface-soft);
+}
+
+/* ============================================================
+   SLIDE GEOMETRY
+   Legacy .slide was 100vw x 100vh absolute. Under reveal the
+   <section> is positioned by reveal on a 1280x720 canvas, so we
+   re-anchor the content to fill the section.
+   ============================================================ */
+
+.reveal .slides section.slide {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex !important;            /* reveal sets inline display:block */
+    background: var(--canvas);
+    overflow: hidden;                    /* clip, never bleed off-slide */
+}
+
+/* reveal's own `.slides>section.present{display:block}` (0,3,2) must not
+   win over our flex layout — bump specificity past it. */
+.reveal .slides > section.slide.present {
+    display: flex !important;
+}
+
+/* Vertical fill for stacked flex columns (full / quiz / rangkuman / closing) */
+.reveal .slides section.slide-full,
+.reveal .slides section.slide-quiz,
+.reveal .slides section.slide-rangkuman,
+.reveal .slides section.slide-refleksi,
+.reveal .slides section.slide-closing,
+.reveal .slides section.slide-title {
+    flex-direction: column;
+}
+
+/* ============================================================
+   UNIFIED HEADING SCALE
+   Every section-level heading (h2) shares one size so decks read
+   consistently regardless of slide type. slide-full already uses
+   --font-display-md; the content/quiz/rangkuman slides inherited
+   the smaller --font-display-sm from `.slide h2`.
+   ============================================================ */
+
+.reveal .slides section.slide-content h2,
+.reveal .slides section.slide-quiz h2,
+.reveal .slides section.slide-rangkuman h2 {
+    font-size: var(--font-display-md);
+}
+
+/* ============================================================
+   TEXT ALIGNMENT
+   reveal.css sets `.slides{text-align:center}` and every slide
+   inherits it, silently centering headings and body copy that
+   the design intends to be left-aligned. Reset to left. The
+   intentionally-centered components (.slide-title, .stat-box,
+   .diagram-box, .timeline-item, .slide-center, .slide-quiz,
+   .slide-rangkuman, .slide-closing) carry their own explicit
+   text-align and are unaffected.
+   ============================================================ */
+
+.reveal .slides {
+    text-align: left;
+}
+
+/* Two-column content rows */
+.reveal .slides section.slide-content {
+    flex-direction: row;
+    align-items: stretch;
+}
+
+/* ============================================================
+   FOOTER ANCHOR
+   ============================================================ */
+
+.reveal .slides .slide-footer {
+    position: absolute;
+    bottom: var(--sp-base);
+    left: var(--sp-page);
+    right: var(--sp-page);
+    flex-shrink: 0;
+}
+
+/* ============================================================
+   REVEAL CHROME (its own UI — retint to the brand)
+   ============================================================ */
+
+.reveal .progress {
+    height: clamp(2px, 0.23vw, 4px);
+    background: var(--hairline);
+    color: var(--primary);
+}
+
+.reveal .controls {
+    color: var(--primary);
+}
+
+.reveal .controls button {
+    border: 1px solid var(--hairline);
+    color: var(--ink);
+}
+
+.reveal .slide-number {
+    font-size: var(--font-caption-sm);
+    color: var(--muted);
+    background: var(--canvas);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-pill);
+    padding: 2px 10px;
+}
+
+/* ============================================================
+   INLINE CODE
+   ============================================================ */
+
+.reveal code {
+    font-family: 'SF Mono', SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.9em;
+    background: var(--surface-soft);
+    color: var(--ink);
+    border-radius: 4px;
+    padding: 0 5px;
+}
+
+.reveal .formula-box code {
+    display: block;
+    padding: var(--sp-sm) var(--sp-md);
+    font-size: var(--font-body-sm);
+}
+
+/* ============================================================
+   MISSING COMPONENT STYLES
+   (used by decks but absent from the legacy stylesheet)
+   ============================================================ */
+
+/* card header / body split used across the praktikum decks */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-sm);
+}
+
+.card-body h3 {
+    font-size: var(--font-body);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: var(--sp-xs);
+}
+
+.card-body p {
+    font-size: var(--font-body-sm);
+    color: var(--body);
+    line-height: 1.5;
+}
+
+/* 3 and 5 column card grids (legacy only had 2 & 4) */
+.cards-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+.cards-grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--sp-lg);
+    flex: 1;
+    min-height: 0;
+}
+
+/* Formula callouts (Pertemuan 12) */
+.formula-box {
+    background: var(--surface-soft);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-md);
+    padding: var(--sp-md);
+    margin: var(--sp-sm) 0;
+}
+
+.formula-label {
+    font-size: var(--font-caption-sm);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: var(--sp-xs);
+}
+
+/* Diagram title / content (Pertemuan 13) */
+.diagram-title {
+    font-size: var(--font-body-sm);
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: var(--sp-sm);
+    text-align: center;
+}
+
+.diagram-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+    width: 100%;
+}
+
+/* Semantic diagram-box tints (Pertemuan 10 mail-merge) */
+.diagram-box.success {
+    border-color: #0d9f6e;
+    background: rgba(13, 159, 110, 0.06);
+}
+
+.diagram-box.warning {
+    border-color: var(--warning, #f59e0b);
+    background: rgba(245, 158, 11, 0.06);
+}
+
+/* Refleksi slide (Pertemuan 15) */
+.slide-refleksi {
+    padding: var(--sp-page) var(--sp-page) 120px;
+    align-items: center;
+    gap: var(--sp-lg);
+}
+
+.slide-refleksi h2 {
+    font-size: var(--font-display-md);
+    color: var(--ink);
+    margin-bottom: var(--sp-lg);
+    width: 100%;
+    text-align: center;
+}
+
+.refleksi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-lg);
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
+
+.refleksi-card {
+    background: var(--canvas);
+    border: 1px solid var(--hairline-soft);
+    border-radius: var(--radius-lg);
+    padding: var(--sp-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-sm);
+}
+
+.refleksi-card:hover {
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.ref-icon {
+    font-size: 48px;
+    margin-bottom: var(--sp-sm);
+}
+
+.refleksi-card h3 {
+    font-size: var(--font-body);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+}
+
+.refleksi-card p {
+    font-size: var(--font-body-sm);
+    color: var(--body);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   EDITORIAL MASTHEAD (title slide)
+   Replaces the pill/badge row with a journal-style signature
+   line: course name in small caps left, meeting number right,
+   separated by a hairline rule — academic, not template.
+   ============================================================ */
+
+.reveal .slides section.slide-title .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-lg);
+    width: 100%;
+    max-width: 50em;
+    padding-top: var(--sp-md);
+    border-top: 1px solid var(--hairline);
+    font-size: var(--font-caption);
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}
+
+.reveal .slides section.slide-title .masthead-course {
+    font-variant: small-caps;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.reveal .slides section.slide-title .masthead-part {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+}
+
+/* ============================================================
+   SCALING MODEL
+   reveal.js renders every slide on a fixed 1280x720 canvas and
+   uniformly scales + letterboxes it to fit any window/projector.
+   The canvas is therefore always 16:9 internally, so no window-
+   relative media queries are needed — reveal owns the fit.
+   ============================================================ */
+
+/* ============================================================
+   PRINT / PDF EXPORT
+   reveal's built-in ?print-pdf handles pagination; these rules
+   only restore color fidelity and our footer's absolute anchor.
+   ============================================================ */
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    .reveal .slides .slide-footer {
+        position: absolute;
+    }
+}
+
+/* ============================================================
+   PRINT-PDF LAYOUT RESTORE
+   reveal.css ships `html.reveal-print .reveal .slides section{
+   display:block!important; padding:0!important; ...}` (0,3,2),
+   which beats our `.reveal .slides section.slide` (0,3,1) and
+   collapses the flex layout: two-column slides stack, and slide
+   padding is stripped so text hugs the page margin. Re-assert
+   display:flex and the per-type padding at higher specificity
+   so the printed page matches the on-screen slide. The print
+   canvas is a fixed 1280x720 (@page), so the folded px values
+   used on screen apply verbatim.
+   ============================================================ */
+
+html.reveal-print .reveal .slides section.slide {
+    display: flex !important;
+    /* reveal strips the fixed height in print (`.slides{height:auto}`),
+       which lets `flex:1` children (layer boxes, card grids) grow to
+       natural height and spill onto a second page. Re-lock the section
+       to the 720px design canvas so flex compresses identically to the
+       on-screen deck. */
+    height: 720px !important;
+}
+
+/* reveal.js measures each slide BEFORE our height lock applies and bakes
+   the (over-tall) content height into the `.pdf-page` wrapper as an inline
+   height. The section above is 720px but the page wrapper stays 1438px,
+   leaving a half-blank second page. Re-lock the wrapper to the canvas too. */
+html.reveal-print .reveal .slides .pdf-page {
+    height: 720px !important;
+    max-height: 720px !important;
+    overflow: hidden !important;
+}
+
+html.reveal-print .reveal .slides section.slide-title {
+    padding: clamp(12px, 19.20px, 24px) var(--sp-page) var(--sp-page) !important;
+}
+
+html.reveal-print .reveal .slides section.slide-full,
+html.reveal-print .reveal .slides section.slide-quiz,
+html.reveal-print .reveal .slides section.slide-rangkuman,
+html.reveal-print .reveal .slides section.slide-closing {
+    padding: var(--sp-page) var(--sp-page) clamp(80px, 102.40px, 120px) !important;
+}
+
+html.reveal-print .reveal .slides section.slide-refleksi {
+    padding: var(--sp-page) var(--sp-page) 120px !important;
+}
+
+/* ============================================================
+   RECAP QUIZ COUNTDOWN TIMER (decks 7 & 15)
+   Aesthetic circular countdown replacing the quiz-question grid.
+   ============================================================ */
+
+.quiz-timer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 0;
+}
+
+.timer-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+}
+
+.timer-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.timer-circle circle.bg {
+    fill: none;
+    stroke: var(--hairline);
+    stroke-width: 10;
+}
+
+.timer-circle circle.progress {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 628.32; /* 2 * PI * 100 */
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 1s linear;
+}
+
+.timer-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+.timer-time {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    letter-spacing: -0.01em;
+}
+
+.timer-label {
+    font-size: var(--font-caption-sm);
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.timer-controls {
+    display: flex;
+    gap: var(--sp-md);
+    margin-top: var(--sp-md);
+}
+
+.timer-btn {
+    font-family: inherit;
+    font-size: var(--font-caption);
+    font-weight: 600;
+    padding: var(--sp-xs) var(--sp-xl);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--hairline);
+    background: var(--canvas);
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.timer-btn:hover {
+    background: var(--surface-soft);
+}
+
+.timer-btn.primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+.timer-btn.primary:hover {
+    background: var(--primary);
+    filter: brightness(1.05);
+}
