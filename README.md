@@ -32,8 +32,7 @@ src/
   decks/                pertemuan-NN.tsx (isi slide) + registry.ts (metadata dashboard)
   main/                 entry: dashboard.tsx, deck.tsx, gallery.tsx
 scripts/                gen-palette, port-legacy, check-parity/icons, print-check, shot, sheet
-legacy/                 deck reveal.js lama — referensi teks untuk pengecekan paritas (aset lamanya sudah dihapus, tidak untuk dibuka sebagai slide)
-archive/                sumber awal format fullscreen — referensi saja, jangan diedit
+legacy/  archive/       LOKAL SAJA (di-.gitignore, tidak ada di repositori): deck lama untuk `check:parity` dan sumber awal. Tanpa folder ini `check:parity` tidak bisa dijalankan.
 assets/                 gambar dan logo (images/, logo ITERA & DIKTI)
 docs/DESIGN-SYSTEM.md   sistem desain
 DESIGN.md               referensi palet Airbnb

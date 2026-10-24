@@ -11,7 +11,7 @@ Stack: Vite (root `slides/`) + React 19 + `@revealjs/react` + reveal.js 6. Docs:
 ## Hard invariants (never break)
 
 1. **Never `git commit`** (or push) unless the user explicitly asks. Stated repeatedly by the user.
-2. **`legacy/` and `archive/` stay untouched.** `legacy/pertemuan-N.html` is the reference the new decks are checked
+2. **`legacy/` and `archive/` are LOCAL-ONLY (git-ignored, deliberately not in the public repo) and stay untouched.** `legacy/pertemuan-N.html` is the reference the new decks are checked
    against (`bun run check:parity`); `archive/` is the original source. Never edit either.
 3. **Edit decks by hand in `src/decks/pertemuan-NN.tsx`.** `scripts/port-legacy.py` was a one-shot porter — running it
    again overwrites manual edits (deck 2 KaTeX, deck 13 `CharStrip`, deck 9/10 split task slides, …). Do not re-run it.
