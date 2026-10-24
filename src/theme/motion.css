@@ -1,0 +1,9 @@
+:root {
+  /* M3 Expressive spring approximations */
+  --motion-spatial: linear(0, .32 8%, .78 20%, 1.04 32%, 1.06 40%, 1 58%, .99 75%, 1);
+  --motion-effects: cubic-bezier(.34, .8, .34, 1);
+  --dur-short: 200ms; --dur-medium: 350ms; --dur-long: 500ms;
+}
+@media (prefers-reduced-motion: reduce), print {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

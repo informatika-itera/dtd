@@ -11,3 +11,7 @@ Thumbs.db
 # Editor directories
 .vscode/
 .idea/
+
+# Node / Vite
+node_modules/
+dist/

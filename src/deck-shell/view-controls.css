@@ -1,0 +1,10 @@
+/* ---- View controls (ratio / theme) ---- */
+.view-controls { position:fixed; left:12px; bottom:12px; z-index:50; display:flex; gap:6px; opacity:.28; transition:opacity var(--dur-short); }
+.view-controls:hover, .view-controls:focus-within { opacity:1; }
+.view-controls button { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border:0; border-radius:var(--shape-full); cursor:pointer;
+  font:600 13px/1 var(--font-sans); color:var(--md-sys-color-on-surface); background:var(--md-sys-color-surface-container-high); box-shadow:var(--elevation-1); }
+.view-controls button:hover { background:var(--md-sys-color-secondary-container); color:var(--md-sys-color-on-secondary-container); }
+@media print { .view-controls { display:none; } }
+
+.view-controls.solid { opacity:1; }
+.view-controls.solid button { box-shadow:var(--elevation-2); }

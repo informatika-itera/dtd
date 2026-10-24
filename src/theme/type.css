@@ -1,0 +1,14 @@
+:root {
+  --font-sans: 'Google Sans Flex Variable', 'Google Sans Flex', system-ui, sans-serif;
+  --font-mono: 'Google Sans Code Variable', 'Google Sans Code', ui-monospace, monospace;
+
+  /* Type scale on a 1280x720 canvas. Minimum 20px. */
+  --t-display-hero: 700 96px/1 var(--font-sans);
+  --t-display: 650 64px/1.05 var(--font-sans);
+  --t-headline: 600 44px/1.1 var(--font-sans);
+  --t-title: 600 30px/1.2 var(--font-sans);
+  --t-body-lg: 400 28px/1.35 var(--font-sans);
+  --t-body: 400 24px/1.4 var(--font-sans);
+  --t-label: 600 20px/1.2 var(--font-sans);
+  --t-code: 400 22px/1.5 var(--font-mono);
+}

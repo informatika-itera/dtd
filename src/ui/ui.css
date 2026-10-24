@@ -1,0 +1,8 @@
+.chip { display:inline-flex; align-items:center; gap:8px; padding:6px 16px; border-radius:var(--shape-full);
+  font:var(--t-label); background:var(--md-sys-color-primary-container); color:var(--md-sys-color-on-primary-container); }
+.surface { border-radius:var(--shape-3xl); padding:var(--space-4); background:var(--md-sys-color-surface-container-low); }
+.surface.tonal-primary { background:var(--md-sys-color-primary-container); color:var(--md-sys-color-on-primary-container); }
+.surface.tonal-secondary { background:var(--md-sys-color-secondary-container); color:var(--md-sys-color-on-secondary-container); }
+.surface.tonal-tertiary { background:var(--md-sys-color-tertiary-container); color:var(--md-sys-color-on-tertiary-container); }
+.math-block { font-size:36px; margin:var(--space-2) 0; }
+.sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }

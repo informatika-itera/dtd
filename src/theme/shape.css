@@ -1,0 +1,8 @@
+:root {
+  --shape-xs: 4px; --shape-sm: 8px; --shape-md: 12px; --shape-lg: 16px;
+  --shape-xl: 20px; --shape-2xl: 28px; --shape-3xl: 32px; --shape-4xl: 48px;
+  --shape-full: 9999px;
+  --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px; --space-5: 48px; --space-6: 64px;
+  --elevation-1: 0 1px 2px rgb(0 0 0 / .06), 0 1px 3px rgb(0 0 0 / .1);
+  --elevation-2: 0 2px 6px rgb(0 0 0 / .08), 0 4px 12px rgb(0 0 0 / .08);
+}

@@ -1,0 +1,43 @@
+{
+  "name": "dtd-slides",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Dasar Teknologi Digital — slide decks (Reveal.js + React)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && node scripts/check-titles.mjs && vite build && node scripts/check-dist.mjs",
+    "preview": "vite preview",
+    "gen:palette": "bun scripts/gen-palette.ts",
+    "check:parity": "node scripts/check-parity.mjs 1 2 3 4 5 6 7 9 10 11 12 13 14 15",
+    "check:icons": "node scripts/check-icons.mjs 1 2 3 4 5 6 7 9 10 11 12 13 14 15",
+    "check:print": "node scripts/print-check.mjs http://127.0.0.1:4173 1 2 3 4 5 6 7 9 10 11 12 13 14 15",
+    "gen:files": "node scripts/gen-files.mjs",
+    "check:dist": "node scripts/check-dist.mjs",
+    "check:published": "node scripts/check-published.mjs",
+    "check:formulas": "node scripts/check-formulas.mjs",
+    "check:titles": "node scripts/check-titles.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/google-sans-code": "^5.3.2",
+    "@fontsource-variable/google-sans-flex": "^5.3.2",
+    "@fontsource-variable/material-symbols-rounded": "^5.3.9",
+    "@revealjs/react": "0.2.2",
+    "katex": "^0.19.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "reveal.js": "^6.0.2"
+  },
+  "devDependencies": {
+    "@material/material-color-utilities": "^0.4.0",
+    "@types/katex": "^0.16.8",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "docx": "^9.14.0",
+    "exceljs": "^4.4.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  }
+}
